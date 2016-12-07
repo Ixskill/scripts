@@ -5,7 +5,7 @@ set ruler
 set timeoutlen=0
 nmap <space> viw
 map m :call ToggleRNU()<cr>
-
+autocmd BufNewFile * :write
 function! ToggleRNU()
 	if (&relativenumber == 1)
 		set nu
