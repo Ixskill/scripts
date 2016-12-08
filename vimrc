@@ -20,6 +20,7 @@ set autoread										"Keeps track of changes done outside vim
 set history=1000									"Vim now remembers the 1000 last cmd you used
 set timeoutlen=500									"The time you have to complete the command before it expires
 set hidden											"Allows buffer to be set in BG without writing on the disk
+autocmd BufNewFile * :write							"
 
 "		Swapfiles
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp "Sets backupdirectory for all swp files"
@@ -51,15 +52,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "		Toggles relative number notation on/off
 nnoremap <silent> <C-l> :call ToggleRNU()<cr>
-"'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-"						Temporary mapping. Disabling "easy keys" to get used
-"						to it
-
-noremap <right> <nop>
-noremap <left> <nop>
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <esc> <nop>
 "----------------Fonctions----------------------------
 function! ToggleRNU()
 	if (&relativenumber == 1)
