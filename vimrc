@@ -31,10 +31,14 @@ set wildmode=list:longest							"Wildmenu behaves like shell (completion to poin
 set wildignore=*.o,*.swp							"Files to ingore when browsing and completing options
 
 "------------------Key mapping----------------------------
-nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>
-"Setting up mapleader key
+"		Setting up mapleader key
 let mapleader = ","
+"		Single / double quotes a word ( why not ? )
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 
+"		Toggles hlsearch on/off
+nnoremap <leader>n :set hlsearch!<cr>
 "       Selects a full word in visual mode"
 nnoremap <silent> <space> viw					
 
@@ -47,7 +51,15 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "		Toggles relative number notation on/off
 nnoremap <silent> <C-l> :call ToggleRNU()<cr>
+"'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+"						Temporary mapping. Disabling "easy keys" to get used
+"						to it
 
+noremap <right> <nop>
+noremap <left> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <esc> <nop>
 "----------------Fonctions----------------------------
 function! ToggleRNU()
 	if (&relativenumber == 1)
