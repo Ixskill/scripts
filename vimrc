@@ -20,7 +20,16 @@ set autoread										"Keeps track of changes done outside vim
 set history=1000									"Vim now remembers the 1000 last cmd you used
 set timeoutlen=500									"The time you have to complete the command before it expires
 set hidden											"Allows buffer to be set in BG without writing on the disk
-autocmd BufNewFile * :write							"
+autocmd BufNewFile * :write							"Writes a file to the disk as soon as the buffer is openned ?
+"		C files
+augroup c_files
+	autocmd!
+	autocmd BufWritePre,BufRead *.c :normal gg=G
+	autocmd FileType c :iabbrev iff if ()<left>
+	autocmd FileType c :iabbrev whh while ()<left>
+	autocmd FileType c :iabbrev main( main(int ac, char **av)<cr>{<cr>}<up>
+	autocmd Filetype c :iabbrev { {<cr>}<up>
+augroup END
 
 "		Swapfiles
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp "Sets backupdirectory for all swp files"
@@ -28,7 +37,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 "		Command completion
 set wildmenu										"Using <TAB> in the command line displays your options for completion
-set wildmode=list:longest							"Wildmenu behaves like shell (completion to point of ambiguity"
+set wildmode=list:longest							"Wildmenu behaves like shell (completion to point of ambiguity)"
 set wildignore=*.o,*.swp							"Files to ingore when browsing and completing options
 
 "------------------Key mapping----------------------------
@@ -49,6 +58,10 @@ nmap <silent> <leader><tab> :set nolist!<CR>
 "		Opens and sources the vimrc file  ## NOTE : set env variable to the right path
 nnoremap <leader>rc :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+"		C relative mapping
+autocmd FileType c let maplocalleader = ","
+autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
 
 "		Toggles relative number notation on/off
 nnoremap <silent> <C-l> :call ToggleRNU()<cr>
