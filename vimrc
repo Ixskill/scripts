@@ -24,11 +24,14 @@ autocmd BufNewFile * :write							"Writes a file to the disk as soon as the buff
 "		C files
 augroup c_files
 	autocmd!
-	autocmd BufWritePre,BufRead *.c :normal gg=G
+	autocmd BufRead *.c :normal mxgg=G'x
 	autocmd FileType c :iabbrev iff if ()<left>
 	autocmd FileType c :iabbrev whh while ()<left>
-	autocmd FileType c :iabbrev main( main(int ac, char **av)<cr>{<cr>}<up>
+	autocmd FileType c :iabbrev main( main(int ac, char *av[])<cr>{<cr>}<up>
 	autocmd Filetype c :iabbrev { {<cr>}<up>
+	autocmd FileType c let maplocalleader = ","
+	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
+	autocmd FileType c nnoremap <localleader>C A///////////////////////////////////////////////////////////
 augroup END
 
 "		Swapfiles
@@ -58,10 +61,6 @@ nmap <silent> <leader><tab> :set nolist!<CR>
 "		Opens and sources the vimrc file  ## NOTE : set env variable to the right path
 nnoremap <leader>rc :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-
-"		C relative mapping
-autocmd FileType c let maplocalleader = ","
-autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
 
 "		Toggles relative number notation on/off
 nnoremap <silent> <C-l> :call ToggleRNU()<cr>
