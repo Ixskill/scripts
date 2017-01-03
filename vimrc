@@ -31,7 +31,7 @@ augroup c_files
 	autocmd Filetype c :iabbrev { {<cr>}<up>
 	autocmd FileType c let maplocalleader = ","
 	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
-	autocmd FileType c nnoremap <localleader>C A///////////////////////////////////////////////////////////
+	autocmd FileType c nnoremap <localleader>C A///////////////////////////////////////////////////////////<esc>
 augroup END
 
 "		Swapfiles
@@ -66,9 +66,5 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> <C-l> :call ToggleRNU()<cr>
 "----------------Fonctions----------------------------
 function! ToggleRNU()
-	if (&relativenumber == 1)
-		set nu
-	else
-		set rnu
-	endif
+		set rnu!
 endfunc
