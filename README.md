@@ -1,2 +1,3 @@
 # vimscripts
-My personal vimscripts and vimrc
+
+Some scripts and dotfiles im using to improve my workflow
