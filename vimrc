@@ -70,3 +70,4 @@ function! ToggleRNU()
 endfunc
 "----------------- Laptop settings ---------------------------------
 color elflord
+source $HOME/projects/scripts/zaz_header

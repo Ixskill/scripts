@@ -7,15 +7,15 @@ unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/ade-sede/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
-export MYVIMRC="/home/ade-sede/.vimrc"
+export MYVIMRC="$HOME/.vimrc"
 export MAIL="adrien.de.sede@gmail.com"
 ########## SETTING UP VARIABLE FOR CONF FILES ####
-export TMUXRC="/home/ade-sede/.tmux.conf"
-export ZSHRC="/home/ade-sede/.zshrc"
-export i3RC="/home/ade-sede/.i3/config"
+export TMUXRC="$HOME/.tmux.conf"
+export ZSHRC="$HOME/.zshrc"
+export i3RC="$HOME/.i3/config"
 export TERMRC="/home/ade-sede/.config/termite/config"
 #################### ALIAS ###########
 alias gww="gcc -Wall -Wextra -Werror"
@@ -28,4 +28,5 @@ if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	exec startx
 fi
 compinit
+########
 # End of lines added by compinstall
