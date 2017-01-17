@@ -68,3 +68,5 @@ nnoremap <silent> <C-l> :call ToggleRNU()<cr>
 function! ToggleRNU()
 		set rnu!
 endfunc
+"----------------- Laptop settings ---------------------------------
+color elflord
