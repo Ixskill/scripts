@@ -27,7 +27,7 @@ augroup c_files
 	autocmd BufRead *.c :normal mxgg=G'x
 	autocmd FileType c :iabbrev iff if ()<left>
 	autocmd FileType c :iabbrev whh while ()<left>
-	autocmd FileType c :iabbrev main( main(int ac, char *av[])<cr>{<cr>}<up>
+	autocmd FileType c :iabbrev main( main(int ac, char *av[])<cr>{<cr>}<up><cr>return(0);<up>
 	autocmd Filetype c :iabbrev { {<cr>}<up>
 	autocmd FileType c let maplocalleader = ","
 	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
