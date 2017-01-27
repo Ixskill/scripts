@@ -28,6 +28,8 @@ augroup c_files
 	autocmd FileType c :iabbrev iff if ()<left>
 	autocmd FileType c :iabbrev whh while ()<left>
 	autocmd FileType c :iabbrev main( main(int ac, char *av[])<cr>{<cr>}<up><cr>return(0);<up>
+	autocmd Filetype c :inoremap [ []<left>
+	autocmd Filetype c :inoremap ( ()<left>
 	autocmd Filetype c :iabbrev { {<cr>}<up>
 	autocmd FileType c let maplocalleader = ","
 	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
@@ -46,9 +48,7 @@ set wildignore=*.o,*.swp							"Files to ingore when browsing and completing opt
 "------------------Key mapping----------------------------
 "		Setting up mapleader key
 let mapleader = ","
-"		Single / double quotes a word ( why not ? )
-nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
-nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
 
 "		Toggles hlsearch on/off
 nnoremap <leader>n :set hlsearch!<cr>
@@ -64,10 +64,32 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "		Toggles relative number notation on/off
 nnoremap <silent> <C-l> :call ToggleRNU()<cr>
+
+"		Surrounds a ligne with {} brackets
+nnoremap <silent><leader>{ O{<esc><down>o}
+
+"		Single / double quotes a word / a visual selection ( why not ? )
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+vnoremap <leader>' c''<esc>P
+vnoremap <leader>" c""<esc>P
+
+"		Surround a visual selection with ()
+vnoremap <leader>( c()<esc>P
+
+"		Unbinding esc to get used to C-c
+inoremap <esc> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <right> <nop>
+nnoremap <left> <nop>
+
+
 "----------------Fonctions----------------------------
 function! ToggleRNU()
 		set rnu!
 endfunc
 "----------------- Laptop settings ---------------------------------
 color elflord
+hi Repeat	term=underline ctermfg=Yellow	guifg=blue
 source $HOME/projects/scripts/zaz_header
