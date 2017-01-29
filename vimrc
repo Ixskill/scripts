@@ -87,4 +87,3 @@ endfunc
 "----------------- Laptop settings ---------------------------------
 color elflord
 hi Repeat	term=underline ctermfg=Yellow	guifg=blue
-source $HOME/projects/scripts/zaz_header
