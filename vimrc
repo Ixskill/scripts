@@ -77,6 +77,7 @@ vnoremap <leader>" c""<esc>P
 
 "		Surround a visual selection with ()
 vnoremap <leader>( c()<esc>P
+vnoremap <leader>[ c[]<esc>P
 
 "		Unbinding esc to get used to C-c
 

@@ -10,7 +10,9 @@ bindkey -v
 # Exporting a few variables
 export MYVIMRC="$HOME/.vimrc"
 export MAIL="adrien.de.sede@gmail.com"
-export HOST="ade-sede-arch"
+if [ "$uname -s" = "Darwin" ]; then
+	export HOST="ade-sede-arch"
+fi
 
 # Variables for each config file of my env
 export TMUXRC="$HOME/.tmux.conf"
