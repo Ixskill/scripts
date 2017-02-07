@@ -24,13 +24,13 @@ autocmd BufNewFile * :write							"Writes a file to the disk as soon as the buff
 "		C files
 augroup c_files
 	autocmd!
+	autocmd Filetype c :inoremap ( ()<left>
 	autocmd FileType c :iabbrev iff if ()<left>
 	autocmd FileType c :iabbrev whh while ()<left>
 	autocmd FileType c :iabbrev main( main(int ac, char *av[])<cr>{<cr>}<up><cr>return(0);<up>
 	autocmd Filetype c :inoremap [ []<left>
-	autocmd Filetype c :inoremap '''<left>
+	autocmd Filetype c :inoremap ' ''<left>
 	autocmd Filetype c :inoremap " ""<left>
-	autocmd Filetype c :inoremap ( ()<left>
 	autocmd Filetype c :iabbrev { {<cr>}<up>
 	autocmd FileType c let maplocalleader = ","
 	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
@@ -66,8 +66,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 "		Toggles relative number notation on/off
 nnoremap <silent> <C-l> :call ToggleRNU()<cr>
 
-"		Surrounds a ligne with {} brackets
-nnoremap <silent><leader>{ O{<esc><down>o}
+"		Surrounds a ligne with {} brackets or a visual selection
+nnoremap <silent><leader>{ O{<esc><down>o}<up><up><cr>
+vnoremap <silent><leader>{ c{<cr>}<up><cr><esc>P=<up>
 
 "		Single / double quotes a word / a visual selection ( why not ? )
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
@@ -75,9 +76,12 @@ nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 vnoremap <leader>' c''<esc>P
 vnoremap <leader>" c""<esc>P
 
-"		Surround a visual selection with ()
+"		Surround a visual selection with () or []. if in normal mod, surrounds
+"		the word with viw
 vnoremap <leader>( c()<esc>P
+nnoremap <leader>( viw<esc>a)<esc>hbi(<esc>lel
 vnoremap <leader>[ c[]<esc>P
+nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 
 "		Unbinding esc to get used to C-c
 

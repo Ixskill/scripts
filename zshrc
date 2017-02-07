@@ -10,6 +10,7 @@ bindkey -v
 # Exporting a few variables
 export MYVIMRC="$HOME/.vimrc"
 export MAIL="adrien.de.sede@gmail.com"
+export PS1="%20<...<%~%<< >> "
 if [ "$uname -s" = "Darwin" ]; then
 	export HOST="ade-sede-arch"
 fi
@@ -25,6 +26,7 @@ export TPLUGS="$HOME/.tmux/plugins/"
 alias gww="gcc -Wall -Wextra -Werror"
 alias ll="ls -alsh"
 alias grep="grep --color"
+alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
 alias v="vim"
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|to\ full|percentage"'
 alias save="sh $TPLUGS/tmux-resurrect/scripts/save.sh"
