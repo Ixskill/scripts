@@ -10,7 +10,7 @@ bindkey -v
 # Exporting a few variables
 export MYVIMRC="$HOME/.vimrc"
 export MAIL="adrien.de.sede@gmail.com"
-export PS1="$USER@$HOST || %20<...<%~%<< >> "
+export PS1="[$USER %20<...<%~%<<]$ "
 if [ "$uname -s" = "Darwin" ]; then
 	export HOST="ade-sede-arch"
 fi
