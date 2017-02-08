@@ -49,6 +49,7 @@ compinit
 # End of lines added by compinstall
 
 # Load Homebrew config script
-if [ ! "uname -s" = "Darwin" ]; then
+if [ "uname -s" = "Darwin" ]; then
+	echo "lol"
 	source $HOME/.brewconfig.zsh
 fi
