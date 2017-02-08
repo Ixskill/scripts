@@ -47,3 +47,6 @@ autoload -Uz compinit
 zstyle :compinstall filename '$HOME/.zshrc'
 compinit
 # End of lines added by compinstall
+
+# Load Homebrew config script
+source $HOME/.brewconfig.zsh
