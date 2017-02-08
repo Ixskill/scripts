@@ -11,7 +11,7 @@ bindkey -v
 export MYVIMRC="$HOME/.vimrc"
 export MAIL="adrien.de.sede@gmail.com"
 export PS1="[$USER %20<...<%~%<<]$ "
-if [ "$uname -s" = "Darwin" ]; then
+if [ ! "$uname -s" = "Darwin" ]; then
 	export HOST="ade-sede-arch"
 fi
 
@@ -49,4 +49,6 @@ compinit
 # End of lines added by compinstall
 
 # Load Homebrew config script
-source $HOME/.brewconfig.zsh
+if [ ! "uname -s" = "Darwin"]; then
+	source $HOME/.brewconfig.zsh
+fi
