@@ -1,0 +1,24 @@
+pane	0	0	:zsh	0	:	0	:/Users/ade-sede/projects/scripts	1	zsh	:
+pane	0	0	:zsh	0	:	1	:/Users/ade-sede/.tmux	0	zsh	:
+pane	0	1	:test 1	0	:	0	:/Users/ade-sede/projects/scripts	0	zsh	:
+pane	0	1	:test 1	0	:	1	:/Users/ade-sede/projects/scripts	1	zsh	:
+pane	0	2	:test 2	0	:	0	:/Users/ade-sede/projects/scripts	0	zsh	:
+pane	0	2	:test 2	0	:	1	:/Users/ade-sede/projects/scripts	1	zsh	:
+pane	0	3	:test 3	0	:	0	:/Users/ade-sede/projects/scripts	0	zsh	:
+pane	0	3	:test 3	0	:	1	:/Users/ade-sede/projects/scripts	1	zsh	:
+pane	0	4	:test 4	0	:	0	:/Users/ade-sede/projects/scripts	0	zsh	:
+pane	0	4	:test 4	0	:	1	:/Users/ade-sede/projects/scripts	1	zsh	:
+pane	0	5	:test 5	0	:	0	:/Users/ade-sede/projects/scripts	0	zsh	:
+pane	0	5	:test 5	0	:	1	:/Users/ade-sede/projects/scripts	1	zsh	:
+pane	0	6	:test 6	0	:-	0	:/Users/ade-sede/projects/scripts	0	zsh	:
+pane	0	6	:test 6	0	:-	1	:/Users/ade-sede/projects/scripts	1	zsh	:
+pane	0	7	:lol	1	:*	0	:/Users/ade-sede/projects/scripts	1	zsh	:
+window	0	0	0	:	86bf,364x82,0,0{182x82,0,0,1,181x82,183,0,2}
+window	0	1	0	:	86c2,364x82,0,0{182x82,0,0,3,181x82,183,0,4}
+window	0	2	0	:	86c5,364x82,0,0{182x82,0,0,5,181x82,183,0,6}
+window	0	3	0	:	86c8,364x82,0,0{182x82,0,0,7,181x82,183,0,8}
+window	0	4	0	:	03ba,364x82,0,0{182x82,0,0,9,181x82,183,0,10}
+window	0	5	0	:	e2c5,364x82,0,0{182x82,0,0,11,181x82,183,0,12}
+window	0	6	0	:-	e2c7,364x82,0,0{182x82,0,0,13,181x82,183,0,14}
+window	0	7	1	:*	5f54,364x82,0,0,15
+state	0	
