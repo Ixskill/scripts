@@ -11,7 +11,7 @@ bindkey -v
 export MYVIMRC="$HOME/.vimrc"
 export MAIL="adrien.de.sede@gmail.com"
 export PS1="[$USER %20<...<%~%<<]$ "
-if [ ! "$uname -s" = "Darwin" ]; then
+if [ "$uname -s" = "Linux" ]; then
 	export HOST="ade-sede-arch"
 fi
 
