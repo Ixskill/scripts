@@ -29,8 +29,6 @@ alias grep="grep --color"
 alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
 alias v="vim"
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|to\ full|percentage"'
-alias save="sh $TPLUGS/tmux-resurrect/scripts/save.sh"
-alias restore="sh $TPLUGS/tmux-resurrect/scripts/restore.sh"
 alias clean_swp="rm -rf /var/tmp/*.swp"
 # Startx on boot
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
