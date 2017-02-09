@@ -7,20 +7,22 @@ unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
-# Exporting a few variables
-export MYVIMRC="$HOME/.vimrc"
-export MAIL="adrien.de.sede@gmail.com"
-export PS1="[$USER %20<...<%~%<<]$ "
+# Arch relative part : for my laptop
 if [ "$(uname -s)" = "Linux" ]; then
+	eval $(keychain --eval --quiet ~/.ssh/id_rsa.pub)
 	export HOST="ade-sede-arch"
 fi
 
-# Variables for each config file of my env
+# Variables for each config file of my env and comfort settings
+export SCRIPT_DIR="$HOME/projects/scripts"
+export MYVIMRC="$HOME/.vimrc"
 export TMUXRC="$HOME/.tmux.conf"
 export ZSHRC="$HOME/.zshrc"
 export i3RC="$HOME/.i3/config"
 export TERMRC="/home/ade-sede/.config/termite/config"
 export TPLUGS="$HOME/.tmux/plugins/"
+export MAIL="adrien.de.sede@gmail.com"
+export PS1="[$USER %20<...<%~%<<]$ "
 
 # Lazy alias
 alias gww="gcc -Wall -Wextra -Werror"
@@ -35,11 +37,6 @@ alias clean_swp="rm -rf /var/tmp/*.swp"
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	exec startx
 fi
-
-# Start TMUX session if the opened shell inst tmux's child process
-#if [ -z "$TMUX" ]; then
-#	exec tmux
-#fi
 
 # The following lines were added by compinstall
 autoload -Uz compinit

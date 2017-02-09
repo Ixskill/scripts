@@ -1,0 +1,22 @@
+pane	Ft_printf	0	:Test && Compile	0	:	0	:/home/ade-sede	1	zsh	:
+pane	Ft_printf	0	:Test && Compile	0	:	1	:/home/ade-sede	0	zsh	:
+pane	Ft_printf	1	:Printf.c && conv_fcts	0	:	0	:/home/ade-sede	0	zsh	:
+pane	Ft_printf	1	:Printf.c && conv_fcts	0	:	1	:/home/ade-sede	1	zsh	:
+pane	Ft_printf	2	:Conv.c && opt.c	0	:-	0	:/home/ade-sede	0	zsh	:
+pane	Ft_printf	2	:Conv.c && opt.c	0	:-	1	:/home/ade-sede	1	zsh	:
+pane	Ft_printf	3	:Flags.c && field.c	0	:	0	:/home/ade-sede	1	zsh	:
+pane	Ft_printf	3	:Flags.c && field.c	0	:	1	:/home/ade-sede	0	zsh	:
+pane	Ft_printf	4	:Form.c && prec.c	0	:	0	:/home/ade-sede	0	zsh	:
+pane	Ft_printf	4	:Form.c && prec.c	0	:	1	:/home/ade-sede	1	zsh	:
+pane	Ft_printf	5	:Libft	1	:*	0	:/home/ade-sede/projects/scripts	1	zsh	:
+pane	Ft_printf	5	:Libft	1	:*	1	:/home/ade-sede/projects/scripts	0	zsh	:
+pane	Ft_printf	6	:Man & FileChecker	0	:	0	:/home/ade-sede	1	zsh	:
+pane	Ft_printf	6	:Man & FileChecker	0	:	1	:/home/ade-sede	0	zsh	:
+window	Ft_printf	0	0	:	7d43,170x50,0,0{85x50,0,0,4,84x50,86,0,5}
+window	Ft_printf	1	0	:	736c,170x50,0,0{84x50,0,0,6,85x50,85,0,7}
+window	Ft_printf	2	0	:-	7d55,170x50,0,0{85x50,0,0,8,84x50,86,0,9}
+window	Ft_printf	3	0	:	8727,170x50,0,0{85x50,0,0,10,84x50,86,0,11}
+window	Ft_printf	4	0	:	872c,170x50,0,0{85x50,0,0,12,84x50,86,0,13}
+window	Ft_printf	5	1	:*	8731,170x50,0,0{85x50,0,0,14,84x50,86,0,15}
+window	Ft_printf	6	0	:	82c6,170x50,0,0{84x50,0,0,16,85x50,85,0,17}
+state	Ft_printf	
