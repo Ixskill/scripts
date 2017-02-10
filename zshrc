@@ -9,7 +9,7 @@ bindkey -v
 
 # Arch relative part : for my laptop
 if [ "$(uname -s)" = "Linux" ]; then
-	eval $(keychain --eval --quiet ~/.ssh/id_rsa.pub)
+	eval $(keychain --eval --quiet ~/.ssh/id_rsa)
 	export HOST="ade-sede-arch"
 fi
 
