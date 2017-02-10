@@ -50,6 +50,8 @@ set wildignore=*.o,*.swp							"Files to ingore when browsing and completing opt
 "		Setting up mapleader key
 let mapleader = ","
 
+"		toggle paste on/off
+nnoremap <leader>p : set paste!<cr>
 
 "		Toggles hlsearch on/off
 nnoremap <leader>n :set hlsearch!<cr>
