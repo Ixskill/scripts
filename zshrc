@@ -14,7 +14,7 @@ if [ "$(uname -s)" = "Linux" ]; then
 fi
 
 # Variables for each config file of my env and comfort settings
-export SCRIPT_DIR="$HOME/projects/scripts"
+export DOTFILES="$HOME/projects/dotfiles"
 export MYVIMRC="$HOME/.vimrc"
 export TMUXRC="$HOME/.tmux.conf"
 export ZSHRC="$HOME/.zshrc"
