@@ -1,1 +1,27 @@
-/home/ade-sede/.config/terminator/config
+[global_config]
+  always_split_with_profile = True
+  scroll_tabbar = True
+  tab_position = bottom
+  title_hide_sizetext = True
+[keybindings]
+go_right = nop
+go_left = nop
+go_down = nop
+go_up = nop
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+  [[ade-sede]]
+    cursor_color = "#aaaaaa"
+    icon_bell = False
+    scrollbar_position = hidden
+    show_titlebar = False
