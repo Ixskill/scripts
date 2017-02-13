@@ -23,6 +23,7 @@ export TERMRC="/home/ade-sede/.config/termite/config"
 export TPLUGS="$HOME/.tmux/plugins/"
 export MAIL="adrien.de.sede@gmail.com"
 export PS1="[$USER %20<...<%~%<<]$ "
+export VISUAL="vim"
 
 # Lazy alias
 alias gww="gcc -Wall -Wextra -Werror"
