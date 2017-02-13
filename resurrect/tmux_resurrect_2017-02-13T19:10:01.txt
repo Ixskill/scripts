@@ -1,0 +1,4 @@
+pane	0	0	:correct	1	:*	0	:/private/tmp/ici	1	zsh	:
+pane	0	0	:correct	1	:*	1	:/Users/ade-sede/projects/dotfiles	0	zsh	:
+window	0	0	1	:*	b362,176x82,0,0{94x82,0,0,0,81x82,95,0,1}
+state	0	
