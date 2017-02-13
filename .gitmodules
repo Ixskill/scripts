@@ -1,0 +1,3 @@
+[submodule "AB-dotfiles"]
+	path = AB-dotfiles
+	url = https://github.com/Airblader/dotfiles-manjaro.git
