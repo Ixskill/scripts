@@ -85,22 +85,26 @@ nnoremap <leader>( viw<esc>a)<esc>hbi(<esc>lel
 vnoremap <leader>[ c[]<esc>P
 nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 
+"	echoes the hl/syntax group
+nnoremap <leader>sp :call <SID>SynStack()<CR>
+
 "		Unbinding esc to get used to C-c
 
 "----------------Fonctions----------------------------
 function! ToggleRNU()
 		set rnu!
 endfunc
+
+" This functions shows us to what HL/syntax group an express belongs
+
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 "----------------- color settings  ---------------------------------
 " 		Using airblaider's theme atm. Doing my own is on my TODO :)
-source $DOTFILES/AB-dotfiles/.vim/colors/airblader.vim
-set background=dark
-highlight Normal guibg=black guifg=white
-
-
-
-
-
-
-
+source $HOME/.vim/my_color.vim
 
