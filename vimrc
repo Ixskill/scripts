@@ -91,5 +91,16 @@ nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 function! ToggleRNU()
 		set rnu!
 endfunc
-"----------------- Laptop settings ---------------------------------
+"----------------- color settings  ---------------------------------
+" 		Using airblaider's theme atm. Doing my own is on my TODO :)
 source $DOTFILES/AB-dotfiles/.vim/colors/airblader.vim
+set background=dark
+highlight Normal guibg=black guifg=white
+
+
+
+
+
+
+
+

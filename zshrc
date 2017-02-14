@@ -30,7 +30,7 @@ export VISUAL="vim"
 export EDITOR="vim"
 
 # Loading prompt settings
-export PS1="%B%K{yellow}[$USER@%y %K{red} %20<...<%~%<<]$%k "
+export PS1="%B%K{yellow}[$USER %K{red} %20<...<%~%<<]$%k "
 autoload -Uz promptinit
 promptinit
 #source ~/projects/dotfiles/themes/agnoster.zsh-theme
