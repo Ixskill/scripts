@@ -7,6 +7,10 @@ endif
 let colors_name = "ade-sede"
 
 hi Normal       ctermfg=252 ctermbg=NONE  guibg=black cterm=NONE
+" A bit of syntax
+
+syntax keyword cOperator "||\|&&\|[-+.]"
+hi def link cOperator Operator
 
 " Search
 hi IncSearch    ctermfg=NONE   ctermbg=3   cterm=NONE
@@ -29,7 +33,7 @@ hi Ignore       ctermfg=1   ctermbg=1   cterm=NONE
 hi PreProc      ctermfg=145 ctermbg=NONE   cterm=NONE
 hi Special      ctermfg=107 ctermbg=NONE   cterm=NONE
 hi Statement    ctermfg=74  ctermbg=NONE   cterm=NONE
-hi Todo         ctermfg=1   ctermbg=NONE   cterm=BOLD
+hi Todo         ctermfg=1   ctermbg=242   cterm=BOLD
 hi Type         ctermfg=3   ctermbg=NONE   cterm=NONE
 hi Underlined                           cterm=UNDERLINE
 hi Include      ctermfg=145 ctermbg=NONE   cterm=NONE

@@ -3,7 +3,7 @@
 
 "----------------Options-------------------------"
 "		HUD and CLarity
-syntax on											"Easier to read with syntax highlight ;)
+syntax enable											"Easier to read with syntax highlight ;)
 set ruler											"Ruler enabled bottom right of the screen
 set nu												"Activates line number
 set listchars=tab:>-,trail:·,eol:$					"Creates a list of characters -> Tab is now represented by >- and so on

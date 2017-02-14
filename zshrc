@@ -24,21 +24,24 @@ export ZSHRC="$HOME/.zshrc"
 export i3RC="$HOME/.config/i3/config"
 export TERMRC="/home/ade-sede/.config/terminator/config"
 export TPLUGS="$HOME/.tmux/plugins/"
-export TODO="$DOTFILES/todo"
+export TODO="$DOTFILES/TODO"
 export MAIL="adrien.de.sede@gmail.com"
 export VISUAL="vim"
 export EDITOR="vim"
+export PROMPT_FILE="$HOME/.zsh_prompt.zsh"
 
 # Loading prompt settings
-export PS1="%B%K{yellow}[$USER %K{red} %20<...<%~%<<]$%k "
 autoload -Uz promptinit
 promptinit
-#source ~/projects/dotfiles/themes/agnoster.zsh-theme
+
+source $PROMPT_FILE
+export PS1=$(echo_prompt)
+# ref = #source $DOTFILES/themes/agnoster.zsh-theme
 
 # Messing up with zle settings                                     
 function zle-line-init zle-keymap-select
 {
-	VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%]"
+	VIM_PROMPT="VIM [%K{red}ON%k]%  %k"
 	RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
 	zle reset-prompt
 }
