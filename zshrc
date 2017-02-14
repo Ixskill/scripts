@@ -7,7 +7,10 @@ unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
-# Arch relative part : for my laptop
+
+
+
+# Arch relative part : for my laptop only
 if [ "$(uname -s)" = "Linux" ]; then
 	eval $(keychain --eval --quiet ~/.ssh/id_rsa)
 	export HOST="ade-sede-arch"
@@ -23,10 +26,29 @@ export TERMRC="/home/ade-sede/.config/terminator/config"
 export TPLUGS="$HOME/.tmux/plugins/"
 export TODO="$DOTFILES/todo"
 export MAIL="adrien.de.sede@gmail.com"
-export PS1="[$USER %20<...<%~%<<]$ "
 export VISUAL="vim"
+export EDITOR="vim"
 
-# Lazy alias
+# Loading prompt settings
+export PS1="%B%K{yellow}[$USER@%y %K{red} %20<...<%~%<<]$%k "
+autoload -Uz promptinit
+promptinit
+#source ~/projects/dotfiles/themes/agnoster.zsh-theme
+
+# Messing up with zle settings                                     
+function zle-line-init zle-keymap-select
+{
+	VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%]"
+	RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+	zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
+
+# Lazy alias														
 alias gww="gcc -Wall -Wextra -Werror"
 alias ll="ls -alsh"
 alias grep="grep --color"
@@ -35,16 +57,21 @@ alias v="vim"
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|to\ full|percentage"'
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias clean_swp="rm -rf /var/tmp/*.swp"
+
+
 # Startx on boot
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	exec startx
 fi
+
 
 # The following lines were added by compinstall
 autoload -Uz compinit
 zstyle :compinstall filename '$HOME/.zshrc'
 compinit
 # End of lines added by compinstall
+
+
 
 # Load Homebrew config script
 if [ -e "$HOME/.brewconfig.zsh" ]; then

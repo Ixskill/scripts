@@ -1,3 +1,6 @@
 [submodule "AB-dotfiles"]
 	path = AB-dotfiles
 	url = https://github.com/Airblader/dotfiles-manjaro.git
+[submodule "powerline-fonts"]
+	path = powerline-fonts
+	url = https://github.com/powerline/fonts.git

@@ -1,0 +1,6 @@
+pane	0	0	:dotfiles	1	:*	0	:/Users/ade-sede	1	zsh	:
+pane	0	0	:dotfiles	1	:*	1	:/Users/ade-sede	0	lynx	:lynx https://dougblack.io/words/zsh-vi-mode.html
+pane	0	1	:brew	0	:-	0	:/Users/ade-sede	1	zsh	:
+window	0	0	1	:*	86be,364x82,0,0{182x82,0,0,0,181x82,183,0,2}
+window	0	1	0	:-	be3e,364x82,0,0,1
+state	0	
