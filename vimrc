@@ -93,4 +93,3 @@ function! ToggleRNU()
 endfunc
 "----------------- Laptop settings ---------------------------------
 source $DOTFILES/AB-dotfiles/.vim/colors/airblader.vim
-hi Repeat	term=underline ctermfg=Yellow	guifg=blue
