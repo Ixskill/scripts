@@ -10,10 +10,10 @@ bindkey -v
 
 
 
-# Arch relative part : for my laptop only
-if [ "$(uname -s)" = "Linux" ]; then
-	eval $(keychain --eval --quiet ~/.ssh/id_rsa)
-	export HOST="ade-sede-arch"
+### Arch relative part : for my laptop only
+# Startx on boot
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+	eval $(keychain --eval --quiet ~/.ssh/id_rsa) && exec startx
 fi
 
 # Variables for each config file of my env and comfort settings
@@ -61,11 +61,6 @@ alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "sta
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias clean_swp="rm -rf /var/tmp/*.swp"
 
-
-# Startx on boot
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-	exec startx
-fi
 
 
 # The following lines were added by compinstall
