@@ -25,7 +25,7 @@ hi CursorLine               ctermbg=233 cterm=NONE
 hi CursorLineNr ctermfg=3   ctermbg=233 cterm=NONE
 
 " Syntax group
-hi Comment      ctermfg=255 ctermbg=242   cterm=ITALIC
+hi Comment      ctermfg=242 ctermbg=0	  cterm=ITALIC
 hi Constant     ctermfg=9   ctermbg=NONE   cterm=NONE
 hi Error        ctermfg=252 ctermbg=NONE   cterm=NONE
 hi Identifier   ctermfg=11  ctermbg=NONE   cterm=NONE
