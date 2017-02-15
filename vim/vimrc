@@ -106,5 +106,5 @@ endfunc
 
 "----------------- color settings  ---------------------------------
 " 		Using airblaider's theme atm. Doing my own is on my TODO :)
-source $HOME/.vim/my_color.vim
-
+syntax keyword TODO NOTE
+source $HOME/.vim/ade-sede.vim

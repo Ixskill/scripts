@@ -1,0 +1,6 @@
+pane	0	0	:Prompt settings	1	:*	0	:/home/ade-sede	1	vim	:vim /home/ade-sede/.zsh_prompt.zsh
+pane	0	0	:Prompt settings	1	:*	1	:/home/ade-sede/projects/ft_printf	0	zsh	:
+pane	0	1	:Volume script	0	:-	0	:/home/ade-sede	1	vim	:vim volume
+window	0	0	1	:*	f2ef,170x48,0,0{84x48,0,0,0,85x48,85,0,1}
+window	0	1	0	:-	cc3f,170x48,0,0,2
+state	0	
