@@ -1,0 +1,5 @@
+pane	0	0	:Prompt settings	1	:*	0	:/home/ade-sede/projects/dotfiles	1	zsh	:
+pane	0	1	:man zshmisc	0	:-	0	:/home/ade-sede	1	zsh	:
+window	0	0	1	:*	cc3d,170x48,0,0,0
+window	0	1	0	:-	cc40,170x48,0,0,3
+state	0	

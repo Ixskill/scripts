@@ -13,15 +13,33 @@
 
 Perso & fun 	- Study airblaider's color them and do my own
 			- Work on the vim syntax to add && and || to operators
-		- Setup irc slack on irssi
-		- Customise my prompt XXX work in progress
+
+		- Setup irc slack on irss
+			- Dont need it atm but can be fun.
+
+		- Customise my prompt 
+			- Basis are up, need to keep working on it. See next todo
+
+		- Learn how to get vim status and keep it in my env
+			- Will help for a lot of fun scripts
+
 		- Install mps youtube
-		- do a script to seriously export and setup 
-			all my environement, my scripts my macros
+
+		- do a script to seriously export and setup : 
+			- all my environement, my scripts my macros
+
 		- Look at some funny themes on i3 like numix or so
+			- cus its pretty ;3 
+
 		- Add aliases for the volume on my arch
+			- I tried a shell script but it didnt work. Need to train more
+
 		- edit my git config to add some aliases for everyday tasks
+
 		- test double screen
+
+		- Add Operator pending mappings to vim
+			- To select everything between () in visual mode etc etc
 	
 Projects : FdF	- Start the project lulz
 
