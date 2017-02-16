@@ -22,16 +22,16 @@ set timeoutlen=500									"The time you have to complete the command before it 
 set hidden											"Allows buffer to be set in BG without writing on the disk
 autocmd BufNewFile * :write							"Writes a file to the disk as soon as the buffer is openned ?
 "		C files
+
 augroup c_files
 	autocmd!
 	autocmd Filetype c :inoremap ( ()<left>
 	autocmd FileType c :iabbrev iff if ()<left>
 	autocmd FileType c :iabbrev whh while ()<left>
-	autocmd FileType c :iabbrev main( main(int ac, char *av[])<cr>{<cr>}<up><cr>return(0);<up>
 	autocmd Filetype c :inoremap [ []<left>
 	autocmd Filetype c :inoremap ' ''<left>
 	autocmd Filetype c :inoremap " ""<left>
-	autocmd Filetype c :iabbrev { {<cr>}<up>
+	autocmd Filetype c :iabbrev { {<CR>}<up>
 	autocmd FileType c let maplocalleader = ","
 	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
 	autocmd FileType c nnoremap <localleader>C A///////////////////////////////////////////////////////////<esc>
@@ -88,7 +88,6 @@ nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 "	echoes the hl/syntax group
 nnoremap <leader>sp :call <SID>SynStack()<CR>
 
-"		Unbinding esc to get used to C-c
 
 "----------------Fonctions----------------------------
 function! ToggleRNU()
@@ -104,7 +103,8 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
+
 "----------------- color settings  ---------------------------------
 " 		Using airblaider's theme atm. Doing my own is on my TODO :)
-syntax keyword TODO NOTE
+syntax keyword TODO contained NOTE
 source $HOME/.vim/ade-sede.vim

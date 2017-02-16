@@ -38,7 +38,7 @@ prompt_context() {
 }
 
 prompt_dir() {
-  prompt_segment blue black '%~'
+  prompt_segment blue black "%~"
 }
 
 echo_prompt() {

@@ -1,0 +1,7 @@
+pane	0	0	:zsh	1	:*	0	:/Users/ade-sede/projects/libft	1	vim	:vim fdf.c
+pane	FdF	0	:Test && Compile	1	:*	0	:/Users/ade-sede/projects/FdF	1	vim	:vim TODO
+pane	FdF	1	:fdf.c	0	:-	0	:/Users/ade-sede/projects/FdF/srcs	1	vim	:vim fdf.c
+window	0	0	1	:*	be3d,364x82,0,0,0
+window	FdF	0	1	:*	c0fe,318x73,0,0,1
+window	FdF	1	0	:-	c100,318x73,0,0,3
+state	FdF	0

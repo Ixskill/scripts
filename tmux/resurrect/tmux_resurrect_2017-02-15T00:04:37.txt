@@ -1,3 +1,0 @@
-pane	0	0	:zsh	1	:*	0	:/home/ade-sede	1	vim	:vim /home/ade-sede/.zsh_prompt.zsh
-window	0	0	1	:*	cc3d,170x48,0,0,0
-state	0	

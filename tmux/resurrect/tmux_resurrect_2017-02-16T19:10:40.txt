@@ -1,0 +1,5 @@
+pane	FdF	0	:Test && Compile	1	:*	0	:/Users/ade-sede/projects/FdF	1	vim	:vim Makefile
+pane	FdF	1	:zsh	0	:-	0	:/Users/ade-sede/Downloads/edeveze/fdf	1	zsh	:
+window	FdF	0	1	:*	be3d,364x82,0,0,0
+window	FdF	1	0	:-	be40,364x82,0,0,3
+state	FdF	

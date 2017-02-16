@@ -1,0 +1,4 @@
+pane	FdF	0	:Test && Compile	1	:*	0	:/Users/ade-sede/projects/FdF	1	Python	:(Python)
+pane	FdF	0	:Test && Compile	1	:*	1	:/Users/ade-sede/projects/FdF	0	zsh	:
+window	FdF	0	1	:*	86be,364x82,0,0{182x82,0,0,0,181x82,183,0,2}
+state	FdF	

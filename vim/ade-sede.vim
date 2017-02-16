@@ -39,6 +39,7 @@ hi Underlined                           cterm=UNDERLINE
 hi Include      ctermfg=145 ctermbg=NONE   cterm=NONE
 hi Conditional  ctermfg=74  ctermbg=NONE   cterm=NONE
 hi String       ctermfg=107 ctermbg=NONE   cterm=NONE
+hi NOTE         ctermfg=1   ctermbg=242   cterm=BOLD
 
 " Other
 hi Directory    ctermfg=252 ctermbg=NONE   cterm=NONE
