@@ -34,15 +34,11 @@ prompt_end() {
 }
 
 prompt_context() {
-  local user=`whoami`
-
-  if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
-    prompt_segment red $PRIMARY_FG " %(!.%{%F{yellow}%}.)$user "
-  fi
+    prompt_segment red $PRIMARY_FG "$USER"
 }
 
 prompt_dir() {
-  prompt_segment blue black ' %~ '
+  prompt_segment blue black '%~'
 }
 
 echo_prompt() {
