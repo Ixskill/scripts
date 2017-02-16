@@ -1,8 +1,0 @@
-pane	ft_printf	0	:Compile	1	:*	0	:/Users/ade-sede/projects/rendu/ft_printf	1	zsh	:
-pane	ft_printf	0	:Compile	1	:*	1	:/Users/ade-sede/projects/ft_printf	0	zsh	:
-pane	ft_printf	1	:zsh	0	:	0	:/private/tmp/test	1	zsh	:
-pane	ft_printf	3	:42FC	0	:-	0	:/Users/ade-sede/projects/scripts	1	zsh	:
-window	ft_printf	0	1	:*	06c0,364x82,0,0{182x82,0,0,0,181x82,183,0,5}
-window	ft_printf	1	0	:	be45,364x82,0,0,8
-window	ft_printf	3	0	:-	be40,364x82,0,0,3
-state	ft_printf	

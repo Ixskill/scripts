@@ -1,4 +1,0 @@
-pane	0	0	:correct	1	:*	0	:/private/tmp/ici	0	zsh	:
-pane	0	0	:correct	1	:*	1	:/private/tmp/ici	1	vim	:vim main.c
-window	0	0	1	:*	39f6,364x82,0,0{188x82,0,0,0,175x82,189,0,1}
-state	0	

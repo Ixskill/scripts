@@ -1,4 +1,0 @@
-pane	0	0	:zsh	1	:*	0	:/Users/ade-sede/Downloads/edeveze/fdf	0	vim	:vim fdf.c
-pane	0	0	:zsh	1	:*	1	:/Users/ade-sede/projects/dotfiles	1	vim	:vim AB-dotfiles/.vim/colors/airblader.vim
-window	0	0	1	:*	06be,364x82,0,0{182x82,0,0,0,181x82,183,0,1}
-state	0	

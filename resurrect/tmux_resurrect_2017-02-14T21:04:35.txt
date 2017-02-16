@@ -1,4 +1,0 @@
-pane	0	0	:zsh	1	:*	0	:/home/ade-sede/projects/dotfiles/vim	1	vim	:vim my_color.vim
-pane	0	0	:zsh	1	:*	1	:/home/ade-sede/projects/dotfiles/themes	0	vim	:vim ../AB-dotfiles/.vim/colors/airblader.vim
-window	0	0	1	:*	fccf,170x48,0,0{85x48,0,0,0,84x48,86,0,1}
-state	0	
