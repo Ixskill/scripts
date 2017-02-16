@@ -1,0 +1,12 @@
+pane	ft_printf	0	:Compile	1	:*	0	:/Users/ade-sede/projects/ft_printf	1	zsh	:
+pane	ft_printf	0	:Compile	1	:*	1	:/Users/ade-sede/projects/ft_printf	0	vim	:vim test/main.c
+pane	ft_printf	1	:Correct	0	:-	0	:/Users/ade-sede/projects/ft_printf	1	vim	:vim srcs/conv.c
+pane	ft_printf	1	:Correct	0	:-	1	:/Users/ade-sede/projects/ft_printf	0	vim	:vim srcs/ft_printf.c
+pane	ft_printf	2	:Correct	0	:	0	:/Users/ade-sede/projects/ft_printf	0	zsh	:
+pane	ft_printf	2	:Correct	0	:	1	:/Users/ade-sede/projects/ft_printf	1	zsh	:
+pane	ft_printf	3	:42FC	0	:	0	:/Users/ade-sede/42FileChecker	1	sh	:sh /Users/ade-sede/42FileChecker/42FileChecker.sh
+window	ft_printf	0	1	:*	06c0,364x82,0,0{182x82,0,0,0,181x82,183,0,5}
+window	ft_printf	1	0	:-	86c0,364x82,0,0{182x82,0,0,1,181x82,183,0,4}
+window	ft_printf	2	0	:	06c7,364x82,0,0{182x82,0,0,6,181x82,183,0,7}
+window	ft_printf	3	0	:	be40,364x82,0,0,3
+state	ft_printf	

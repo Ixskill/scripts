@@ -1,0 +1,3 @@
+pane	0	1	:TODO	1	:*	0	:/Users/ade-sede	1	zsh	:
+window	0	1	1	:*	be3e,364x82,0,0,1
+state	0	

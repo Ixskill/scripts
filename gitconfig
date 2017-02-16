@@ -1,0 +1,8 @@
+[user]
+	name = "ade-sede"
+	mail = "adrien.de.sede@gmail.com"
+[alias]
+	s = status
+	a = add --all
+	c = commit -am
+	p = push

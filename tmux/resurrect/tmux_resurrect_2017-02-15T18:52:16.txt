@@ -1,0 +1,4 @@
+pane	0	0	:Prompt settings	1	:*	0	:/home/ade-sede	0	vim	:vim /home/ade-sede/.zsh_prompt.zsh
+pane	0	0	:Prompt settings	1	:*	1	:/home/ade-sede/projects/ft_printf	1	vim	:vim /home/ade-sede/projects/dotfiles/themes/agnoster.zsh-theme
+window	0	0	1	:*	f2ef,170x48,0,0{84x48,0,0,0,85x48,85,0,1}
+state	0	
