@@ -34,7 +34,7 @@ prompt_end() {
 }
 
 prompt_context() {
-    prompt_segment red $PRIMARY_FG "$USER"
+    prompt_segment red white "$USER"
 }
 
 prompt_dir() {
