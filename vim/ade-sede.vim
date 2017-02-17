@@ -4,8 +4,6 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let colors_name = "ade-sede"
-
 hi Normal       ctermfg=252 ctermbg=NONE  guibg=black cterm=NONE
 " A bit of syntax
 
