@@ -12,6 +12,9 @@ bindkey -v
 
 ### Arch relative part : for my laptop only
 # Startx on boot
+if [[ "$(uname -s)" == "Linux" ]]; then
+	export TMPDIR="/var/tmp"
+fi
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	eval $(keychain --eval --quiet ~/.ssh/id_rsa) && exec startx
 fi
@@ -60,6 +63,7 @@ alias v="vim"
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|to\ full|percentage"'
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias clean_swp="rm -rf /var/tmp/*.swp"
+alias mute="amixer sset 'Master' 0%"
 
 
 

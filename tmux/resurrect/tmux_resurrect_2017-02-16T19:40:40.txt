@@ -1,6 +1,0 @@
-pane	FdF	0	:Test && Compile	0	:-	0	:/Users/ade-sede/projects/FdF/srcs	1	zsh	:
-pane	FdF	0	:Test && Compile	0	:-	1	:/Users/ade-sede/projects/libft	0	zsh	:
-pane	FdF	1	:fdf.c	1	:*	0	:/Users/ade-sede/projects/FdF/srcs	1	vim	:vim fdf.c
-window	FdF	0	0	:-	86bf,364x82,0,0{182x82,0,0,0,181x82,183,0,4}
-window	FdF	1	1	:*	be40,364x82,0,0,3
-state	FdF	

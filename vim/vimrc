@@ -29,7 +29,13 @@ set timeoutlen=500					"The time you have to complete the command / mapping befo
 
 set hidden						"Allows buffer to be set in BG without writing on the disk
 
-set laststatus=2					"The status bar is always displayed at the bottom }}}
+"	Statusline settings {{{
+set laststatus=2					"The status bar is always displayed at the bottom
+set statusline+=%F
+
+"					}}}
+
+"				}}}
 
 "		Augroups and autocmd related {{{
 "	Augroups are a group of autocmd, and autocmd are a group of behaviors vim should have when a certain event is triggered
@@ -50,7 +56,7 @@ augroup c_files
 	autocmd FileType c inoremap [ []<left>
 	autocmd FileType c inoremap ' ''<left>
 	autocmd FileType c inoremap " ""<left>
-	autocmd FileType c :iabbrev { {<CR>}<up> "}
+	autocmd FileType c :iabbrev { {<cr>}<up> 
 	autocmd FileType c let maplocalleader = ","
 	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
 	autocmd FileType c nnoremap <localleader>C A//<esc>
@@ -60,11 +66,13 @@ augroup END
 "	Zsh files {{{
 augroup sh_files
 	autocmd!
+	autocmd FileType zsh let maplocalleader = ","
+	autocmd	FileType zsh nnoremap <buffer> <localleader>c I#<esc>
 	autocmd FileType zsh inoremap ( ()<left>
 	autocmd FileType zsh inoremap [ []<left>
 	autocmd FileType zsh inoremap ' ''<left>
 	autocmd FileType zsh inoremap " ""<left>
-	autocmd FileType zsh :iabbrev { {<CR>}<up> "}
+	autocmd FileType zsh :iabbrev { {<cr>}<up>
 augroup END
 "	}}}
 
@@ -145,4 +153,5 @@ endfunc
 
 "			}}}
 
+source $DOTFILES/zaz_header.vim
 syntax keyword TODO contained NOTE

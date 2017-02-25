@@ -189,9 +189,9 @@ bindsym $mod+r mode "resize"
 
 
 
-gaps inner 10
-gaps outer 10
-smart_gaps on
+gaps inner 4
+#gaps outer 10
+#smart_gaps on
 
 
 
@@ -201,7 +201,6 @@ smart_gaps on
 
 bar
 {
-	font Pango:Hack, FontAwesome 11 
 #				Whole color settings
 		colors
 		{

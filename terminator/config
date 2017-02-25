@@ -4,10 +4,10 @@
   tab_position = bottom
   title_hide_sizetext = True
 [keybindings]
-go_right = nop
-go_left = nop
-go_down = nop
-go_up = nop
+  go_down = nop
+  go_left = nop
+  go_right = nop
+  go_up = nop
 [layouts]
   [[default]]
     [[[child1]]]
