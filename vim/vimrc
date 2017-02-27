@@ -153,5 +153,4 @@ endfunc
 
 "			}}}
 
-source $DOTFILES/zaz_header.vim
 syntax keyword TODO contained NOTE
