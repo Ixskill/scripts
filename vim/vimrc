@@ -59,7 +59,7 @@ augroup c_files
 	autocmd FileType c :iabbrev { {<cr>}<up> 
 	autocmd FileType c let maplocalleader = ","
 	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
-	autocmd FileType c nnoremap <localleader>C A//<esc>
+	autocmd FileType c nnoremap <localleader>C A//			REMOVE		<esc>
 augroup END
 "	}}}
 
@@ -153,4 +153,5 @@ endfunc
 
 "			}}}
 
+nnoremap <C-w><C-o> <C-w><C-r>
 syntax keyword TODO contained NOTE
