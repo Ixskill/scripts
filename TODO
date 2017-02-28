@@ -6,37 +6,23 @@
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/14 12:11:34 by ade-sede          #+#    #+#              #
-#    Updated: 2017/02/16 21:38:25 by ade-sede         ###   ########.fr        #
+#    Updated: 2017/02/28 16:50:20 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-Perso & fun 	- Study airblaider's color them and do my own
-			- Work on the vim syntax to add && and || to operators
-
+Perso & fun
 		- Setup irc slack on irss
 			- Dont need it atm but can be fun.
 
-		- Customise my prompt 
-			- Need to chose better color, change separator
-
 		- Learn how to get git status and keep it in my env
 			- Will help for a lot of fun scripts
-
-		- Install mps youtube
-			- Will probably never work
 
 		- do a script to seriously export and setup : 
 			- ITS GETTING URGENT
 			- all my environement, my scripts my macros
 
-		- Look at some funny themes on i3 like numix or so
-			- cus its pretty ;3 
-			- Not sure i need this
-
-		- Add aliases for the volume on my arch
-			- I tried a shell script but it didnt work. Need to train more
-			- Not sure i need this
+		- setup a new $PATH to include dotfiles/scripts
 
 		- test double screen
 
@@ -44,5 +30,7 @@ Perso & fun 	- Study airblaider's color them and do my own
 			- To select everything between () in visual mode etc etc
 			- Can wait
 	
-Projects : FdF	- See fdf todo
+Projects : FdF	- See fdf todo -- on HOLD
+			LS : see ls todo -> Currently the basics are working, need to add '/' to
+								the file path
 
