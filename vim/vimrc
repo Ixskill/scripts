@@ -1,9 +1,9 @@
 "		HUD and CLarity	{{{
 "	Here are set the variable that define what my vim looks like, and how it behaves
 
-source $HOME/.vim/ade-sede.vim				"Sourcing my color file
+color ade-sede					"Loading my color scheme at ~/.vim/colors/.
 
-syntax enable						"Easier to read with syntax highlight ;)
+syntax enable					"Easier to read with syntax highlight ;)
 
 set ruler						"Ruler enabled bottom right of the screen
 
