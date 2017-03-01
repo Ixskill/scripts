@@ -5,32 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/02/14 12:11:34 by ade-sede          #+#    #+#              #
-#    Updated: 2017/02/28 16:50:20 by ade-sede         ###   ########.fr        #
+#    Created: 2017/03/01 21:22:41 by ade-sede          #+#    #+#              #
+#    Updated: 2017/03/01 21:23:39 by ade-sede         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 Perso & fun
-		- Setup irc slack on irss
-			- Dont need it atm but can be fun.
-
-		- Learn how to get git status and keep it in my env
-			- Will help for a lot of fun scripts
+		
+	-	GET GIT INFO on the currdir to :
+		- Look at vim powerline
+		- Finish the prompt
 
 		- do a script to seriously export and setup : 
-			- ITS GETTING URGENT
-			- all my environement, my scripts my macros
 
 		- setup a new $PATH to include dotfiles/scripts
-
-		- test double screen
-
-		- Add Operator pending mappings to vim
-			- To select everything between () in visual mode etc etc
-			- Can wait
-	
-Projects : FdF	- See fdf todo -- on HOLD
-			LS : see ls todo -> Currently the basics are working, need to add '/' to
-								the file path
-
