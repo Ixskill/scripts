@@ -33,6 +33,10 @@ export VISUAL="vim"
 export EDITOR="vim"
 export PROMPT_FILE="$HOME/.zsh_prompt.zsh"
 
+#Exporting path
+export OLD_PATH="$PATH"
+export PATH="$OLD_PATH:$DOTFILES/scripts"
+
 # Loading prompt settings
 autoload -Uz promptinit
 promptinit

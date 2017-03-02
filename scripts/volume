@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+if [[ -n $1 ]] && [[ $1 == "speaker" ]];then
+	amixer -D pulse sset Master toggle
+fi
+[[ -n $1 ]] && amixer sset 'Master' "$1"%
