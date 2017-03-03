@@ -37,6 +37,11 @@ export PROMPT_FILE="$HOME/.zsh_prompt.zsh"
 export OLD_PATH="$PATH"
 export PATH="$OLD_PATH:$DOTFILES/scripts"
 
+# Cd resets prompt
+cd () {
+	builtin cd $1 && PS1=$(echo_prompt)
+}
+
 # Loading prompt settings
 autoload -Uz promptinit
 promptinit
@@ -69,6 +74,8 @@ alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias clean_swp="rm -rf /var/tmp/*.swp"
 alias mute="amixer sset 'Master' 0%"
 
+#			This one is for my prompt to reset when i co
+#alias "git checkout"="git co && PS1=$(echo_prompt) && echo "lol""
 
 
 # The following lines were added by compinstall

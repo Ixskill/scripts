@@ -1,0 +1,12 @@
+pane	ft_ls	0	:test && compile	0	:-	0	:/Users/ade-sede/projects/ft_ls	1	zsh	:
+pane	ft_ls	1	:ft_ls.c && ls_fill_elem	0	:	0	:/Users/ade-sede/projects/ft_ls/srcs	1	vim	:vim ft_ls.c
+pane	ft_ls	2	:ls_fill_stat && ls_init.c	0	:	0	:/Users/ade-sede/projects/ft_ls/srcs	1	vim	:vim ls_fill_stat.c
+pane	ft_ls	3	:libft	0	:	0	:/Users/ade-sede/projects/ft_ls/libft	1	zsh	:
+pane	ft_ls	4	:mans	1	:*	0	:/Users/ade-sede/projects/ft_ls	1	man	:man listxattr
+pane	ft_ls	4	:mans	1	:*	1	:/Users/ade-sede/projects/ft_ls	0	man	:man 2 readlink
+window	ft_ls	0	0	:-	be3e,364x82,0,0,1
+window	ft_ls	1	0	:	be40,364x82,0,0,3
+window	ft_ls	2	0	:	be41,364x82,0,0,4
+window	ft_ls	3	0	:	be42,364x82,0,0,5
+window	ft_ls	4	1	:*	83b9,364x82,0,0{182x82,0,0,6,181x82,183,0,12}
+state	ft_ls	

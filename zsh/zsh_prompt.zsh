@@ -51,7 +51,7 @@ prompt_git() {
 	local branch
 	local str
 	uncommited_changes() {
-		test -n "$(git status --porcelain=1)"
+		test -n "$(git status --porcelain --ignore-submodules)"
 	}
 	git_repo() {
 		test -n "$(git branch 2> /dev/null)"
@@ -62,15 +62,15 @@ prompt_git() {
 	if git_repo; then
 		if detached_head; then
 			branch="$(git branch | cut -c20-27)"
-			str=" $DETACHED$branch"
+			str="$DETACHED$branch"
 		else
 			branch="$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')" 
-			str=" $BRANCH $branch"
+			str="$BRANCH$branch"
 		fi
 	fi
 	if [[ -n "$branch" ]]; then
 		if uncommited_changes; then
-			str="$str $PLUSMINUS"
+			str="$str$PLUSMINUS"
 		fi
 		prompt_segment cyan grey "$str"
 	fi
