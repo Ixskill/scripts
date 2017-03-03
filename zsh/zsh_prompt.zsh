@@ -62,12 +62,13 @@ prompt_git() {
 	if git_repo; then
 		if detached_head; then
 			branch="$(git branch | cut -c20-27)"
+			str=" $DETACHED $branch"
 		else
 			branch="$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')" 
+			str=" $BRANCH $branch"
 		fi
 	fi
 	if [[ -n "$branch" ]]; then
-		str=" $BRANCH $branch"
 		if uncommited_changes; then
 			str="$str $PLUSMINUS"
 		fi
