@@ -56,11 +56,21 @@ prompt_git() {
 	git_repo() {
 		test -n "$(git branch 2> /dev/null)"
 	}
+	detached_head() {
+		test -n "$(git branch | grep "HEAD detached")"
+	}
 	if git_repo; then
-		branch="$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')"
+		if detached_head; then
+			branch="$(git branch | sed -n -e 's/\(\w+\))/p')"
+		else
+			branch="$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')" 
+		fi
 	fi
 	if [[ -n "$branch" ]]; then
 		str=" $BRANCH $branch"
+		if uncommited_changes; then
+			str="$str $PLUSMINUS"
+		fi
 		prompt_segment cyan grey "$str"
 	fi
 }
