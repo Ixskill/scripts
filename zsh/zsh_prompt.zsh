@@ -61,7 +61,7 @@ prompt_git() {
 	}
 	if git_repo; then
 		if detached_head; then
-			branch="$(git branch | sed -n -e 's/\(\w+\))/p')"
+			branch="$(git branch | cut -c20-27)"
 		else
 			branch="$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')" 
 		fi
