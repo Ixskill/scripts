@@ -9,6 +9,12 @@
 CURRENT_BG='NONE'
 PRIMARY_FG=black
 SEGMENT_SEPARATOR="\ue0b0"
+PLUSMINUS="\u00b1"
+BRANCH="\ue0a0"
+DETACHED="\u27a6"
+CROSS="\u2718"
+LIGHTNING="\u26a1"
+GEAR="\u2699"
 
 prompt_segment() {
   local bg fg
@@ -38,11 +44,30 @@ prompt_context() {
 }
 
 prompt_dir() {
-  prompt_segment blue black "%~"
+  prompt_segment blue grey "%~"
+}
+
+prompt_git() {
+	local branch
+	local str
+	uncommited_changes() {
+		test -n "$(git status --porcelain=1)"
+	}
+	git_repo() {
+		test -n "$(git branch 2> /dev/null)"
+	}
+	if git_repo; then
+		branch="$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')"
+	fi
+	if [[ -n "$branch" ]]; then
+		str=" $BRANCH $branch"
+		prompt_segment cyan grey "$str"
+	fi
 }
 
 echo_prompt() {
 	prompt_context
 	prompt_dir
+	prompt_git
 	prompt_end
 }

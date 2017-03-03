@@ -56,7 +56,7 @@ augroup c_files
 	autocmd FileType c inoremap [ []<left>
 	autocmd FileType c inoremap ' ''<left>
 	autocmd FileType c inoremap " ""<left>
-	autocmd FileType c :iabbrev { {<cr>}<up> 
+	autocmd FileType c inoremap { {<cr>}<up><esc>$i<right><cr>
 	autocmd FileType c let maplocalleader = ","
 	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
 	autocmd FileType c nnoremap <localleader>C A//			REMOVE		<esc>
@@ -72,7 +72,8 @@ augroup sh_files
 	autocmd FileType zsh inoremap [ []<left>
 	autocmd FileType zsh inoremap ' ''<left>
 	autocmd FileType zsh inoremap " ""<left>
-	autocmd FileType zsh :iabbrev { {<cr>}<up>
+	autocmd FileType zsh inoremap { {<cr>}<up><esc>$i<right><cr>
+	"autocmd FileType zsh inoremap { {<cr>}<up><esc>$i<cr>
 augroup END
 "	}}}
 
