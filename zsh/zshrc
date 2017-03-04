@@ -37,7 +37,7 @@ export PROMPT_FILE="$HOME/.zsh_prompt.zsh"
 export OLD_PATH="$PATH"
 export PATH="$OLD_PATH:$DOTFILES/scripts"
 
-# Cd resets prompt
+# Cd and git resets prompt
 cd () {
 	builtin cd $1 && PS1=$(echo_prompt)
 }
