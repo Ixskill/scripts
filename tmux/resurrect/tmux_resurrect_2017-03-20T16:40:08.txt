@@ -1,0 +1,13 @@
+pane	0	0	:test &&& compile	0	:	0	:/home/ade-sede/projects/ft_ls	1	zsh	:
+pane	0	1	:ft_ls.c	0	:	0	:/home/ade-sede/projects/ft_ls/srcs	1	vim	:vim ft_ls.c
+pane	0	2	:ft_ls.c	0	:	0	:/home/ade-sede/projects/ft_ls	1	vim	:vim srcs/ls_init.c
+pane	0	3	:sources	0	:	0	:/home/ade-sede/projects/ft_ls	1	zsh	:
+pane	0	4	:libft	0	:-	0	:/home/ade-sede/projects/ft_ls/libft	1	vim	:vim includes/libft.h
+pane	0	5	:mans	1	:*	0	:/home/ade-sede/projects/ft_ls	1	zsh	:
+window	0	0	0	:	cc3e,170x48,0,0,1
+window	0	1	0	:	cc3f,170x48,0,0,2
+window	0	2	0	:	cc40,170x48,0,0,3
+window	0	3	0	:	cc41,170x48,0,0,4
+window	0	4	0	:-	cc42,170x48,0,0,5
+window	0	5	1	:*	cc43,170x48,0,0,6
+state	0	

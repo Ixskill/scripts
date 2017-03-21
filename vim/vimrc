@@ -156,3 +156,16 @@ endfunc
 
 nnoremap <C-w><C-o> <C-w><C-r>
 syntax keyword TODO contained NOTE
+"emergency mapping my backspace isnt working
+inoremap <BS> <c-r>=Backspace()<CR>
+func Backspace()
+	if col('.') == 1
+		if line('.') != 1
+			return "\<ESC>kA\<Del>"
+		else
+			return ""
+		endif
+	else
+		return "\<Left>\<Del>"
+	endif
+endfunc			

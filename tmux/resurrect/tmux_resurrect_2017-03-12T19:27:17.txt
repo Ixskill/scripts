@@ -1,0 +1,15 @@
+pane	0	0	:test && compile	0	:-	0	:/home/ade-sede/projects/ft_ls	1	zsh	:
+pane	0	0	:test && compile	0	:-	1	:/home/ade-sede/projects/ft_ls	0	less	:less log.txt
+pane	0	1	:ft_ls.c	0	:	0	:/home/ade-sede/projects/ft_ls/srcs	1	vim	:vim ft_ls.c
+pane	0	2	:ls_fill_*	1	:*	0	:/usr/share/vim/vim80/syntax	1	zsh	:
+pane	0	3	:ls_parse and init	0	:	0	:/home/ade-sede/projects/ft_ls/srcs	1	vim	:vim ls_parse.c
+pane	0	4	:libft	0	:	0	:/home/ade-sede/projects/ft_ls/libft	1	vim	:vim srcs/palloc.c
+pane	0	5	:mans	0	:	0	:/usr/share/man	0	man	:man 2 lstat
+pane	0	5	:mans	0	:	1	:/usr/share/man	1	man	:man stdarg
+window	0	0	0	:-	b2d8,169x48,0,0{84x48,0,0,1,84x48,85,0,2}
+window	0	1	0	:	d080,169x48,0,0,3
+window	0	2	1	:*	d081,169x48,0,0,4
+window	0	3	0	:	d082,169x48,0,0,5
+window	0	4	0	:	d083,169x48,0,0,6
+window	0	5	0	:	b2f3,169x48,0,0{84x48,0,0,7,84x48,85,0,8}
+state	0	

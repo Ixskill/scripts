@@ -85,7 +85,6 @@ compinit
 # End of lines added by compinstall
 
 
-
 # Load Homebrew config script
 if [ -e "$HOME/.brewconfig.zsh" ]; then
 	source $HOME/.brewconfig.zsh
