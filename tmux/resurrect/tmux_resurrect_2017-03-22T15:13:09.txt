@@ -1,0 +1,14 @@
+pane	0	0	:main & compile	1	:*	0	:/home/ade-sede/projects/ft_ls	1	zsh	:
+pane	0	0	:main & compile	1	:*	1	:/home/ade-sede/projects/ft_ls	0	less	:less ls.test.txt
+pane	0	1	:ft_ls.c && fill elem	0	:-	0	:/home/ade-sede/projects/ft_ls/srcs	1	vim	:vim ft_ls.c
+pane	0	2	:init && parse	0	:	0	:/home/ade-sede/projects/ft_ls	1	vim	:vim srcs/ls_init.c
+pane	0	3	:display & stat	0	:	0	:/home/ade-sede/projects/ft_ls	1	vim	:vim srcs/ls_display.c
+pane	0	4	:libft	0	:	0	:/home/ade-sede/projects/ft_ls/libft	1	vim	:vim includes/ls.h
+pane	0	5	:mans	0	:	0	:/usr/share/man	1	man	:man 2 lstat
+window	0	0	1	:*	7cd4,170x48,0,0{85x48,0,0,1,84x48,86,0,2}
+window	0	1	0	:-	cc40,170x48,0,0,3
+window	0	2	0	:	cc41,170x48,0,0,4
+window	0	3	0	:	cc42,170x48,0,0,5
+window	0	4	0	:	cc43,170x48,0,0,6
+window	0	5	0	:	cc44,170x48,0,0,7
+state	0	
