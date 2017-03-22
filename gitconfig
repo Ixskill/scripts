@@ -14,3 +14,5 @@
 	branch = auto
 [merge]
 	tool = vimdiff
+[git]
+	editor = vim
