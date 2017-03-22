@@ -3,7 +3,7 @@
 	email = adrien.de.sede@gmail.com
 [alias]
 	a = add --all
-	c = commit -am
+	c = commit -a
 	s = status
 	co = checkout
 	p = push
