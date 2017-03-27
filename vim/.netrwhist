@@ -1,3 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/ade-sede/projects/ft_ls/srcs'
+let g:netrw_dirhist_2='/home/ade-sede/projects/ft_ls/libft'
+let g:netrw_dirhist_3='/home/ade-sede/projects/ft_ls'
+let g:netrw_dirhist_4='/home/ade-sede/projects/ft_ls/libft'
+let g:netrw_dirhist_5='/home/ade-sede/projects/ft_ls/libft/srcs'
+let g:netrw_dirhist_6='/home/ade-sede/projects/ft_ls/libft/srcs/printf'

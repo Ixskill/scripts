@@ -30,7 +30,7 @@ export TPLUGS="$HOME/.tmux/plugins/"
 export TODO="$DOTFILES/TODO"
 export MAIL="adrien.de.sede@gmail.com"
 export VISUAL="vim"
-export EDITOR="vim"
+export EDITOR="$VISUAL"
 export PROMPT_FILE="$HOME/.zsh_prompt.zsh"
 
 #Exporting path
@@ -83,7 +83,6 @@ autoload -Uz compinit
 zstyle :compinstall filename '$HOME/.zshrc'
 compinit
 # End of lines added by compinstall
-
 
 
 # Load Homebrew config script
