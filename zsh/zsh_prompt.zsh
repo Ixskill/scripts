@@ -72,7 +72,7 @@ prompt_git() {
 		if uncommited_changes; then
 			str="$str$PLUSMINUS"
 		fi
-		prompt_segment cyan grey "$str"
+		prompt_segment mag grey "$str"
 	fi
 }
 
