@@ -1,0 +1,15 @@
+pane	0	0	:main && compile	0	:	0	:/home/ade-sede/projects/ft_ls/test	1	zsh	:
+pane	0	0	:main && compile	0	:	1	:/home/ade-sede/projects/ft_ls	0	zsh	:
+pane	0	1	:ft_ls && fill_elem	0	:	0	:/home/ade-sede/projects/ft_ls/srcs	1	vim	:vim ft_ls.c
+pane	0	2	:ls_fill_stat && display	0	:	0	:/home/ade-sede/projects/ft_ls/srcs	1	vim	:vim ls_fill_stat.c
+pane	0	3	:ls_parse and init	0	:	0	:/home/ade-sede/projects/ft_ls/srcs	1	vim	:vim ls_parse.c
+pane	0	4	:ls_sort	0	:-	0	:/home/ade-sede/projects/ft_ls/srcs	1	vim	:vim ls_sort.c
+pane	0	5	:mans	1	:*	0	:/usr/share/man	1	zsh	:
+pane	0	5	:mans	1	:*	1	:/usr/share/man	0	man	:man ctime
+window	0	0	0	:	72f4,170x48,0,0{84x48,0,0,1,85x48,85,0,2}
+window	0	1	0	:	cc40,170x48,0,0,3
+window	0	2	0	:	cc41,170x48,0,0,4
+window	0	3	0	:	cc42,170x48,0,0,5
+window	0	4	0	:-	cc43,170x48,0,0,6
+window	0	5	1	:*	7cef,170x48,0,0{85x48,0,0,7,84x48,86,0,8}
+state	0	

@@ -7,6 +7,7 @@
 	s = status
 	co = checkout
 	p = push
+	tree = log --graph --oneline
 
 [color]
 	dif = auto
@@ -16,3 +17,5 @@
 	tool = vimdiff
 [git]
 	editor = vim
+[core]
+	excludesfile = $HOME/.gitignore
