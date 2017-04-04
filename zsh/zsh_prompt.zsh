@@ -1,10 +1,4 @@
-# Inspired from agnoster theme from oh my zsh utility
-# This version is actually just taken straight from it to do the minimal job i want
-# I'll implement my own after studying this one
-# NOTE : I managed to build a prompt that does the same job when it comes to 
-# displaying bars like this, but this implementation allows me to add features
-# so i'll keep it for now
-
+#!/usr/bin/zsh
 # Setting up a few vars
 CURRENT_BG='NONE'
 PRIMARY_FG=black
