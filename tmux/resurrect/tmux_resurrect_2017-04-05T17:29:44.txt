@@ -1,0 +1,19 @@
+pane	0	0	:zsh	1	:*	0	:/Users/ade-sede	1	vim	:vim ft_ls.c
+pane	ft_ls	0	:main && compile	0	:	0	:/Users/ade-sede/projects/ft_ls	1	zsh	:
+pane	ft_ls	0	:main && compile	0	:	1	:/Users/ade-sede/projects/ft_ls	0	zsh	:
+pane	ft_ls	1	:ft_ls && fill_elem	0	:	0	:/Users/ade-sede/projects/ft_ls/srcs	1	vim	:vim ft_ls.c
+pane	ft_ls	2	:ls_fill_stat && display	0	:	0	:/Users/ade-sede/projects/ft_ls/srcs	1	vim	:vim ls_display.c
+pane	ft_ls	3	:ls_parse and init	1	:*	0	:/Users/ade-sede/projects/ft_ls/srcs	1	vim	:vim ls_init.c
+pane	ft_ls	4	:sort_e & sort_a	0	:-	0	:/Users/ade-sede/projects/ft_ls/srcs	1	vim	:vim ls_sort.c
+pane	ft_ls	5	:libft	0	:	0	:/Users/ade-sede/projects/ft_ls/libft	1	zsh	:
+pane	ft_ls	6	:man	0	:	0	:/usr/share/man	1	man	:man strerror
+pane	ft_ls	6	:man	0	:	1	:/usr/share/man	0	zsh	:
+window	0	0	1	:*	be3d,364x82,0,0,0
+window	ft_ls	0	0	:	7e4f,364x82,0,0{181x82,0,0,1,182x82,182,0,2}
+window	ft_ls	1	0	:	be40,364x82,0,0,3
+window	ft_ls	2	0	:	be41,364x82,0,0,4
+window	ft_ls	3	1	:*	be42,364x82,0,0,5
+window	ft_ls	4	0	:-	be43,364x82,0,0,6
+window	ft_ls	5	0	:	be44,364x82,0,0,7
+window	ft_ls	6	0	:	06ca,364x82,0,0{182x82,0,0,8,181x82,183,0,9}
+state	ft_ls	0
