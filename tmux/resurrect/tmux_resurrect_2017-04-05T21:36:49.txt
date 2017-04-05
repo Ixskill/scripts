@@ -1,0 +1,5 @@
+pane	0	0	:zsh	1	:*	0	:/Users/ade-sede	1	vim	:vim ft_ls.c
+pane	2	0	:zsh	1	:*	0	:/Users/ade-sede/projects/dotfiles	1	zsh	:
+window	0	0	1	:*	be3e,364x82,0,0,1
+window	2	0	1	:*	5f50,364x82,0,0,11
+state	2	
