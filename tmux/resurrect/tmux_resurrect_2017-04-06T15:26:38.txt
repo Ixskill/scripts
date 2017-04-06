@@ -1,0 +1,8 @@
+pane	ft_ls	0	:main & compile	1	:*	0	:/Users/ade-sede/projects/dotfiles	1	zsh	:
+pane	ft_ls	0	:main & compile	1	:*	1	:/Users/ade-sede/projects/ft_ls	0	zsh	:
+pane	ft_ls	1	:Sources	0	:-	0	:/Users/ade-sede/projects/ft_ls/srcs	1	vim	:vim ft_ls.c
+pane	ft_ls	2	:Mans	0	:	0	:/usr/share/man	1	zsh	:
+window	ft_ls	0	1	:*	06c6,364x82,0,0{182x82,0,0,5,181x82,183,0,7}
+window	ft_ls	1	0	:-	be3f,364x82,0,0,2
+window	ft_ls	2	0	:	be43,364x82,0,0,6
+state	ft_ls	
