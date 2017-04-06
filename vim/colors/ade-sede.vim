@@ -8,6 +8,7 @@ hi Normal       ctermfg=252 ctermbg=NONE  guibg=black cterm=NONE
 " A bit of syntax
 
 syntax keyword cOperator "||\|&&\|[-+.]"
+syntax keyword TODO contained NOTE
 hi def link cOperator Operator
 
 " Search
@@ -36,8 +37,14 @@ hi Type         ctermfg=3   ctermbg=NONE   cterm=NONE
 hi Underlined                           cterm=UNDERLINE
 hi Include      ctermfg=145 ctermbg=NONE   cterm=NONE
 hi Conditional  ctermfg=74  ctermbg=NONE   cterm=NONE
-hi String       ctermfg=107 ctermbg=NONE   cterm=NONE
+hi String       ctermfg=107 ctermbg=NONE	cterm=NONE
 hi NOTE         ctermfg=1   ctermbg=242   cterm=BOLD
+
+" Tabline color settings
+hi TabLineSel	ctermfg=81	ctermbg=238		cterm=BOLD
+hi PmenuSel		ctermfg=255 ctermbg=238		cterm=NONE
+hi TablineFill	ctermbg=238
+hi TablineFill	ctermfg=234
 
 " Other
 hi Directory    ctermfg=252 ctermbg=NONE   cterm=NONE

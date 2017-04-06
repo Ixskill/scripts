@@ -14,6 +14,9 @@ Plugin 'VundleVim/Vundle.vim'
 " VIM POWERLINE
 Plugin 'Lokaltog/vim-powerline'
 
+" Trying Buftabline
+Plugin 'ap/vim-buftabline' 
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -50,6 +53,19 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 "		}}}
+
+"	Buffer navigation mappings{{{
+nmap <C-w>0 <Plug>BufTabLine.Go(1)<C-c>
+nmap <C-w>1 <Plug>BufTabLine.Go(2)<C-c>
+nmap <C-w>2 <Plug>BufTabLine.Go(3)<C-c>
+nmap <C-w>3 <Plug>BufTabLine.Go(4)<C-c>
+nmap <C-w>4 <Plug>BufTabLine.Go(5)<C-c>
+nmap <C-w>5 <Plug>BufTabLine.Go(6)<C-c>
+nmap <C-w>6 <Plug>BufTabLine.Go(7)<C-c>
+nmap <C-w>7 <Plug>BufTabLine.Go(8)<C-c>
+nmap <C-w>8 <Plug>BufTabLine.Go(9)<C-c>
+nmap <C-w>9 <Plug>BufTabLine.Go(10)<C-c>
+"	}}}
 
 "		HUD and CLarity	{{{
 "	Here are set the variable that define what my vim looks like, and how it behaves
@@ -137,7 +153,7 @@ augroup END
 "	}}}
 
 
-"	}}}
+"		END AUGROUPS !!	}}}
 
 "		Swapfiles {{{
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp "Sets backupdirectory for all swp files"
@@ -172,6 +188,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "		Toggles relative number notation on/off
 nnoremap <silent> <C-l> :set rnu! <cr>
+
+"		<C-o> after the window prefix now inverts panes positions
+nnoremap <C-w><C-o> <C-w><C-r>
 
 
 "		Surrounds {{{
@@ -213,9 +232,9 @@ endfunc
 
 "			}}}
 
-nnoremap <C-w><C-o> <C-w><C-r>
 syntax keyword TODO contained NOTE
-"emergency mapping my backspace isnt working
+
+"	Emergency mapping to recreate a basic backspace fcts.
 inoremap <BS> <c-r>=Backspace()<CR>
 func Backspace()
 	if col('.') == 1
