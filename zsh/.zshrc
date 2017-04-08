@@ -20,18 +20,18 @@ if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 fi
 
 # Variables for each config file of my env and comfort settings
-export DOTFILES="$HOME/projects/dotfiles"
-export MYVIMRC="$HOME/.vimrc"
-export TMUXRC="$HOME/.tmux.conf"
-export ZSHRC="$HOME/.zshrc"
-export i3RC="$HOME/.config/i3/config"
-export TERMRC="/home/ade-sede/.config/terminator/config"
-export TPLUGS="$HOME/.tmux/plugins/"
+export DOTFILES="$HOME/.dotfiles"
+export MYVIMRC="$DOTFILES/vim/.vimrc"
+export TMUXRC="$DOTFILES/tmux/.tmux.conf"
+export ZSHRC="$DOTFILES/zsh/.zshrc"
+export i3RC="$DOTFILES/config/.config/i3/config"
+export TERMRC="$DOTFILES/config/.config/terminator/config"
+export TPLUGS="$DOTFILES/tmux/.tmux/plugins/"
 export TODO="$DOTFILES/TODO"
 export MAIL="adrien.de.sede@gmail.com"
 export VISUAL="vim"
 export EDITOR="$VISUAL"
-export PROMPT_FILE="$HOME/.zsh_prompt.zsh"
+export PROMPT_FILE="$DOTFILES/zsh/.zsh_prompt.zsh"
 
 #Exporting path
 export OLD_PATH="$PATH"
