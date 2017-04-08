@@ -121,6 +121,7 @@ augroup c_files
 	autocmd FileType c let maplocalleader = ","
 	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
 	autocmd FileType c nnoremap <localleader>C A//			REMOVE		<esc>
+	autocmd FileType c set makeprg=clear\ &&\ make
 augroup END
 "	}}}
 
