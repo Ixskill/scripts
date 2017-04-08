@@ -30,9 +30,7 @@ set_from_resource $cyan        color14 #000000
 set_from_resource $darkwhite   color7  #000000
 set_from_resource $white       color15 #000000
 # Use custom colors for black
-set $black       #282828
-set $darkblack   #1d2021
-set $transparent #00000000
+set $black    color0   #282828
 
 
 
@@ -179,8 +177,6 @@ bindsym $mod+r mode "resize"
 
 #bindysm XF86AudioRaiseVolume exec "amixer set Master -q 5%+"
 #bindysm XF86AudioLowerVolume exec "amixer set Master -q 5%-"
-bindysm XF86AudioLowerVolume exec echo lol
-bindysm XF86AudioRaiseVolume exec echo lol
 bindysm XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 ### Binding for luminosity
@@ -201,25 +197,7 @@ smart_gaps on
 
 bar
 {
-#				Whole color settings
-
-		colors
-		{
-			background #000000
-			statusline #ffffff
-			separator  #666666
-
-# 		Type  border  background font
-
-				focused_workspace  #008fff #007fff #ffffff
-				active_workspace   #333333 #5f676a #ffffff
-				inactive_workspace #333333 #222222 #888888
-				urgent_workspace   #aa0000 #990000 #ffffff
-		}
-
-# i3bar position
-
-		position top
-# Using custom i4status.conf
-		status_command i3status -c ~/.config/i3/i3status.conf
+		#    verbose yes
+    status_command i3blocks
+    position top
 }
