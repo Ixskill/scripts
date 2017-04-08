@@ -1,0 +1,3 @@
+#!/usr/bin/zsh
+
+[[ -n $1 ]] && [[ "$1" == "state" ]] && upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state" || upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "percentage" | sed -E 's/^.*(...%)/\1/g'
