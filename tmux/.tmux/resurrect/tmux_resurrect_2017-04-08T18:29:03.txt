@@ -1,6 +1,0 @@
-pane	0	0	:zsh	1	:*	0	:/home/ade-sede	0	zsh	:
-pane	0	0	:zsh	1	:*	1	:/home/ade-sede	1	vim	:vim /home/ade-sede/.dotfiles/scripts/battery
-pane	0	1	:zsh	0	:-	0	:/home/ade-sede/projects/libft	1	zsh	:
-window	0	0	1	:*	fccf,170x48,0,0{85x48,0,0,0,84x48,86,0,1}
-window	0	1	0	:-	cc40,170x48,0,0,3
-state	0	

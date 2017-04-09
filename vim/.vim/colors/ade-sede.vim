@@ -40,11 +40,19 @@ hi Conditional  ctermfg=74  ctermbg=NONE   cterm=NONE
 hi String       ctermfg=107 ctermbg=NONE	cterm=NONE
 hi NOTE         ctermfg=1   ctermbg=242   cterm=BOLD
 
-" Tabline color settings
-hi TabLineSel	ctermfg=81	ctermbg=238		cterm=BOLD
-hi PmenuSel		ctermfg=255 ctermbg=238		cterm=NONE
-hi TablineFill	ctermbg=238
-hi TablineFill	ctermfg=234
+"		Tabline color settings
+"	Tablinesel -> Current buffer the cursor is on
+hi TabLineSel	ctermfg=81	ctermbg=238 cterm=BOLD
+
+"	PemenuSel -> Buffers that are displayed in a pane
+hi PmenuSel		ctermfg=255 ctermbg=234
+
+"	Fill -> the empty part
+hi TablineFill	ctermbg=234			cterm=NONE
+
+"	Inactive buffers
+hi Tabline	ctermbg=234				cterm=NONE
+
 
 " Other
 hi Directory    ctermfg=252 ctermbg=NONE   cterm=NONE

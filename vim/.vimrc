@@ -38,16 +38,16 @@ filetype plugin indent on    " required
 "		}}}
 
 "	Buffer navigation mappings{{{
-nmap <C-w>0 <Plug>BufTabLine.Go(1)<C-c>
-nmap <C-w>1 <Plug>BufTabLine.Go(2)<C-c>
-nmap <C-w>2 <Plug>BufTabLine.Go(3)<C-c>
-nmap <C-w>3 <Plug>BufTabLine.Go(4)<C-c>
-nmap <C-w>4 <Plug>BufTabLine.Go(5)<C-c>
-nmap <C-w>5 <Plug>BufTabLine.Go(6)<C-c>
-nmap <C-w>6 <Plug>BufTabLine.Go(7)<C-c>
-nmap <C-w>7 <Plug>BufTabLine.Go(8)<C-c>
-nmap <C-w>8 <Plug>BufTabLine.Go(9)<C-c>
-nmap <C-w>9 <Plug>BufTabLine.Go(10)<C-c>
+nmap <C-w>1 <Plug>BufTabLine.Go(1)<C-c>
+nmap <C-w>2 <Plug>BufTabLine.Go(2)<C-c>
+nmap <C-w>3 <Plug>BufTabLine.Go(3)<C-c>
+nmap <C-w>4 <Plug>BufTabLine.Go(4)<C-c>
+nmap <C-w>5 <Plug>BufTabLine.Go(5)<C-c>
+nmap <C-w>6 <Plug>BufTabLine.Go(6)<C-c>
+nmap <C-w>7 <Plug>BufTabLine.Go(7)<C-c>
+nmap <C-w>8 <Plug>BufTabLine.Go(8)<C-c>
+nmap <C-w>9 <Plug>BufTabLine.Go(9)<C-c>
+nmap <C-w>0 <Plug>BufTabLine.Go(10)<C-c>
 "	}}}
 
 "		HUD and CLarity	{{{
