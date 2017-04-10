@@ -1,0 +1,4 @@
+pane	0	0	:zsh	1	:*	0	:/home/ade-sede/.dotfiles/scripts/i3blocks-contrib/volume-pulseaudio	1	vim	:vim volume-pulseaudio
+pane	0	0	:zsh	1	:*	1	:/home/ade-sede/.dotfiles/scripts/i3blocks-contrib/battery	0	vim	:vim /home/ade-sede/.dotfiles/config/.config/i3blocks/config
+window	0	0	1	:*	388c,194x52,0,0{97x52,0,0,0,96x52,98,0,1}
+state	0	

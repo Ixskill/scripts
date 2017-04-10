@@ -10,9 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $editor terminator
-
-
+set $editor termite
 
 #Setting up colors
 set_from_resource $darkred     color1  #000000
@@ -37,7 +35,8 @@ set $black    color0   #282828
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Hack 8
+# The size is to 0 so that no bars are shown
+font pango:Hack, Awesome, icons, arch_icons 0
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -54,10 +53,14 @@ font pango:Hack 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator -b -p ade-sede
+#bindsym $mod+Return exec terminator -b -p ade-sede
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+# Window border size
+new_window pixel 0
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -174,19 +177,18 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ### Binding volumes keys
-
-#bindysm XF86AudioRaiseVolume exec "amixer set Master -q 5%+"
-#bindysm XF86AudioLowerVolume exec "amixer set Master -q 5%-"
-bindysm XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
 ### Binding for luminosity
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 && pkill -RTMIN+2 i3blocks
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 && pkill -RTMIN+2 i3blocks
 
 #### GAPS SETUP
 
 gaps inner 4
-gaps outer 10
+gaps outer 4
 smart_gaps on
 
 
@@ -200,11 +202,11 @@ bar
 		#    verbose yes
     status_command i3blocks
     position top
-    font pango:Hack, FontAwesome 10
+    font pango:Hack, FontAwesome, Awesome, arch_icons, icons 10
     strip_workspace_numbers yes
 }
 
 # Wallpaper
 
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/black_fragments
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/dark_blue_1.jpg
 exec --no-startup-id compton -b
