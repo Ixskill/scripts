@@ -30,12 +30,12 @@ signal=2
 border=#d79922
 
 [ssid]
-command=[[ -z "$(iw dev enp0s25 link) ]] || echo -ne "\uf012 $(iw dev enp0s25 link | grep SSID | cut -d " " -f 2-)"
+command=[[ -z "$(iw dev enp0s25 link) ]] || echo -ne " \uf012 $(iw dev enp0s25 link | grep SSID | cut -d " " -f 2-)"
 interval=5
 border=#98971a
 
 [wireless]
-command=[[ -z "$(iwgetid -r)" ]] || echo -ne "\uf09e  $(iwgetid -r)"
+command=[[ -z "$(iwgetid -r)" ]] || echo -ne " \uf09e  $(iwgetid -r)"
 interval=5
 border=#98971a
 
