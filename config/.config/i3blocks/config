@@ -3,13 +3,19 @@ separator_block_width=5
 border_top=0
 border_left=0
 border_right=0
-border_bottom=3
+border_bottom=2
 
-[mediaplayer]
-command=~/.dotfiles/scripts/i3blocks-contrib/mediaplayer
-instance=vlc
-interval=5
-signal=10
+[memory]
+command=echo -ne " MEM $(/usr/lib/i3blocks/memory)"
+markup=pango
+interval=2
+border=#11dddd
+
+[CPU]
+command=echo -ne " CPU $(/usr/lib/i3blocks/cpu_usage)"
+markup=pango
+interval=2
+border=#dd00dd
 
 [battery]
 command=echo -ne " $(~/.dotfiles/scripts/i3blocks-contrib/battery/battery)"

@@ -12,23 +12,13 @@
 set $mod Mod4
 set $editor termite
 
-#Setting up colors
-set_from_resource $darkred     color1  #000000
-set_from_resource $red         color9  #000000
-set_from_resource $darkgreen   color2  #000000
-set_from_resource $green       color10 #000000
-set_from_resource $darkyellow  color3  #000000
-set_from_resource $yellow      color11 #000000
-set_from_resource $darkblue    color4  #000000
-set_from_resource $blue        color12 #000000
-set_from_resource $darkmagenta color5  #000000
-set_from_resource $magenta     color13 #000000
-set_from_resource $darkcyan    color6  #000000
-set_from_resource $cyan        color14 #000000
-set_from_resource $darkwhite   color7  #000000
-set_from_resource $white       color15 #000000
-# Use custom colors for black
-set $black    color0   #282828
+# Setting up colors
+
+set $white	#FFFFFF
+set $black	#000000
+set $grey	#696969
+set $darkgrey	#222222
+set $lightblue	#11DDDD
 
 
 
@@ -94,10 +84,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+h split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -187,8 +177,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 && pkill -RTMIN+2 i3blocks
 
 #### GAPS SETUP
 
-gaps inner 4
-gaps outer 4
+gaps inner 3 
+gaps outer 1
 smart_gaps on
 
 
@@ -199,14 +189,18 @@ smart_gaps on
 
 bar
 {
-		#    verbose yes
     status_command i3blocks
     position top
     font pango:Hack, FontAwesome, Awesome, arch_icons, icons 10
-    strip_workspace_numbers yes
+    strip_workspace_numbers yes 
+    colors { 
+	background	$darkgrey
+#				BORDER		background	TEXT
+	focused_workspace	$darkgrey	$grey		$lightblue
+	inactive_workspace	$darkgrey	$darkgrey	$white
+    }
 }
 
 # Wallpaper
-
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/dark_blue_1.jpg
 exec --no-startup-id compton -b

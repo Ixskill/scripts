@@ -1,0 +1,4 @@
+pane	0	0	:zsh	1	:*	0	:/home/ade-sede	1	zsh	:
+pane	0	0	:zsh	1	:*	1	:/home/ade-sede	0	zsh	:
+window	0	0	1	:*	ccbb,169x23,0,0{84x23,0,0,0,84x23,85,0,1}
+state	0	

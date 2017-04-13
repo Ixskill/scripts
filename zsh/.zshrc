@@ -78,12 +78,16 @@ alias mute="amixer sset 'Master' 0%"
 #alias "git checkout"="git co && PS1=$(echo_prompt) && echo "lol""
 
 
-# The following lines were added by compinstall
+# Autoloads :
 autoload -Uz compinit
 zstyle :compinstall filename '$HOME/.zshrc'
 compinit
-# End of lines added by compinstall
-
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+precmd() {
+	vcs_info
+}
+zstyle ':vcs_info:git*' formats " %b "
 
 # Load Homebrew config script
 if [ -e "$HOME/.brewconfig.zsh" ]; then

@@ -53,12 +53,11 @@ prompt_git() {
 	detached_head() {
 		test -n "$(git branch | grep "HEAD detached")"
 	}
+	branch=$vcs_info_msg_0_
 	if git_repo; then
 		if detached_head; then
-			branch="$(git branch | cut -c20-27)"
 			str="$DETACHED$branch"
 		else
-			branch="$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')" 
 			str="$BRANCH$branch"
 		fi
 	fi
