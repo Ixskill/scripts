@@ -34,11 +34,11 @@ prompt_end() {
 }
 
 prompt_context() {
-    prompt_segment red white "$USER"
+    prompt_segment 208 236 " $USER "
 }
 
 prompt_dir() {
-  prompt_segment blue grey "%~"
+  prompt_segment 236 grey " %~ "
 }
 
 prompt_git() {
@@ -53,11 +53,12 @@ prompt_git() {
 	detached_head() {
 		test -n "$(git branch | grep "HEAD detached")"
 	}
-	branch=$vcs_info_msg_0_
 	if git_repo; then
 		if detached_head; then
+			branch=$vcs_info_msg_0_
 			str="$DETACHED$branch"
 		else
+			branch=$vcs_info_msg_0_
 			str="$BRANCH$branch"
 		fi
 	fi
@@ -65,7 +66,7 @@ prompt_git() {
 		if uncommited_changes; then
 			str="$str$PLUSMINUS"
 		fi
-		prompt_segment mag grey "$str"
+		prompt_segment 14 236 " $str"
 	fi
 }
 

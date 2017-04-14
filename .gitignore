@@ -2,3 +2,4 @@ config/*
 !config/.config/terminator
 !config/.config/i3
 !config/.config/i3blocks
+!config/.config/termite

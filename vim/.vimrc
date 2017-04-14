@@ -16,8 +16,15 @@ Plugin 'Lokaltog/vim-powerline'
 
 " VIM-BUFTABLINE
 Plugin 'ap/vim-buftabline' 
+
 " VIM-FUGITIVE
 Plugin 'tpope/vim-fugitive'
+
+" VIM-GITGUTTER
+"Plugin 'airblade/vim-gitgutter'
+
+" VIM-SYNTASTIC
+Plugin 'vim-syntastic/syntastic'
 
  
 " All of your Plugins must be added before the following line
@@ -61,6 +68,14 @@ let g:Powerline_symbols = 'compatible' "Just loading fancy font
 color ade-sede					"Loading my color scheme at ~/.vim/colors/.
 
 " End of color and fonts}}}
+
+set cursorline
+" Making a dummy sign column
+sign define dummy
+autocmd	BufAdd,BufRead,BufNewFile * :execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+
+
+set numberwidth=5				"Size of the number column
 
 syntax enable					"Easier to read with syntax highlight ;)
 

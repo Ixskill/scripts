@@ -7,7 +7,16 @@ unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
-
+## Autoloads :
+autoload -Uz compinit
+zstyle :compinstall filename '$HOME/.zshrc'
+compinit
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+precmd() {
+	vcs_info
+}
+zstyle ':vcs_info:git*' formats " %b "
 
 
 ### Arch relative part : for my laptop only
@@ -15,6 +24,7 @@ bindkey -v
 if [[ "$(uname -s)" == "Linux" ]]; then
 	export TMPDIR="/var/tmp"
 fi
+
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	eval $(keychain --eval --quiet ~/.ssh/id_rsa) && exec startx
 fi
@@ -38,18 +48,21 @@ export BAR="$DOTFILES/config/.config/i3blocks/config"
 export OLD_PATH="$PATH"
 export PATH="$OLD_PATH:$DOTFILES/scripts"
 
-# Cd and git resets prompt
-cd () {
-	builtin cd $1 && PS1=$(echo_prompt)
-}
-
 # Loading prompt settings
 autoload -Uz promptinit
 promptinit
 
 source $PROMPT_FILE
-export PS1=$(echo_prompt)
-# ref = #source $DOTFILES/themes/agnoster.zsh-theme
+
+# Cd and git resets prompt
+cd () {
+	builtin cd $1 && reset_prompt 
+}
+
+reset_prompt (){
+	PS1=$(echo_prompt)
+}
+reset_prompt
 
 # Messing up with zle settings                                     
 function zle-line-init zle-keymap-select
@@ -58,13 +71,16 @@ function zle-line-init zle-keymap-select
 	RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
 	zle reset-prompt
 }
-
+function zle-reset-prompt
+{
+	PS1=$(echo_prompt)
+}
+zle -N zle-reset-prompt
 zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
-
-# Lazy alias														
+# Lazy alias				
 alias gww="gcc -Wall -Wextra -Werror"
 alias ll="ls -alsh"
 alias grep="grep --color"
@@ -72,24 +88,12 @@ alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
 alias v="vim"
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias clean_swp="rm -rf /var/tmp/*.swp"
-alias mute="amixer sset 'Master' 0%"
 
-#			This one is for my prompt to reset when i co
-#alias "git checkout"="git co && PS1=$(echo_prompt) && echo "lol""
-
-
-# Autoloads :
-autoload -Uz compinit
-zstyle :compinstall filename '$HOME/.zshrc'
-compinit
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn
-precmd() {
-	vcs_info
-}
-zstyle ':vcs_info:git*' formats " %b "
 
 # Load Homebrew config script
 if [ -e "$HOME/.brewconfig.zsh" ]; then
 	source $HOME/.brewconfig.zsh
 fi
+
+
+

@@ -1,0 +1,4 @@
+pane	Tests	0	:Main	1	:*	0	:/home/ade-sede/.dotfiles	1	vim	:vim /home/ade-sede/.dotfiles/zsh/.zshrc
+pane	Tests	0	:Main	1	:*	1	:/home/ade-sede/.dotfiles	0	zsh	:
+window	Tests	0	1	:*	fcd5,170x48,0,0{85x48,0,0,1,84x48,86,0,5}
+state	Tests	

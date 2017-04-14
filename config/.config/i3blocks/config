@@ -12,7 +12,7 @@ interval=2
 border=#11dddd
 
 [CPU]
-command=echo -ne " CPU $(/usr/lib/i3blocks/cpu_usage)"
+command=echo -ne " \uf085 $(/usr/lib/i3blocks/cpu_usage)"
 markup=pango
 interval=2
 border=#dd00dd
@@ -41,7 +41,7 @@ interval=5
 border=#98971a
 
 [wireless]
-command=[[ -z "$(iwgetid -r)" ]] || echo -ne " \uf09e  $(iwgetid -r)"
+command=[[ -z "$(iwgetid -r)" ]] || echo -ne " \uf012  $(iwgetid -r)"
 interval=5
 border=#98971a
 

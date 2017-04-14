@@ -177,7 +177,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 && pkill -RTMIN+2 i3blocks
 
 #### GAPS SETUP
 
-gaps inner 3 
+gaps inner 8
 gaps outer 1
 smart_gaps on
 
@@ -200,7 +200,6 @@ bar
 	inactive_workspace	$darkgrey	$darkgrey	$white
     }
 }
-
 # Wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/dark_blue_1.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/Pictures/grey_orange_2.jpeg
 exec --no-startup-id compton -b
