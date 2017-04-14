@@ -1,0 +1,5 @@
+pane	0	0	:zsh	1	:*	0	:/home/ade-sede/.dotfiles	1	vim	:vim /home/ade-sede/.dotfiles/zsh/.zsh_prompt.zsh
+pane	0	1	:zsh	0	:-	0	:/home/ade-sede	1	zsh	:
+window	0	0	1	:*	cc3e,170x48,0,0,1
+window	0	1	0	:-	cc3f,170x48,0,0,2
+state	0	

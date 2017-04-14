@@ -16,8 +16,9 @@ set $editor termite
 
 set $white	#FFFFFF
 set $black	#000000
-set $grey	#696969
-set $darkgrey	#222222
+set $grey	#555555
+set $blackgrey	#1c1c1c
+set $darkgrey	#262626
 set $lightblue	#11DDDD
 
 
@@ -178,7 +179,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 && pkill -RTMIN+2 i3blocks
 #### GAPS SETUP
 
 gaps inner 8
-gaps outer 1
+gaps outer 0
 smart_gaps on
 
 
@@ -194,10 +195,10 @@ bar
     font pango:Hack, FontAwesome, Awesome, arch_icons, icons 10
     strip_workspace_numbers yes 
     colors { 
-	background	$darkgrey
+	background	$blackgrey
 #				BORDER		background	TEXT
-	focused_workspace	$darkgrey	$grey		$lightblue
-	inactive_workspace	$darkgrey	$darkgrey	$white
+	focused_workspace	$blackgrey	$grey		$lightblue
+	inactive_workspace	$blackgrey	$darkgrey	$white
     }
 }
 # Wallpaper
