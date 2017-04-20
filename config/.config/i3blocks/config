@@ -16,7 +16,7 @@ full_text= ■
 color=#ff8700
 
 [memory]
-command=echo -ne " MEM $(/usr/lib/i3blocks/memory)"
+command=echo -ne " \uf0ae $(~/.dotfiles/scripts/memory.sh)"
 markup=pango
 interval=2
 border=#11dddd
@@ -31,13 +31,13 @@ border=#dd00dd
 command=echo -ne " $(~/.dotfiles/scripts/i3blocks-contrib/battery/battery)"
 markup=pango
 interval=30
-border=#d10101
+border=#ff8700
 
 [volume]
 command=echo -ne " $(~/.dotfiles/scripts/i3blocks-contrib/volume-pulseaudio/volume-pulseaudio)"
 interval=once
 signal=1
-border=#10ff10
+border=#5f875f
 
 [brightness]
 command=echo -ne " \uf042 $(printf "%.0f " $(xbacklight -get))"
