@@ -2,9 +2,11 @@
 
 import i3ipc
 import sys
+import subprocess
 
 i3 = i3ipc.Connection()
 
+out = subprocess.run(["ls", "-l"], stdout=subprocess.PIPE)
 def on_window_focus(i3, e):
     focused = i3.get_tree().find_focused()
     if focused.name == "termite":
@@ -19,8 +21,6 @@ def on_window_focus(i3, e):
         if len(focused.name) > 40:
             print(focused.name.split('-')[-1] + " -" + focused.name.split('-')[-2])
         else:
-            #print('{{"full_text":"{}"}}'.format(focused.name))
-            #print(focused.name)
             print(focused.name)
     sys.stdout.flush()
 
