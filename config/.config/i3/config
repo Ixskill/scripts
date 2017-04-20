@@ -27,7 +27,7 @@ set $lightblue	#11DDDD
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # The size is to 0 so that no bars are shown
-font pango:Hack, Awesome, icons, arch_icons 0
+font pango:Hack, Awesome, icons, AIcons 0
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -192,8 +192,9 @@ bar
 {
     status_command i3blocks
     position top
-    font pango:Hack, FontAwesome, Awesome, arch_icons, icons 10
-    strip_workspace_numbers yes 
+    font pango:Hack, FontAwesome, Awesome, AIcons, icons 10
+    strip_workspace_numbers yes
+    separator_symbol "■"
     colors { 
 	background	$blackgrey
 #				BORDER		background	TEXT
@@ -204,3 +205,4 @@ bar
 # Wallpaper
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/grey_orange_2.jpeg
 exec --no-startup-id compton -b
+exec --no-startup-id nm-applet &

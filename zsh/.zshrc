@@ -94,6 +94,7 @@ alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
 alias v="vim -u $MYVIMRC"
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias clean_swp="rm -rf /var/tmp/*.swp"
+alias cd.="cd ."
 
 
 # Load Homebrew config script

@@ -1,4 +1,0 @@
-pane	0	0	:zsh	1	:*	0	:/home/ade-sede	0	vim	:vim /home/ade-sede/.dotfiles/config/.config/i3blocks/config
-pane	0	0	:zsh	1	:*	1	:/home/ade-sede/.dotfiles/scripts/i3blocks-contrib/mediaplayer	1	python	:/usr/bin/python /usr/bin/mpsyt
-window	0	0	1	:*	fccf,170x48,0,0{85x48,0,0,0,84x48,86,0,1}
-state	0	

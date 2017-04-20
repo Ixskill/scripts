@@ -18,4 +18,4 @@
 [git]
 	editor = vim
 [core]
-	excludesfile = /Users/ade-sede/gitignore
+	excludesfile = $HOME/gitignore

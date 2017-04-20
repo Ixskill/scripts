@@ -4,6 +4,16 @@ border_top=0
 border_left=0
 border_right=0
 border_bottom=2
+align=center
+
+[xwindow]
+command=~/.dotfiles/scripts/xwindow.py
+interval=persist
+signal=3
+
+[separator]
+full_text= ■ 
+color=#ff8700
 
 [memory]
 command=echo -ne " MEM $(/usr/lib/i3blocks/memory)"
@@ -35,18 +45,8 @@ interval=once
 signal=2
 border=#d79922
 
-[ssid]
-command=[[ -z "$(iw dev enp0s25 link) ]] || echo -ne " \uf012 $(iw dev enp0s25 link | grep SSID | cut -d " " -f 2-)"
-interval=5
-border=#98971a
-
-[wireless]
-command=[[ -z "$(iwgetid -r)" ]] || echo -ne " \uf012  $(iwgetid -r)"
-interval=5
-border=#98971a
-
 [time]
-command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b>"; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+command=echo -ne " \uf073  `date +'%a %d %b'` <b>`date +'%T'`</b>"; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
 interval=1
 markup=pango
 border=#928374

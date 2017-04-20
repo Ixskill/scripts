@@ -1,8 +1,0 @@
-pane	ls	0	:Main	0	:-	0	:/home/ade-sede/projects/ft_ls	1	zsh	:
-pane	ls	1	:Sources	0	:	0	:/home/ade-sede/projects/ft_ls	1	vim	:vim srcs/ft_ls.c
-pane	ls	2	:Mans	1	:*	0	:/home/ade-sede/.dotfiles/scripts	0	zsh	:
-pane	ls	2	:Mans	1	:*	1	:/home/ade-sede/projects/ft_ls	1	vim	:vim /home/ade-sede/.dotfiles/config/.config/i3blocks/config
-window	ls	0	0	:-	cc40,170x48,0,0,3
-window	ls	1	0	:	cc3f,170x48,0,0,2
-window	ls	2	1	:*	fce1,170x48,0,0{85x48,0,0,4,84x48,86,0,5}
-state	ls	

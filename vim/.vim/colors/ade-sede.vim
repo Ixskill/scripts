@@ -20,8 +20,8 @@ hi Search       ctermfg=NONE   ctermbg=3   cterm=NONE
 " Cursor and linenr
 hi Cursor       ctermfg=252 ctermbg=235 cterm=NONE
 hi CursorLine               ctermbg=234 cterm=NONE
-hi CursorLineNr ctermfg=3   ctermbg=234 cterm=NONE
-hi LineNr	ctermfg=81		cterm=BOLD
+hi CursorLineNr ctermfg=81   ctermbg=234 cterm=NONE
+hi LineNr	ctermfg=0		cterm=BOLD
 
 " Syntax group
 hi SignColumn	ctermbg=234

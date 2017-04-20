@@ -1,6 +1,0 @@
-pane	ft_ls	0	:Main	1	:*	0	:/home/ade-sede/projects/ft_ls	0	zsh	:
-pane	ft_ls	0	:Main	1	:*	1	:/home/ade-sede/projects/ft_ls	1	zsh	:
-pane	ft_ls	1	:Sources	0	:-	0	:/home/ade-sede/projects/ft_ls	1	vim	:vim srcs/ft_ls.c
-window	ft_ls	0	1	:*	fccf,170x48,0,0{85x48,0,0,0,84x48,86,0,1}
-window	ft_ls	1	0	:-	cc3f,170x48,0,0,2
-state	ft_ls	

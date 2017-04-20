@@ -1,7 +1,0 @@
-pane	0	0	:zsh	1	:*	0	:/home/ade-sede	1	vim	:vim /home/ade-sede/.dotfiles/config/.config/i3/config
-pane	0	0	:zsh	1	:*	1	:/home/ade-sede	0	zsh	:
-pane	1	0	:zsh	1	:*	0	:/home/ade-sede	0	zsh	:
-pane	1	0	:zsh	1	:*	1	:/home/ade-sede	1	vim	:vim /home/ade-sede/.vim/colors/ade-sede.vim
-window	0	0	1	:*	c823,84x46,0,0{42x46,0,0,0,41x46,43,0,1}
-window	1	0	1	:*	fcd8,170x48,0,0{85x48,0,0,2,84x48,86,0,3}
-state	1	
