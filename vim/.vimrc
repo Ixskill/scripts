@@ -27,7 +27,7 @@ Plugin 'tpope/vim-fugitive'
 " VIM-SYNTASTIC
 Plugin 'vim-syntastic/syntastic'
 
- 
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -195,6 +195,8 @@ nnoremap <silent> <C-l> :set rnu! <cr>
 "		<C-o> after the window prefix now inverts panes positions
 nnoremap <C-w><C-o> <C-w><C-r>
 
+"		Echoms the syntax group the word under the cursore belongs to
+nnoremap <leader>sp :call <SID>SynStack()<CR>
 
 "		Surrounds {{{
 "	Here we define mappins to surround words / selections with a symbol
@@ -215,8 +217,6 @@ nnoremap <leader>( viw<esc>a)<esc>hbi(<esc>lel
 vnoremap <leader>[ c[]<esc>P
 nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 
-"echoms the syntax group the word under the cursore belongs to
-nnoremap <leader>sp :call <SID>SynStack()<CR>
 
 "	}}}
 "	}}}
@@ -227,10 +227,10 @@ nnoremap <leader>sp :call <SID>SynStack()<CR>
 " This functions shows us to what HL/syntax group an express belongs
 
 function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+	if !exists("*synstack")
+		return
+	endif
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
 "			}}}
@@ -250,3 +250,10 @@ func Backspace()
 		return "\<Left>\<Del>"
 	endif
 endfunc			
+
+func CheckHeader()
+	if $HOSTNAME ==# "ade-sede-arch"
+		source $DOTFILES/zaz_header.vim
+	endif
+endfunc
+call CheckHeader()

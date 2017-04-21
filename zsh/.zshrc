@@ -23,6 +23,7 @@ zstyle ':vcs_info:git*' formats " %b "
 # Startx on boot
 if [[ "$(uname -s)" == "Linux" ]]; then
 	export TMPDIR="/var/tmp"
+	export HOSTNAME="ade-sede-arch"
 fi
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
