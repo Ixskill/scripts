@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/ade-sede/.dotfiles/scripts'
 let g:netrw_dirhist_2='/home/ade-sede/.dotfiles/config/.config/ncmpcpp'
 let g:netrw_dirhist_3='/tmp/tmux-1000'
+let g:netrw_dirhist_4='/home/ade-sede/.dotfiles/vim/.vim/bundle/vim-commentary'
+let g:netrw_dirhist_5='/home/ade-sede/.dotfiles/vim/.vim/bundle/vim-commentary/plugin'
+let g:netrw_dirhist_6='/home/ade-sede/.dotfiles/vim/.vim/bundle/vim-commentary'

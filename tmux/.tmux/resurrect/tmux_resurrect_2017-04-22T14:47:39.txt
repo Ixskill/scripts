@@ -1,0 +1,25 @@
+pane	Libft	0	:Main	0	:	0	:/home/ade-sede/projects/libft	1	zsh	:
+pane	Libft	1	:Sources	1	:*	0	:/home/ade-sede/projects/libft	1	vim	:vim -u /home/ade-sede/.dotfiles/vim/.vimrc srcs/ft_realloc.c
+pane	Libft	2	:mans	0	:-	0	:/usr/share/man	1	zsh	:
+pane	Minishll	0	:Main	1	:*	0	:/home/ade-sede/projects/minishell	0	zsh	:
+pane	Minishll	0	:Main	1	:*	1	:/home/ade-sede/projects/minishell/libft	1	zsh	:
+pane	Minishll	1	:Sources	0	:-	0	:/home/ade-sede/projects/minishell	1	zsh	:
+pane	Minishll	2	:Mans	0	:	0	:/usr/share/man	0	zsh	:
+pane	Minishll	2	:Mans	0	:	1	:/usr/share/man	1	zsh	:
+pane	Music	0	:Main	1	:*	0	:/home/ade-sede	0	zsh	:
+pane	Music	0	:Main	1	:*	1	:/home/ade-sede	1	zsh	:
+pane	ft_ls	0	:Main	1	:*	0	:/home/ade-sede/projects/ft_ls	0	zsh	:
+pane	ft_ls	0	:Main	1	:*	1	:/home/ade-sede/projects/ft_ls/libft	1	zsh	:
+pane	ft_ls	1	:Sources	0	:-	0	:/home/ade-sede/projects/ft_ls	1	zsh	:
+pane	ft_ls	2	:man	0	:	0	:/usr/share/man	1	zsh	:
+window	Libft	0	0	:	b8bd,194x52,0,0,0
+window	Libft	1	1	:*	5c91,194x52,0,0,12
+window	Libft	2	0	:-	5c92,194x52,0,0,13
+window	Minishll	0	1	:*	b890,194x52,0,0{97x52,0,0,1,96x52,98,0,2}
+window	Minishll	1	0	:-	b8c0,194x52,0,0,3
+window	Minishll	2	0	:	2ebe,194x52,0,0{96x52,0,0,4,97x52,97,0,5}
+window	Music	0	1	:*	38a7,194x52,0,0{97x52,0,0,6,96x52,98,0,7}
+window	ft_ls	0	1	:*	36b0,194x52,0,0{97x52,0,0,8,96x52,98,0,9}
+window	ft_ls	1	0	:-	5c8f,194x52,0,0,10
+window	ft_ls	2	0	:	5c90,194x52,0,0,11
+state	Libft	

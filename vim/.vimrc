@@ -27,6 +27,9 @@ Plugin 'tpope/vim-fugitive'
 " VIM-SYNTASTIC
 Plugin 'vim-syntastic/syntastic'
 
+" VIM-COMMENTARY
+Plugin 'tpope/vim-commentary'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -122,7 +125,7 @@ augroup vim_files
 	autocmd!
 	autocmd Filetype vim setlocal foldmethod=marker
 	autocmd Filetype vim let maplocalleader = ","
-	autocmd Filetype vim nnoremap <buffer> <localleader>c I"<esc>
+	"autocmd Filetype vim nnoremap <buffer> <localleader>c I"<esc>
 augroup	END
 "}}}
 
@@ -135,7 +138,7 @@ augroup c_files
 	autocmd FileType c inoremap " ""<left>
 	autocmd FileType c inoremap { {<cr>}<up><esc>$i<right><cr>
 	autocmd FileType c let maplocalleader = ","
-	autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
+	"autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
 	autocmd FileType c nnoremap <localleader>C A//			REMOVE		<esc>
 	autocmd FileType c set makeprg=clear\ &&\ make
 augroup END
@@ -145,7 +148,7 @@ augroup END
 augroup sh_files
 	autocmd!
 	autocmd FileType zsh let maplocalleader = ","
-	autocmd	FileType zsh nnoremap <buffer> <localleader>c I#<esc>
+	"autocmd	FileType zsh nnoremap <buffer> <localleader>c I#<esc>
 	autocmd FileType zsh inoremap ( ()<left>
 	autocmd FileType zsh inoremap [ []<left>
 	autocmd FileType zsh inoremap ' ''<left>
