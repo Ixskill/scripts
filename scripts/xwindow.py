@@ -13,10 +13,10 @@ def on_window_focus(i3, e):
         print ( u'\uf08e' + " Termite")
     elif focused.name.find("Slack") != -1:
         print ( u'\ue80a' + (focused.name))
+    elif focused.name.find("Firefox") != -1:
+        print(u'\ue801' + "Mozilla Firefox - " + focused.name.split('-')[-2])
     elif focused.name.find("VIM") != -1:
         print (u'\ue809' + "VIM - " + focused.name.split("(")[0])
-    elif focused.name.find("Firefox") != -1:
-            print(u'\ue801' + "Mozilla Firefox - " + focused.name.split('-')[-2])
     else:
         if len(focused.name) > 40:
             print(focused.name.split('-')[-1] + " -" + focused.name.split('-')[-2])

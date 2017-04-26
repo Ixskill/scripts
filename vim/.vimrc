@@ -30,6 +30,9 @@ Plugin 'vim-syntastic/syntastic'
 " VIM-COMMENTARY
 Plugin 'tpope/vim-commentary'
 
+" VIM-LLDB
+Plugin 'gilligan/vim-lldb'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -119,6 +122,16 @@ set statusline+=%F
 "	Augroups are a group of autocmd, and autocmd are a group of behaviors vim should have when a certain event is triggered
 "	For exemple : 	- A Filetype being spotted
 "			- The buffer being updated
+
+"		TODO FILES {{{
+augroup TODO_files
+	autocmd!
+	autocmd BufAdd,BufRead,BufNewFile TODO set tw=79
+	autocmd BufAdd,BufRead,BufNewFile TODO set fo+=t
+	autocmd BufAdd,BufRead,BufNewFile TODO set fo-=l
+	autocmd BufAdd,BufRead,BufNewFile TODO set smartindent
+augroup END
+"		}}}
 
 "		Vim files {{{
 augroup vim_files

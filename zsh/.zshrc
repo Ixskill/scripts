@@ -32,6 +32,7 @@ fi
 
 
 # Variables for each config file of my env and comfort settings
+export LLDB="/usr/bin/lldb"
 export DOTFILES="$HOME/.dotfiles"
 export MYVIMRC="$DOTFILES/vim/.vimrc"
 export TMUXRC="$DOTFILES/tmux/.tmux.conf"
@@ -96,6 +97,7 @@ alias v="vim -u $MYVIMRC"
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias clean_swp="rm -rf /var/tmp/*.swp"
 alias cd.="cd ."
+alias i3lock="xbacklight -set 0 && i3lock -c 000000"
 
 
 # Load Homebrew config script

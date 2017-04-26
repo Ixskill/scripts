@@ -20,7 +20,7 @@ prompt_segment() {
     print -n "%{$bg%}%{$fg%}"
   fi
   CURRENT_BG=$1
-  [[ -n $3 ]] && print -n $3
+  [[ -n $3 ]] && print -n "$3"
 }
 
 prompt_end() {
