@@ -31,7 +31,6 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-commentary'
 
 " VIM-LLDB
-Plugin 'gilligan/vim-lldb'
 
 
 " All of your Plugins must be added before the following line
@@ -191,6 +190,11 @@ set wildignore=*.o,*.swp							"Files to ingore when browsing and completing opt
 
 "		Key Mappings {{{
 "	This section is about mappings ( binds if you prefer
+
+
+"		Insert NEWLINE and stay in normal mode
+nmap <C-o> O<esc>
+nmap <Cr> o<esc>
 
 "		Setting up mapleader key
 let mapleader = ","

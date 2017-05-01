@@ -3,3 +3,4 @@ config/*
 !config/.config/i3
 !config/.config/i3blocks
 !config/.config/termite
+tmux/.tmux/resurrect
