@@ -5,6 +5,7 @@ SAVEHIST=4000
 setopt appendhistory extendedglob nomatch notify
 unsetopt beep
 bindkey -v
+bindkey '^R' history-incremental-pattern-search-backward
 # End of lines configured by zsh-newuser-install
 
 ## Autoloads :

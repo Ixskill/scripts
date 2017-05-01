@@ -1,0 +1,21 @@
+pane	Dotfiles and Lib	0	:Main	1	:*	0	:/home/ade-sede/projects/libft/test	1	zsh	:
+pane	Dotfiles and Lib	0	:Main	1	:*	1	:/home/ade-sede/projects/libft	0	zsh	:
+pane	Dotfiles and Lib	1	:Sources	0	:-	0	:/home/ade-sede/projects/libft	1	zsh	:
+pane	ft_ls	0	:Main	1	:*	0	:/home/ade-sede/projects/ft_ls	0	zsh	:
+pane	ft_ls	0	:Main	1	:*	1	:/home/ade-sede/projects/ft_ls/libft	1	zsh	:
+pane	ft_ls	1	:Sources	0	:	0	:/home/ade-sede/projects/ft_ls	1	zsh	:
+pane	ft_ls	2	:man	0	:-	0	:/usr/share/man	1	man	:man time
+pane	minishell	0	:Main	1	:*	0	:/home/ade-sede/projects/minishell	0	zsh	:
+pane	minishell	0	:Main	1	:*	1	:/home/ade-sede/projects/minishell/libft	1	zsh	:
+pane	minishell	1	:Sources	0	:-	0	:/home/ade-sede/projects/minishell	1	vim	:vim -u /home/ade-sede/.dotfiles/vim/.vimrc TODO
+pane	music	0	:Main	1	:*	0	:/home/ade-sede/Music	0	zsh	:
+pane	music	0	:Main	1	:*	1	:/home/ade-sede/Music	1	zsh	:
+window	Dotfiles and Lib	0	1	:*	b890,194x52,0,0{97x52,0,0,1,96x52,98,0,2}
+window	Dotfiles and Lib	1	0	:-	b8c0,194x52,0,0,3
+window	ft_ls	0	1	:*	389e,194x52,0,0{97x52,0,0,4,96x52,98,0,5}
+window	ft_ls	1	0	:	b8c3,194x52,0,0,6
+window	ft_ls	2	0	:-	b8c4,194x52,0,0,7
+window	minishell	0	1	:*	36b0,194x52,0,0{97x52,0,0,8,96x52,98,0,9}
+window	minishell	1	0	:-	5c8f,194x52,0,0,10
+window	music	0	1	:*	bb94,194x52,0,0{97x52,0,0,11,96x52,98,0,12}
+state	Dotfiles and Lib	minishell

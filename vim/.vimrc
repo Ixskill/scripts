@@ -126,10 +126,16 @@ set statusline+=%F
 "		TODO FILES {{{
 augroup TODO_files
 	autocmd!
-	autocmd BufAdd,BufRead,BufNewFile TODO set tw=79
-	autocmd BufAdd,BufRead,BufNewFile TODO set fo+=t
-	autocmd BufAdd,BufRead,BufNewFile TODO set fo-=l
+	" autocmd BufAdd,BufRead,BufNewFile TODO set tw=79
+	" autocmd BufAdd,BufRead,BufNewFile TODO set fo+=t
+	" autocmd BufAdd,BufRead,BufNewFile TODO set fo-=l
 	autocmd BufAdd,BufRead,BufNewFile TODO set smartindent
+	autocmd BufAdd,BufRead,BufNewFile TODO inoremap ( ()<left>
+	autocmd BufAdd,BufRead,BufNewFile TODO inoremap [ []<left>
+	autocmd BufAdd,BufRead,BufNewFile TODO inoremap ' ''<left>
+	autocmd BufAdd,BufRead,BufNewFile TODO inoremap " ""<left>
+	autocmd BufAdd,BufRead,BufNewFile TODO setlocal foldmethod=marker
+	autocmd BufAdd,BufRead,BufNewfile :hi Folded ctermfg=NONE ctermbg=NONE
 augroup END
 "		}}}
 

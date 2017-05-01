@@ -23,7 +23,9 @@ hi CursorLine               ctermbg=234 cterm=NONE
 hi CursorLineNr ctermfg=81   ctermbg=234 cterm=NONE
 hi LineNr	ctermfg=0		cterm=BOLD
 
+
 " Syntax group
+hi Search	ctermfg=255	ctermbg=163	cterm=BOLD
 hi SignColumn	ctermbg=234
 hi Comment      ctermfg=grey	ctermbg=237	term=ITALIC
 hi Constant     ctermfg=9	ctermbg=NONE	cterm=NONE
