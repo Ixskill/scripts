@@ -58,12 +58,17 @@ source $PROMPT_FILE
 
 setopt PROMPT_SUBST
 cd () {
-	builtin cd $1 && reset_prompt 
+	builtin cd $1
+	reset_prompt 
 }
-
 
 reset_prompt (){
 	PS1=$(echo_prompt)
+}
+
+lolz () {
+	git "$@"
+	reset_prompt
 }
 reset_prompt
 
