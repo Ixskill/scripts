@@ -66,10 +66,6 @@ reset_prompt (){
 	PS1=$(echo_prompt)
 }
 
-lolz () {
-	git "$@"
-	reset_prompt
-}
 reset_prompt
 
 # Loading prompt settings

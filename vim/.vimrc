@@ -193,7 +193,6 @@ set wildignore=*.o,*.swp							"Files to ingore when browsing and completing opt
 
 
 "		Insert NEWLINE and stay in normal mode
-nmap <C-o> O<esc>
 nmap <Cr> o<esc>
 
 "		Setting up mapleader key
