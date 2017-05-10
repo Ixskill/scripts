@@ -77,6 +77,9 @@ color ade-sede					"Loading my color scheme at ~/.vim/colors/.
 
 " End of color and fonts}}}
 
+set tabstop=4
+set shiftwidth=4
+
 set cursorline
 " Making a dummy sign column
 sign define dummy
@@ -271,7 +274,7 @@ inoremap <BS> <c-r>=Backspace()<CR>
 func Backspace()
 	if col('.') == 1
 		if line('.') != 1
-			return "\<ESC>kA\<Del>"
+			return "\<ESC>kgJi"
 		else
 			return ""
 		endif
@@ -280,9 +283,10 @@ func Backspace()
 	endif
 endfunc			
 
-func CheckHeader()
-	if $HOSTNAME ==# "ade-sede-arch"
-		source $DOTFILES/zaz_header.vim
-	endif
-endfunc
-call CheckHeader()
+" func CheckHeader()
+" 	if $HOSTNAME ==# "ade-sede-arch"
+" 		source $DOTFILES/zaz_header.vim
+" 	endif
+" endfunc
+" call CheckHeader()
+source $DOTFILES/zaz_header.vim

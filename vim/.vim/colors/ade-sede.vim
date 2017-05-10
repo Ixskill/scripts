@@ -10,8 +10,8 @@ syntax keyword TODO contained NOTE
 hi def link cOperator Operator
 
 " Search
-hi IncSearch    ctermfg=NONE   ctermbg=3   cterm=NONE
-hi Search       ctermfg=NONE   ctermbg=3   cterm=NONE
+hi IncSearch    ctermfg=NONE   ctermbg=13   cterm=NONE
+hi Search       ctermfg=NONE   ctermbg=13   cterm=NONE
 
 " Messages
 " TODO
@@ -31,15 +31,16 @@ hi Constant     ctermfg=9	ctermbg=NONE	cterm=NONE
 hi Error        ctermfg=252	ctermbg=NONE	cterm=NONE
 hi Identifier   ctermfg=11	ctermbg=NONE	cterm=NONE
 hi Ignore       ctermfg=1	ctermbg=1	cterm=NONE
-hi PreProc      ctermfg=145	ctermbg=NONE	cterm=NONE
+hi PreProc      ctermfg=112	ctermbg=NONE	cterm=NONE
 hi Special      ctermfg=107	ctermbg=NONE	cterm=NONE
 hi Statement    ctermfg=74	ctermbg=NONE	cterm=NONE
 hi Todo         ctermfg=1	ctermbg=237		cterm=BOLD
 hi Type         ctermfg=3	ctermbg=NONE	cterm=NONE
 hi Underlined                          		cterm=UNDERLINE
-hi Include      ctermfg=145 ctermbg=NONE   	cterm=NONE
+hi Include      ctermfg=112 ctermbg=NONE   	cterm=NONE
 hi Conditional  ctermfg=74  ctermbg=NONE   	cterm=NONE
 hi String       ctermfg=107 ctermbg=NONE	cterm=NONE
+hi Struct		ctermfg=107	ctermbg=NONE
 hi NOTE         ctermfg=1   ctermbg=242   	cterm=BOLD
 
 "		Tabline color settings
