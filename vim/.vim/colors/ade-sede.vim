@@ -6,7 +6,6 @@ endif
 hi Normal       ctermfg=252 ctermbg=NONE  guibg=black cterm=NONE
 " A bit of syntax
 
-syntax keyword cOperator "||\|&&\|[-+.]"
 syntax keyword TODO contained NOTE
 hi def link cOperator Operator
 

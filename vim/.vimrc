@@ -12,6 +12,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Color
+Plugin 'fabi1cazenave/kalahari.vim'
 " VIM-POWERLINE
 Plugin 'Lokaltog/vim-powerline'
 
@@ -66,7 +68,7 @@ nmap <C-w>0 <Plug>BufTabLine.Go(10)<C-c>
 "		HUD and CLarity	{{{
 "	Here are set the variable that define what my vim looks like, and how it behaves
 
-"	Color and font {{{
+"	Color, font and syntax {{{
 set encoding=utf-8				"Enbaling utf8
 
 let g:Powerline_symbols = 'compatible' "Just loading fancy font
@@ -133,6 +135,7 @@ augroup TODO_files
 	autocmd BufAdd,BufRead,BufNewFile TODO inoremap [ []<left>
 	autocmd BufAdd,BufRead,BufNewFile TODO inoremap ' ''<left>
 	autocmd BufAdd,BufRead,BufNewFile TODO inoremap " ""<left>
+	autocmd BufAdd,BufRead,BufNewFile TODO setlocal tw=80
 	autocmd BufAdd,BufRead,BufNewFile TODO setlocal foldmethod=marker
 	autocmd BufAdd,BufRead,BufNewfile :hi Folded ctermfg=NONE ctermbg=NONE
 augroup END
@@ -156,6 +159,7 @@ augroup c_files
 	autocmd FileType c inoremap " ""<left>
 	autocmd FileType c inoremap { {<cr>}<up><esc>$i<right><cr>
 	autocmd FileType c let maplocalleader = ","
+	autocmd FileType c source $HOME/.vim/syntax/c.vim
 	"autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
 	autocmd FileType c nnoremap <localleader>C A//			REMOVE		<esc>
 	autocmd FileType c set makeprg=clear\ &&\ make
