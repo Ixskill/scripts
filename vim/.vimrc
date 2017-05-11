@@ -14,6 +14,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Color
 Plugin 'fabi1cazenave/kalahari.vim'
+Plugin 'cocopon/iceberg.vim'
+
 " VIM-POWERLINE
 Plugin 'Lokaltog/vim-powerline'
 
@@ -87,6 +89,10 @@ set cursorline
 sign define dummy
 autocmd	BufAdd,BufRead,BufNewFile * :execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
+
+set hlsearch	"Turns highlight on search
+
+set incsearch	"Highlight is real-time
 
 set numberwidth=5				"Size of the number column
 
@@ -232,6 +238,16 @@ nnoremap <C-w><C-o> <C-w><C-r>
 "		Echoms the syntax group the word under the cursore belongs to
 nnoremap <leader>sp :call <SID>SynStack()<CR>
 
+"	YOLO -> Unmapping arrows. Time to grow up
+nnoremap <Up> <nop>
+inoremap <Up> <nop>
+nnoremap <Down> <nop>
+inoremap <Down> <nop>
+nnoremap <Right> <nop>
+inoremap <Right> <nop>
+nnoremap <Left> <nop>
+inoremap <Left> <nop>
+
 "		Surrounds {{{
 "	Here we define mappins to surround words / selections with a symbol
 
@@ -254,6 +270,7 @@ nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 
 "	}}}
 "	}}}
+
 
 "		Functions {{{
 "	In this part we setup a few functions
