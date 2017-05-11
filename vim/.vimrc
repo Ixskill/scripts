@@ -77,9 +77,11 @@ color ade-sede					"Loading my color scheme at ~/.vim/colors/.
 
 " End of color and fonts}}}
 
-set tabstop=4
-set shiftwidth=4
+"	Size of the manual tabulation and auto indent tabulation (in spaces)
+set tabstop=6
+set shiftwidth=6
 
+"	The line where the cursor is is highlighted
 set cursorline
 " Making a dummy sign column
 sign define dummy

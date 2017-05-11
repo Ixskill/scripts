@@ -3,7 +3,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 
-hi Normal       ctermfg=252 ctermbg=NONE  guibg=black cterm=NONE
+hi Normal       ctermfg=254 ctermbg=235  guibg=black cterm=NONE
 " A bit of syntax
 
 syntax keyword TODO contained NOTE
@@ -31,20 +31,21 @@ hi Constant     ctermfg=9	ctermbg=NONE	cterm=NONE
 hi Error        ctermfg=252	ctermbg=NONE	cterm=NONE
 hi Identifier   ctermfg=11	ctermbg=NONE	cterm=NONE
 hi Ignore       ctermfg=1	ctermbg=1	cterm=NONE
-hi PreProc      ctermfg=112	ctermbg=NONE	cterm=NONE
+hi PreProc      ctermfg=5	ctermbg=NONE	cterm=NONE
 hi Special      ctermfg=107	ctermbg=NONE	cterm=NONE
 hi Statement    ctermfg=74	ctermbg=NONE	cterm=NONE
 hi Todo         ctermfg=1	ctermbg=237		cterm=BOLD
 hi Type         ctermfg=3	ctermbg=NONE	cterm=NONE
 hi Underlined                          		cterm=UNDERLINE
-hi Include      ctermfg=112 ctermbg=NONE   	cterm=NONE
+hi Include      ctermfg=5 ctermbg=NONE   	cterm=NONE
 hi Conditional  ctermfg=74  ctermbg=NONE   	cterm=NONE
 hi String       ctermfg=107 ctermbg=NONE	cterm=NONE
-hi Struct		ctermfg=107	ctermbg=NONE
+hi Struct		ctermfg=blue	ctermbg=NONE
 hi NOTE         ctermfg=1   ctermbg=242   	cterm=BOLD
 
 "		Tabline color settings
 "	Tablinesel -> Current buffer the cursor is on
+"
 hi TabLineSel	ctermfg=81	ctermbg=238 cterm=BOLD
 
 "	PemenuSel -> Buffers that are displayed in a pane
