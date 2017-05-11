@@ -3,4 +3,4 @@ font = Hack 9
 dynamic_title = true
 scroll_on_keystroke = true
 [colors]
-background = rgba(63, 10, 63, 0.8)
+background = rgba(0, 0, 0, 0.8)
