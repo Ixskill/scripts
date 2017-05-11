@@ -15,6 +15,12 @@ signal=3
 full_text= ■ 
 color=#ff8700
 
+[bandwith]
+command=~/.dotfiles/scripts/bandwidth2
+markup=pango
+interval=persist
+border=#d79922
+
 [memory]
 command=echo -ne " \uf0ae $(~/.dotfiles/scripts/memory.sh)"
 markup=pango
@@ -44,6 +50,7 @@ command=echo -ne " \uf042 $(printf "%.0f " $(xbacklight -get))"
 interval=once
 signal=2
 border=#d79922
+
 
 [time]
 command=echo -ne " \uf073  `date +'%a %d %b'` <b>`date +'%T'`</b>"; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
