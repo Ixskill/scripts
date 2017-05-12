@@ -54,7 +54,7 @@ filetype plugin indent on    " required
 
 "		}}}
 
-"	Buffer navigation mappings{{{
+"	Buffer navigation mappings and panes{{{
 nmap <C-w>1 <Plug>BufTabLine.Go(1)<C-c>
 nmap <C-w>2 <Plug>BufTabLine.Go(2)<C-c>
 nmap <C-w>3 <Plug>BufTabLine.Go(3)<C-c>
@@ -65,6 +65,16 @@ nmap <C-w>7 <Plug>BufTabLine.Go(7)<C-c>
 nmap <C-w>8 <Plug>BufTabLine.Go(8)<C-c>
 nmap <C-w>9 <Plug>BufTabLine.Go(9)<C-c>
 nmap <C-w>0 <Plug>BufTabLine.Go(10)<C-c>
+
+"	YOLO -> Unmapping arrows. Time to grow up
+nnoremap <C-w><Up> <nop>
+inoremap <C-w><Up> <nop>
+nnoremap <C-w><Down> <nop>
+inoremap <C-w><Down> <nop>
+nnoremap <C-w><Right> <nop>
+inoremap <C-w><Right> <nop>
+nnoremap <C-w><Left> <nop>
+inoremap <C-w><Left> <nop>
 "	}}}
 
 "		HUD and CLarity	{{{
@@ -217,7 +227,7 @@ let mapleader = ","
 nnoremap <leader>p : set paste!<cr>
 
 "		Toggles hlsearch on/off
-nnoremap <leader>n :set hlsearch!<cr>
+nnoremap <leader>n :nohl<cr>
 
 "       Selects a full word in visual mode"
 nnoremap <silent> <space> viw					
@@ -248,6 +258,10 @@ inoremap <Right> <nop>
 nnoremap <Left> <nop>
 inoremap <Left> <nop>
 
+"	As my delimiters are automatically closing, sometimes i need to get out
+"	of insert mode, la, just to keep typing on the other side of the
+"	delilimiter. so i mapped it
+inoremap <S-Tab> <esc>la
 "		Surrounds {{{
 "	Here we define mappins to surround words / selections with a symbol
 
