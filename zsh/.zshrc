@@ -25,6 +25,9 @@ zstyle ':vcs_info:git*' formats " %b "
 if [[ "$(uname -s)" == "Linux" ]]; then
 	export TMPDIR="/var/tmp"
 	export HOSTNAME="ade-sede-arch"
+	alias pbcopy='xsel --clipboard --input'
+	alias pbpaste='xsel --clipboard --output'
+	# source $HOME/.locale.conf
 fi
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then

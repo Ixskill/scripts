@@ -174,10 +174,10 @@ augroup	END
 "	C files {{{
 augroup c_files
 	autocmd!
-	autocmd FileType c inoremap ( ()<left>
-	autocmd FileType c inoremap [ []<left>
-	autocmd FileType c inoremap ' ''<left>
-	autocmd FileType c inoremap " ""<left>
+	" autocmd FileType c inoremap ( ()<left>
+	" autocmd FileType c inoremap [ []<left>
+	" autocmd FileType c inoremap ' ''<left>
+	" autocmd FileType c inoremap " ""<left>
 	autocmd FileType c inoremap { {<cr>}<up><esc>$i<right><cr>
 	autocmd FileType c let maplocalleader = ","
 	autocmd FileType c source $HOME/.vim/syntax/c.vim

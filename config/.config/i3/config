@@ -203,6 +203,6 @@ bar
     }
 }
 # Wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/grey_orange_2.jpeg
-exec --no-startup-id compton -b
+#exec_always --no-startup-id feh --bg-fill $HOME/Pictures/grey_orange_2.jpeg
+#exec --no-startup-id compton -b
 exec --no-startup-id nm-applet &

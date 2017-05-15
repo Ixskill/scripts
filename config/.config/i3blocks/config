@@ -40,7 +40,7 @@ interval=30
 border=#ff8700
 
 [volume]
-command=echo -ne " $(~/.dotfiles/scripts/i3blocks-contrib/volume-pulseaudio/volume-pulseaudio)"
+command=echo -ne " $(~/.dotfiles/scripts/i3blocks-contrib/volume-pulseaudio/volume-pulseaudio -F 3)"
 interval=once
 signal=1
 border=#5f875f
