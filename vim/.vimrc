@@ -262,6 +262,9 @@ inoremap <Left> <nop>
 "	of insert mode, la, just to keep typing on the other side of the
 "	delilimiter. so i mapped it
 inoremap <S-Tab> <esc>la
+
+"	Emergency backspace mapping
+inoremap <BS> <c-r>=Backspace()<CR>
 "		Surrounds {{{
 "	Here we define mappins to surround words / selections with a symbol
 
@@ -285,25 +288,12 @@ nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 "	}}}
 "	}}}
 
-
 "		Functions {{{
 "	In this part we setup a few functions
 
-" This functions shows us to what HL/syntax group an express belongs
-
-function! <SID>SynStack()
-	if !exists("*synstack")
-		return
-	endif
-	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-"			}}}
-
-syntax keyword TODO contained NOTE
+"	Fonction to start a block comment that fits 42's norm
 
 "	Emergency mapping to recreate a basic backspace fcts.
-inoremap <BS> <c-r>=Backspace()<CR>
 func Backspace()
 	if col('.') == 1
 		if line('.') != 1
@@ -316,10 +306,15 @@ func Backspace()
 	endif
 endfunc			
 
-" func CheckHeader()
-" 	if $HOSTNAME ==# "ade-sede-arch"
-" 		source $DOTFILES/zaz_header.vim
-" 	endif
-" endfunc
-" call CheckHeader()
+" This functions shows us to what HL/syntax group an express belongs
+function! <SID>SynStack()
+	if !exists("*synstack")
+		return
+	endif
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+"			}}}
+
+syntax keyword TODO contained NOTE
 source $DOTFILES/zaz_header.vim
