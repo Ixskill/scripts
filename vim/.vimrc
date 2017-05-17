@@ -122,8 +122,6 @@ set sidescrolloff=7					"Starts scrolling X times before the cursor reaches the 
 
 set visualbell						"Disables sound
 
-set mouse=a						"Enables mouse cursor
-
 set autoread						"Keeps track of changes done outside vim
 
 set history=1000					"Vim now remembers the 1000 last cmd you used
