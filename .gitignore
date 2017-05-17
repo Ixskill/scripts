@@ -4,3 +4,4 @@ config/*
 !config/.config/i3blocks
 !config/.config/termite
 tmux/.tmux/resurrect
+tmux/.tmux/resurrect/last
