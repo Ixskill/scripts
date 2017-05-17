@@ -35,10 +35,11 @@ hi PreProc      ctermfg=5	ctermbg=NONE	cterm=NONE
 hi Special      ctermfg=107	ctermbg=NONE	cterm=NONE
 hi Statement    ctermfg=74	ctermbg=NONE	cterm=NONE
 hi Todo         ctermfg=1	ctermbg=237		cterm=BOLD
-hi Type         ctermfg=3	ctermbg=NONE	cterm=NONE
+hi Type         ctermfg=3	ctermbg=NONE	cterm=BOLD
 hi Underlined                          		cterm=UNDERLINE
 hi Include      ctermfg=5 ctermbg=NONE   	cterm=NONE
-hi Conditional  ctermfg=74  ctermbg=NONE   	cterm=NONE
+hi Conditional  ctermfg=74  ctermbg=NONE   	cterm=BOLD
+hi Repeat  ctermfg=74  ctermbg=NONE   	cterm=BOLD
 hi String       ctermfg=107 ctermbg=NONE	cterm=NONE
 hi Struct		ctermfg=blue	ctermbg=NONE
 hi NOTE         ctermfg=1   ctermbg=242   	cterm=BOLD

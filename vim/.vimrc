@@ -152,10 +152,10 @@ augroup TODO_files
 	" autocmd BufAdd,BufRead,BufNewFile TODO set fo+=t
 	" autocmd BufAdd,BufRead,BufNewFile TODO set fo-=l
 	autocmd BufAdd,BufRead,BufNewFile TODO set smartindent
-	autocmd BufAdd,BufRead,BufNewFile TODO inoremap ( ()<left>
-	autocmd BufAdd,BufRead,BufNewFile TODO inoremap [ []<left>
-	autocmd BufAdd,BufRead,BufNewFile TODO inoremap ' ''<left>
-	autocmd BufAdd,BufRead,BufNewFile TODO inoremap " ""<left>
+	" autocmd BufAdd,BufRead,BufNewFile TODO inoremap ( ()<left>
+	" autocmd BufAdd,BufRead,BufNewFile TODO inoremap [ []<left>
+	" autocmd BufAdd,BufRead,BufNewFile TODO inoremap ' ''<left>
+	" autocmd BufAdd,BufRead,BufNewFile TODO inoremap " ""<left>
 	autocmd BufAdd,BufRead,BufNewFile TODO setlocal tw=80
 	autocmd BufAdd,BufRead,BufNewFile TODO setlocal foldmethod=marker
 	autocmd BufAdd,BufRead,BufNewfile :hi Folded ctermfg=NONE ctermbg=NONE
@@ -178,7 +178,7 @@ augroup c_files
 	" autocmd FileType c inoremap [ []<left>
 	" autocmd FileType c inoremap ' ''<left>
 	" autocmd FileType c inoremap " ""<left>
-	autocmd FileType c inoremap { {<cr>}<up><esc>$i<right><cr>
+	" autocmd FileType c inoremap { {<cr>}<up><esc>$i<right><cr>
 	autocmd FileType c let maplocalleader = ","
 	autocmd FileType c source $HOME/.vim/syntax/c.vim
 	"autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
@@ -192,11 +192,11 @@ augroup sh_files
 	autocmd!
 	autocmd FileType zsh let maplocalleader = ","
 	"autocmd	FileType zsh nnoremap <buffer> <localleader>c I#<esc>
-	autocmd FileType zsh inoremap ( ()<left>
-	autocmd FileType zsh inoremap [ []<left>
-	autocmd FileType zsh inoremap ' ''<left>
-	autocmd FileType zsh inoremap " ""<left>
-	autocmd FileType zsh inoremap { {<cr>}<up><esc>$i<right><cr>
+	" autocmd FileType zsh inoremap ( ()<left>
+	" autocmd FileType zsh inoremap [ []<left>
+	" autocmd FileType zsh inoremap ' ''<left>
+	" autocmd FileType zsh inoremap " ""<left>
+	" autocmd FileType zsh inoremap { {<cr>}<up><esc>$i<right><cr>
 	"autocmd FileType zsh inoremap { {<cr>}<up><esc>$i<cr>
 augroup END
 "	}}}
