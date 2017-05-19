@@ -170,14 +170,10 @@ augroup	END
 "	C files {{{
 augroup c_files
 	autocmd!
-	" autocmd FileType c inoremap ( ()<left>
-	" autocmd FileType c inoremap [ []<left>
-	" autocmd FileType c inoremap ' ''<left>
-	" autocmd FileType c inoremap " ""<left>
-	" autocmd FileType c inoremap { {<cr>}<up><esc>$i<right><cr>
+	autocmd FileType c setlocal comments=sO:/*,m1:**,ex:*/,f://
 	autocmd FileType c let maplocalleader = ","
+	autocmd FileType c vnoremap <silent><localleader>c :<BS><BS><BS><BS><BS>silent! call CComment_42()<cr>
 	autocmd FileType c source $HOME/.vim/syntax/c.vim
-	"autocmd	FileType c nnoremap <buffer> <localleader>c I//<esc>
 	autocmd FileType c nnoremap <localleader>C A//			REMOVE		<esc>
 	autocmd FileType c set makeprg=clear\ &&\ make
 augroup END
@@ -285,7 +281,9 @@ nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 "		Functions {{{
 "	In this part we setup a few functions
 "	Fonction to start a block comment that fits 42's norm
-func StartBlock()
+func CComment_42()
+	let l:comments = &comments
+	set comments=
 	let l:start_line = line("'<")
 	let l:end_line = line("'>")
 	let l:nb_line = l:end_line - l:start_line
@@ -297,12 +295,13 @@ func StartBlock()
 	echom l:nb_line
 	while index <= l:nb_line
 		call cursor(l:start_line + index, 1)
-		normal! I**	
+		normal! i**	
 		let index += 1
 	endwhile
 	call cursor(l:end_line, 1)
 	normal! o
 	normal! I*/
+	let &comments=l:comments
 endfunc
 
 "	Emergency mapping to recreate a basic backspace fcts.
