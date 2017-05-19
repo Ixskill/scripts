@@ -29,9 +29,7 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'airblade/vim-gitgutter'
 
 " VIM-SYNTASTIC
-Plugin 'vim-syntastic/syntastic'
-
-" VIM-COMMENTARY
+Plugin 'vim-syntastic/syntastic' " VIM-COMMENTARY
 Plugin 'tpope/vim-commentary'
 
 " VIM-LLDB
@@ -227,9 +225,7 @@ nnoremap <leader>p : set paste!<cr>
 "		Toggles hlsearch on/off
 nnoremap <leader>n :nohl<cr>
 
-"       Selects a full word in visual mode"
-nnoremap <silent> <space> viw					
-
+"       Selects a full word in visual mode" nnoremap <silent> <space> viw					
 "		Toggles display of tabs and newline
 nmap <silent> <leader><tab> :set nolist!<CR>
 
@@ -288,8 +284,26 @@ nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 
 "		Functions {{{
 "	In this part we setup a few functions
-
 "	Fonction to start a block comment that fits 42's norm
+func StartBlock()
+	let l:start_line = line("'<")
+	let l:end_line = line("'>")
+	let l:nb_line = l:end_line - l:start_line
+	let index = 0
+	call cursor(l:start_line, 1)
+	normal! O/*
+	let l:start_line += 1
+	let l:end_line += 1
+	echom l:nb_line
+	while index <= l:nb_line
+		call cursor(l:start_line + index, 1)
+		normal! I**	
+		let index += 1
+	endwhile
+	call cursor(l:end_line, 1)
+	normal! o
+	normal! I*/
+endfunc
 
 "	Emergency mapping to recreate a basic backspace fcts.
 func Backspace()
