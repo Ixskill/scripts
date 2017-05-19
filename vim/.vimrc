@@ -141,6 +141,7 @@ set statusline+=%F
 "	For exemple : 	- A Filetype being spotted
 "			- The buffer being updated
 
+
 "		TODO FILES {{{
 augroup TODO_files
 	autocmd!
@@ -178,6 +179,14 @@ augroup c_files
 	autocmd FileType c set makeprg=clear\ &&\ make
 augroup END
 "	}}}
+
+"	C_header {{{
+augroup c_header
+	autocmd FileType h setlocal comments=sO:/*,m1:**,ex:*/,f://
+	autocmd FileType h let maplocalleader = ","
+	autocmd FileType h vnoremap <silent><localleader>c :<BS><BS><BS><BS><BS>silent! call CComment_42()<cr>
+augroup END
+"}}}
 
 "	Zsh files {{{
 augroup sh_files
