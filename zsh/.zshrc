@@ -37,6 +37,7 @@ fi
 
 
 # Variables for each config file of my env and comfort settings
+export GHI_TOKEN="b9178027fd5be52ec349ec84f55623656a58c243"
 export LLDB="/usr/bin/lldb"
 export DOTFILES="$HOME/.dotfiles"
 export MYVIMRC="$DOTFILES/vim/.vimrc"

@@ -19,3 +19,7 @@
 	editor = vim
 [core]
 	excludesfile = $HOME/gitignore
+[github]
+	user = Ixskill
+[ghi]
+	token = b9178027fd5be52ec349ec84f55623656a58c243

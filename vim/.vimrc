@@ -182,9 +182,8 @@ augroup END
 
 "	C_header {{{
 augroup c_header
-	autocmd FileType h setlocal comments=sO:/*,m1:**,ex:*/,f://
-	autocmd FileType h let maplocalleader = ","
-	autocmd FileType h vnoremap <silent><localleader>c :<BS><BS><BS><BS><BS>silent! call CComment_42()<cr>
+	autocmd BufAdd,BufNewFile,BufRead *.h setlocal comments=sO:/*,m1:**,ex:*/,f://
+	autocmd BufAdd,BufNewFile,BufRead *.h vnoremap <silent><localleader>c :<BS><BS><BS><BS><BS>silent! call CComment_42()<cr>
 augroup END
 "}}}
 
