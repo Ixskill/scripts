@@ -311,7 +311,6 @@ func CComment_42()
 	normal! I*/
 	let &comments=l:comments
 endfunc
-
 "	Emergency mapping to recreate a basic backspace fcts.
 func Backspace()
 	if col('.') == 1

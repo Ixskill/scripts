@@ -22,4 +22,4 @@
 [github]
 	user = Ixskill
 [ghi]
-	token = b9178027fd5be52ec349ec84f55623656a58c243
+	token = !security find-internet-password -a Ixskill -s github.com -l 'ghi token' -w
