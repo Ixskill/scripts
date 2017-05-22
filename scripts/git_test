@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+
+[ -f /usr/bin/git ] && /usr/bin/git $@ && cd .

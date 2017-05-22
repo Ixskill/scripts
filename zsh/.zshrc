@@ -54,7 +54,7 @@ export BAR="$DOTFILES/config/.config/i3blocks/config"
 
 #Exporting path
 export OLD_PATH="$PATH"
-export PATH="$OLD_PATH:$DOTFILES/scripts"
+export PATH="$DOTFILES/scripts:$OLD_PATH"
 
 # Cd and git resets prompt
 
