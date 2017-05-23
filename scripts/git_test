@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 # Setting up a few vars
 CURRENT_BG='NONE'
 PRIMARY_FG=black
@@ -77,3 +78,5 @@ echo_prompt() {
 	prompt_git
 	prompt_end
 }
+
+PS1=$(echo_prompt)
