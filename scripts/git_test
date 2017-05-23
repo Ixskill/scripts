@@ -1,9 +1,5 @@
 #!/usr/bin/env zsh
 
-<<<<<<< HEAD
-
-[ -f /usr/bin/git ] && /usr/bin/git $@ && cd .
-=======
 # Setting up a few vars
 CURRENT_BG='NONE'
 PRIMARY_FG=black
@@ -84,4 +80,3 @@ echo_prompt() {
 }
 
 PS1=$(echo_prompt)
->>>>>>> test
