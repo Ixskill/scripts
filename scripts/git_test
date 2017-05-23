@@ -79,4 +79,4 @@ echo_prompt() {
 	prompt_end
 }
 
-PS1=$(echo_prompt)
+[ -f /usr/bin/git ] && /usr/bin/git $@ && PS1=$(echo_prompt) || echo "Cannot execute /usr/bin/git"
