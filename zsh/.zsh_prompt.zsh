@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 # Setting up a few vars
 CURRENT_BG='NONE'
 PRIMARY_FG=black
