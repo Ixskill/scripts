@@ -55,10 +55,12 @@ prompt_git() {
 	}
 	if git_repo; then
 		if detached_head; then
-			branch=$vcs_info_msg_0_
+			# branch=$vcs_info_msg_0_
+			branch=$(__git_ps1)
 			str="$DETACHED$branch"
 		else
-			# branch=$vcs_info_msg_0_
+			# branch=$(echo $vcs_info_msg_0_)
+			branch=$(__git_ps1)
 			branch="$(git branch | sed -En 's/^\* (.*)/\1/p')"
 			str="$BRANCH $branch "
 		fi

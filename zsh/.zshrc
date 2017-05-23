@@ -58,9 +58,11 @@ export PATH="$DOTFILES/scripts:$OLD_PATH"
 
 # Cd and git resets prompt
 
-source $PROMPT_FILE
+[ -f $PROMPT_FILE ] && source $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
+[ -f $PROMPT_FILE ] && source ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
 
 setopt PROMPT_SUBST
+PS1=$(echo_prompt)
 cd () {
 	builtin cd $1
 	reset_prompt 
@@ -71,6 +73,14 @@ reset_prompt (){
 }
 
 reset_prompt
+
+# Resets prompts every TMOUT seconds
+TMOUT=2
+TRAPALRM() {
+	reset_prompt
+	# echo $vcs_info_msg_0_
+}
+
 
 # Loading prompt settings
 autoload -Uz promptinit
@@ -83,11 +93,7 @@ function zle-line-init zle-keymap-select
 {
 	VIM_PROMPT="VIM [%K{red}ON%k]%  %k"
 	RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-	zle reset-prompt
-}
-function zle-reset-prompt
-{
-	PS1=$(echo_prompt)
+	zle && zle reset-prompt
 }
 zle -N zle-reset-prompt
 zle -N zle-line-init
