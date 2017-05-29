@@ -1,6 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/ade-sede/projects/minishell/srcs/builtin'
 let g:netrw_dirhist_2='/home/ade-sede/projects/minishell/srcs/builtin'
 let g:netrw_dirhist_3='/home/ade-sede/projects/minishell/srcs/exec'
 let g:netrw_dirhist_4='/Users/ade-sede/.dotfiles/git'
+let g:netrw_dirhist_5='/Users/ade-sede/projects/minishell/srcs/history'
+let g:netrw_dirhist_6='/Users/ade-sede/projects/minishell/libft/srcs/printf'

@@ -173,7 +173,7 @@ augroup c_files
 	autocmd!
 	autocmd FileType c setlocal comments=sO:/*,m1:**,ex:*/,f://
 	autocmd FileType c let maplocalleader = ","
-	autocmd FileType c vnoremap <silent><localleader>c :<BS><BS><BS><BS><BS>silent! call CComment_42()<cr>
+	" autocmd FileType c vnoremap <silent><localleader>c :<BS><BS><BS><BS><BS>silent! call CComment_42()<cr>
 	autocmd FileType c source $HOME/.vim/syntax/c.vim
 	autocmd FileType c nnoremap <localleader>C A//			REMOVE		<esc>
 	autocmd FileType c set makeprg=clear\ &&\ make
@@ -183,7 +183,7 @@ augroup END
 "	C_header {{{
 augroup c_header
 	autocmd BufAdd,BufNewFile,BufRead *.h setlocal comments=sO:/*,m1:**,ex:*/,f://
-	autocmd BufAdd,BufNewFile,BufRead *.h vnoremap <silent><localleader>c :<BS><BS><BS><BS><BS>silent! call CComment_42()<cr>
+	" autocmd BufAdd,BufNewFile,BufRead *.h vnoremap <silent><localleader>c :<BS><BS><BS><BS><BS>silent! call CComment_42()<cr>
 augroup END
 "}}}
 

@@ -60,7 +60,7 @@ prompt_git() {
 			str="$DETACHED$branch"
 		else
 			# branch=$(echo $vcs_info_msg_0_)
-			branch=$(__git_ps1)
+			# branch=$(__git_ps1)
 			branch="$(git branch | sed -En 's/^\* (.*)/\1/p')"
 			str="$BRANCH $branch "
 		fi

@@ -37,6 +37,11 @@ fi
 
 
 # Variables for each config file of my env and comfort settings
+if [[ "$(uname -s)" == "Darwin" ]]; then
+	export LDFLAGS="-L/Users/ade-sede/.brew/opt/llvm/lib -Wl, -rpath,/USERS/ade-sede/.brew/opt/llvm/lib"
+	export ASAN_SYMBOLIZER_PATH="$HOME/.brew/opt/llvm/bin/llvm-symbolizer"
+fi
+
 export LLDB="/usr/bin/lldb"
 export DOTFILES="$HOME/.dotfiles"
 export MYVIMRC="$DOTFILES/vim/.vimrc"
