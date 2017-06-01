@@ -16,6 +16,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'fabi1cazenave/kalahari.vim'
 Plugin 'cocopon/iceberg.vim'
 
+" EASY-TAGS
+" Plugin 'xolox/vim-misc'
+" Plugin 'xolox/vim-easytags'
+
 " VIM-POWERLINE
 Plugin 'Lokaltog/vim-powerline'
 
@@ -29,7 +33,12 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'airblade/vim-gitgutter'
 
 " VIM-SYNTASTIC
-Plugin 'vim-syntastic/syntastic' " VIM-COMMENTARY
+Plugin 'vim-syntastic/syntastic'
+
+"	Syntastic options	
+" g:syntastic_c_include_dirs['includes', 'libft/includes']
+
+" COMMENTARY
 Plugin 'tpope/vim-commentary'
 
 " VIM-LLDB
