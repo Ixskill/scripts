@@ -17,8 +17,8 @@ Plugin 'fabi1cazenave/kalahari.vim'
 Plugin 'cocopon/iceberg.vim'
 
 " EASY-TAGS
-" Plugin 'xolox/vim-misc'
-" Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 
 " VIM-POWERLINE
 Plugin 'Lokaltog/vim-powerline'
