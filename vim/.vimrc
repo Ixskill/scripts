@@ -35,8 +35,11 @@ Plugin 'tpope/vim-fugitive'
 " VIM-SYNTASTIC
 Plugin 'vim-syntastic/syntastic'
 
+"			SYNTASTIC FLAGS
+let g:syntastic_c_compiler_options = '-Wall -Wextra -Werror'
+
 "	Syntastic options	
-" g:syntastic_c_include_dirs['includes', 'libft/includes']
+let g:syntastic_c_include_dirs = ['includes', 'libft/includes']
 
 " COMMENTARY
 Plugin 'tpope/vim-commentary'
@@ -92,7 +95,8 @@ set encoding=utf-8				"Enbaling utf8
 
 let g:Powerline_symbols = 'compatible' "Just loading fancy font
 
-color ade-sede					"Loading my color scheme at ~/.vim/colors/.
+" color ade-sede					"Loading my color scheme at ~/.vim/colors/.
+color iceberg
 
 " End of color and fonts}}}
 
