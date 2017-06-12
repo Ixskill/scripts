@@ -35,11 +35,13 @@ Plugin 'tpope/vim-fugitive'
 " VIM-SYNTASTIC
 Plugin 'vim-syntastic/syntastic'
 
-"			SYNTASTIC FLAGS
+"			SYNTASTIC FLAGS {{{
 let g:syntastic_c_compiler_options = '-Wall -Wextra -Werror'
 
 "	Syntastic options	
 let g:syntastic_c_include_dirs = ['includes', 'libft/includes']
+hi! SyntasticError ctermbg=none ctermfg=red cterm=UNDERLINE
+"}}}
 
 " COMMENTARY
 Plugin 'tpope/vim-commentary'

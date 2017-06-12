@@ -24,6 +24,7 @@ hi LineNr	ctermfg=0		cterm=BOLD
 
 
 " Syntax group
+hi SyntasticError ctermbg=none ctermfg=red cterm=UNDERLINE
 hi Search	ctermfg=255	ctermbg=163	cterm=BOLD
 hi SignColumn	ctermbg=234
 hi Comment      ctermfg=grey	ctermbg=237	term=ITALIC

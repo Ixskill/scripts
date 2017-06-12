@@ -1,10 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/ade-sede/projects/minishell/srcs/builtin'
-let g:netrw_dirhist_2='/home/ade-sede/projects/minishell/srcs/builtin'
-let g:netrw_dirhist_3='/home/ade-sede/projects/minishell/srcs/exec'
-let g:netrw_dirhist_4='/Users/ade-sede/.dotfiles/git'
-let g:netrw_dirhist_5='/Users/ade-sede/projects/minishell/srcs/history'
-let g:netrw_dirhist_6='/Users/ade-sede/projects/minishell/libft/srcs/printf'
-let g:netrw_dirhist_7='/Users/ade-sede/42FileChecker/moulitest_42projects/get_next_line_tests'
-let g:netrw_dirhist_8='/Users/ade-sede/42FileChecker/moulitest_42projects'
+let g:netrw_dirhist_cnt =0
