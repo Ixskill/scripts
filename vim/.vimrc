@@ -16,7 +16,17 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'fabi1cazenave/kalahari.vim'
 Plugin 'cocopon/iceberg.vim'
 
-" EASY-TAGS
+" VIM-NERDTREE{{{
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" Starts nerdtree if no arg was specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+"}}}
+
+" VIM-EASYTAGS
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 
@@ -98,7 +108,7 @@ set encoding=utf-8				"Enbaling utf8
 let g:Powerline_symbols = 'compatible' "Just loading fancy font
 
 " color ade-sede					"Loading my color scheme at ~/.vim/colors/.
-color iceberg
+color atom-dark-256
 
 " End of color and fonts}}}
 
