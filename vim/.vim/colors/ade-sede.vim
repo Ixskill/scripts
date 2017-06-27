@@ -23,6 +23,9 @@ hi CursorLineNr ctermfg=81   ctermbg=234 cterm=NONE
 hi LineNr	ctermfg=0		cterm=BOLD
 
 
+"	Fonction tagged by ctags
+hi cFunctionTag ctermfg=none cterm=underline
+
 " Syntax group
 hi SyntasticError ctermbg=none ctermfg=red cterm=UNDERLINE
 hi Search	ctermfg=255	ctermbg=163	cterm=BOLD

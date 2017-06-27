@@ -16,6 +16,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'fabi1cazenave/kalahari.vim'
 Plugin 'cocopon/iceberg.vim'
 
+" VIM-EASY-ALIGN{{{
+Plugin 'junegunn/vim-easy-align'
+xmap ga <Plug>(EasyAlign)
+xmap na <Plug>(EasyAlign)
+
+"}}}
+
 " VIM-NERDTREE{{{
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
