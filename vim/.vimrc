@@ -115,9 +115,12 @@ set encoding=utf-8				"Enbaling utf8
 let g:Powerline_symbols = 'compatible' "Just loading fancy font
 
 " color ade-sede					"Loading my color scheme at ~/.vim/colors/.
-color atom-dark-256
+color iceberg "COLOR CHANGE
 
 " End of color and fonts}}}
+
+" This syntax group allows me to match empty lines.
+syntax match EmptyLines "^$"
 
 "	Size of the manual tabulation and auto indent tabulation (in spaces)
 set tabstop=4
@@ -347,7 +350,7 @@ endfunc
 func Backspace()
 	if col('.') == 1
 		if line('.') != 1
-			return "\<ESC>kgJi"
+			return "\<ESC>kgJa"
 		else
 			return ""
 		endif
