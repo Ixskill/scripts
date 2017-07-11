@@ -12,9 +12,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Color
+
+" Color{{{
 Plugin 'fabi1cazenave/kalahari.vim'
 Plugin 'cocopon/iceberg.vim'
+"}}}
 
 " VIM-EASY-ALIGN{{{
 Plugin 'junegunn/vim-easy-align'
@@ -363,6 +365,17 @@ endfunc
 function! StrDebug()
 	normal! Iprintf(MAG"#"CYN"%s"MAG"#\n"RESET,);
 	normal! 2ha
+endfunc
+
+"Folds every conditional preprocessing
+"
+function! FoldPreProc(arg)
+	let l:number = a:arg
+	while l:number > 0
+		call search ('#if')
+		normal! zf%
+		let l:number -= 1
+	endwhile
 endfunc
 
 " This functions shows us to what HL/syntax group an express belongs
