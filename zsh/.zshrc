@@ -106,8 +106,10 @@ zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
 # Lazy alias				
+alias less="less -R"
 alias gww="gcc -Wall -Wextra -Werror"
-alias ll="ls -alsh"
+alias ls="ls --colo=auto"
+alias ll="ls --color=auto -alsh"
 alias grep="grep --color"
 alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
 alias v="vim -u $MYVIMRC"

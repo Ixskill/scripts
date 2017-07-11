@@ -115,7 +115,7 @@ set encoding=utf-8				"Enbaling utf8
 let g:Powerline_symbols = 'compatible' "Just loading fancy font
 
 " color ade-sede					"Loading my color scheme at ~/.vim/colors/.
-color iceberg "COLOR CHANGE
+color atom-dark-256 "COLOR CHANGE
 
 " End of color and fonts}}}
 
@@ -358,6 +358,12 @@ func Backspace()
 		return "\<Left>\<Del>"
 	endif
 endfunc			
+
+" Puts a printf with colors and #.
+function! StrDebug()
+	normal! Iprintf(MAG"#"CYN"%s"MAG"#\n"RESET,);
+	normal! 2ha
+endfunc
 
 " This functions shows us to what HL/syntax group an express belongs
 function! <SID>SynStack()
