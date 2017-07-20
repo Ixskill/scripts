@@ -40,7 +40,8 @@ fi
 
 # Variables for each config file of my env and comfort settings
 if [[ "$(uname -s)" == "Darwin" ]]; then
-	export LDFLAGS="-L/Users/ade-sede/.brew/opt/llvm/lib -Wl, -rpath,/USERS/ade-sede/.brew/opt/llvm/lib"
+	alias ls="ls -G"
+	export LDFLAGS="-L/Users/ade-sede/.brew/opt/llvm/lib -Wl, -rpath,/Users/ade-sede/.brew/opt/llvm/lib"
 	export ASAN_SYMBOLIZER_PATH="$HOME/.brew/opt/llvm/bin/llvm-symbolizer"
 fi
 
@@ -112,6 +113,7 @@ alias less="less -R"
 alias gww="gcc -Wall -Wextra -Werror"
 alias grep="grep --color"
 alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
+alias ll="ls -alsh"
 alias v="vim -u $MYVIMRC"
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias clean_swp="rm -rf /var/tmp/*.swp"
@@ -124,5 +126,7 @@ if [ -e "$HOME/.brewconfig.zsh" ]; then
 	source $HOME/.brewconfig.zsh
 fi
 
-
-
+if [[ "$(uname -s)" == "Darwin" ]]; then
+	ZSH_HIH="/Users/ade-sede/.brew/Cellar/zsh-syntax-highlighting/0.5.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+	[ -f $ZSH_HIH ] && source $ZSH_HIH
+fi
