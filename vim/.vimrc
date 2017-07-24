@@ -97,6 +97,8 @@ nmap <C-w>8 <Plug>BufTabLine.Go(8)<C-c>
 nmap <C-w>9 <Plug>BufTabLine.Go(9)<C-c>
 nmap <C-w>0 <Plug>BufTabLine.Go(10)<C-c>
 
+nnoremap <S-tab> :bprev<cr>
+nnoremap <tab> :bnext<cr>
 "	YOLO -> Unmapping arrows. Time to grow up
 nnoremap <C-w><Up> <nop>
 inoremap <C-w><Up> <nop>
