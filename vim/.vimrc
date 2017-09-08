@@ -215,6 +215,10 @@ augroup c_files
 	" autocmd FileType c vnoremap <silent><localleader>c :<BS><BS><BS><BS><BS>silent! call CComment_42()<cr>
 	autocmd FileType c source $HOME/.vim/syntax/c.vim
 	autocmd FileType c nnoremap <localleader>C A//			REMOVE		<esc>
+	" autocmd FileType c setlocal foldmethod=expr
+	autocmd FileType c setlocal foldmethod=marker
+	autocmd FileType c setlocal foldmarker=#if,#endif
+	autocmd FileType c setlocal foldexpr=GetCPreProcFoldLevel(v:lnum)
 	autocmd FileType c set makeprg=clear\ &&\ make
 augroup END
 "	}}}
@@ -325,32 +329,32 @@ nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 "	}}}
 "	}}}
 
-"		Functions {{{
-"	In this part we setup a few functions
-"	Fonction to start a block comment that fits 42's norm
-func CComment_42()
-	let l:comments = &comments
-	set comments=
-	let l:start_line = line("'<")
-	let l:end_line = line("'>")
-	let l:nb_line = l:end_line - l:start_line
-	let index = 0
-	call cursor(l:start_line, 1)
-	normal! O/*
-	let l:start_line += 1
-	let l:end_line += 1
-	echom l:nb_line
-	while index <= l:nb_line
-		call cursor(l:start_line + index, 1)
-		normal! i**	
-		let index += 1
-	endwhile
-	call cursor(l:end_line, 1)
-	normal! o
-	normal! I*/
-	let &comments=l:comments
-endfunc
-"	Emergency mapping to recreate a basic backspace fcts.
+"	Functions {{{
+
+" func CComment_42()
+" 	let l:comments = &comments
+" 	set comments=
+" 	let l:start_line = line("'<")
+" 	let l:end_line = line("'>")
+" 	let l:nb_line = l:end_line - l:start_line
+" 	let index = 0
+" 	call cursor(l:start_line, 1)
+" 	normal! O/*
+" 	let l:start_line += 1
+" 	let l:end_line += 1
+" 	echom l:nb_line
+" 	while index <= l:nb_line
+" 		call cursor(l:start_line + index, 1)
+" 		normal! i**	
+" 		let index += 1
+" 	endwhile
+" 	call cursor(l:end_line, 1)
+" 	normal! o
+" 	normal! I*/
+" 	let &comments=l:comments
+" endfunc
+
+"	Emergency mapping to recreate a basic backspace routine.
 func Backspace()
 	if col('.') == 1
 		if line('.') != 1
@@ -363,19 +367,27 @@ func Backspace()
 	endif
 endfunc			
 
-" Puts a printf with colors and #.
+"	Puts a printf with colors and #.
 function! StrDebug()
-	normal! Iprintf(MAG"#"CYN"%s"MAG"#\n"RESET,);
-	normal! 2ha
+	normal! Idprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET,);
+	normal ==,C
+	normal! hh
 endfunc
 
-"Folds every conditional preprocessing
-"
+"Folds every conditional preprocessing from the first #if to #endif
+"Doesnt work in nested IFs.
+
+function! GetCPreProcFoldLevel(lnum)
+endfunc
+
 function! FoldPreProc(arg)
 	let l:number = a:arg
 	while l:number > 0
 		call search ('#if')
-		normal! zf%
+		let l:fold_start = line('.')
+		call search ('#endif')
+		let l:fold_end = line('.')
+		execute l:fold_start.','.l:fold_end 'fold'
 		let l:number -= 1
 	endwhile
 endfunc
