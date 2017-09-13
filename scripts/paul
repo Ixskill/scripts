@@ -18,17 +18,19 @@ COLOR_GREEN="\033[0;32m"
 
 for dir in $dirlist
 do
-    count_pa=$(cat $dir/*.js $dir/*.ejs $dir/*.css 2> /dev/null | grep -E ".*<!-- PA -->.*/\* PA \*/$" | wc -l)
-    total_pa=$(( $total_pa + $count_pa ))
-	count_total=$(cat $dir/*.js $dir/*.ejs $dir/*.css 2> /dev/null | wc -l)
-    count_nopa=$(( $count_total - $count_pa ))
-    total_nopa=$(( $total_nopa + $count_nopa ))
-if test -n $2  && test "$2" == "-v" -o "$2" == "--verbose" ; then
-	echo -e "\nIn directory $COLOR_CYAN $dir $COLOR_0:"
-	echo -e " 	Number of lines $COLOR_GREEN WITH PA = $count_pa $COLOR_0"
-	echo -e " 	Number of line $COLOR_RED WITHOUT PA = 	$count_nopa $COLOR_0"
-	echo -e "	$COLOR_BLUE TOTAL $COLOR_0 number of lines = $COLOR_BLUE $count_total $COLOR_0"
-fi
+	if [[ "$dir" != *"node_modules"* ]]; then
+		count_pa=$(cat $dir/*.js $dir/*.ejs $dir/*.css 2> /dev/null | grep -E ".*<!-- PA -->.*/\* PA \*/$" | wc -l)
+		total_pa=$(( $total_pa + $count_pa ))
+		count_total=$(cat $dir/*.js $dir/*.ejs $dir/*.css 2> /dev/null | wc -l)
+		count_nopa=$(( $count_total - $count_pa ))
+		total_nopa=$(( $total_nopa + $count_nopa ))
+		if test -n $2  && test "$2" == "-v" -o "$2" == "--verbose" ; then
+			echo -e "\nIn directory $COLOR_CYAN $dir $COLOR_0:"
+			echo -e " 	Number of lines $COLOR_GREEN WITH PA = $count_pa $COLOR_0"
+			echo -e " 	Number of line $COLOR_RED WITHOUT PA = 	$count_nopa $COLOR_0"
+			echo -e "	$COLOR_BLUE TOTAL $COLOR_0 number of lines = $COLOR_BLUE $count_total $COLOR_0"
+		fi
+	fi
 done
 echo -e "Total lines $COLOR_GREEN WITH PA = $total_pa $COLOR_0"
 echo -e "Total lines $COLOR_RED WITHOUT PA = $total_nopa $COLOR_0"

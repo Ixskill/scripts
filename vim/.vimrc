@@ -35,9 +35,11 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 "}}}
 
-" VIM-EASYTAGS
+" VIM-EASYTAGS {{{
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+let g:easytags_async=1
+"}}}
 
 " VIM-POWERLINE
 Plugin 'Lokaltog/vim-powerline'
@@ -371,7 +373,7 @@ endfunc
 function! StrDebug()
 	normal! Idprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET,);
 	normal ==,C
-	normal! hh
+	normal! 2ba
 endfunc
 
 "Folds every conditional preprocessing from the first #if to #endif
@@ -404,3 +406,7 @@ endfunc
 
 syntax keyword TODO contained NOTE
 source $DOTFILES/zaz_header.vim
+inoremap jk <esc>
+command! -nargs=1 Search call setqflist([]) | silent bufdo grepadd! <args> %
+nnoremap <left>  :cprev<cr>zvzz
+nnoremap <right> :cnext<cr>zvzz
