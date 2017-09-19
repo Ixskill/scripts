@@ -291,6 +291,8 @@ nnoremap <C-w><C-o> <C-w><C-r>
 "		Echoms the syntax group the word under the cursore belongs to
 nnoremap <leader>sp :call <SID>SynStack()<CR>
 
+inoremap jk <esc>
+
 "	YOLO -> Unmapping arrows. Time to grow up
 nnoremap <Up> <nop>
 inoremap <Up> <nop>
@@ -332,29 +334,6 @@ nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 "	}}}
 
 "	Functions {{{
-
-" func CComment_42()
-" 	let l:comments = &comments
-" 	set comments=
-" 	let l:start_line = line("'<")
-" 	let l:end_line = line("'>")
-" 	let l:nb_line = l:end_line - l:start_line
-" 	let index = 0
-" 	call cursor(l:start_line, 1)
-" 	normal! O/*
-" 	let l:start_line += 1
-" 	let l:end_line += 1
-" 	echom l:nb_line
-" 	while index <= l:nb_line
-" 		call cursor(l:start_line + index, 1)
-" 		normal! i**	
-" 		let index += 1
-" 	endwhile
-" 	call cursor(l:end_line, 1)
-" 	normal! o
-" 	normal! I*/
-" 	let &comments=l:comments
-" endfunc
 
 "	Emergency mapping to recreate a basic backspace routine.
 func Backspace()
@@ -406,7 +385,4 @@ endfunc
 
 syntax keyword TODO contained NOTE
 source $DOTFILES/zaz_header.vim
-inoremap jk <esc>
-command! -nargs=1 Search call setqflist([]) | silent bufdo grepadd! <args> %
-nnoremap <left>  :cprev<cr>zvzz
-nnoremap <right> :cnext<cr>zvzz
+command! -nargs=1 Search call setqflist([]) | silent! bufdo vimgrepadd! <args> %
