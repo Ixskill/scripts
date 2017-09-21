@@ -61,13 +61,15 @@ export PROMPT_FILE="$DOTFILES/zsh/.zsh_prompt.zsh"
 export BAR="$DOTFILES/config/.config/i3blocks/config"
 
 #Exporting path
-export OLD_PATH="$PATH"
-export PATH="$DOTFILES/scripts:$OLD_PATH"
+# export OLD_PATH="$PATH"
+export PATH="$DOTFILES/scripts:$PATH"
 
 # Cd and git resets prompt
 
-[ -f $PROMPT_FILE ] && source $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
-[ -f $PROMPT_FILE ] && source ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
+# [ -f $PROMPT_FILE ] && source $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
+# [ -f $PROMPT_FILE ] && source ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
+[ -f $PROMPT_FILE ] && . $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
+[ -f $PROMPT_FILE ] && . ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
 
 setopt PROMPT_SUBST
 PS1=$(echo_prompt)
@@ -123,10 +125,12 @@ alias i3lock="xbacklight -set 0 && i3lock -c 000000"
 
 # Load Homebrew config script
 if [ -e "$HOME/.brewconfig.zsh" ]; then
-	source $HOME/.brewconfig.zsh
+	# source $HOME/.brewconfig.zsh
+	. $HOME/.brewconfig.zsh
 fi
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
 	ZSH_HIH="/Users/ade-sede/.brew/Cellar/zsh-syntax-highlighting/0.5.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-	[ -f $ZSH_HIH ] && source $ZSH_HIH
+	# [ -f $ZSH_HIH ] && source $ZSH_HIH
+	[ -f $ZSH_HIH ] && . $ZSH_HIH
 fi
