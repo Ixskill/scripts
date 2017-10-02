@@ -41,6 +41,9 @@ Plugin 'xolox/vim-easytags'
 let g:easytags_async=1
 "}}}
 
+"VIM-TAGBAR
+Plugin 'majutsushi/tagbar'
+
 " VIM-POWERLINE
 Plugin 'Lokaltog/vim-powerline'
 
@@ -53,10 +56,9 @@ Plugin 'tpope/vim-fugitive'
 " VIM-GITGUTTER
 "Plugin 'airblade/vim-gitgutter'
 
-" VIM-SYNTASTIC
+" VIM-SYNTASTIC {{{
 Plugin 'vim-syntastic/syntastic'
 
-"			SYNTASTIC FLAGS {{{
 let g:syntastic_c_compiler_options = '-Wall -Wextra -Werror'
 
 "	Syntastic options	
