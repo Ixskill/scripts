@@ -12,6 +12,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Conque shell {{{
+Plugin 'lrvick/Conque-Shell'
+"}}}
 
 " Color{{{
 Plugin 'fabi1cazenave/kalahari.vim'
@@ -41,8 +44,10 @@ Plugin 'xolox/vim-easytags'
 let g:easytags_async=1
 "}}}
 
-"VIM-TAGBAR
+"VIM-TAGBAR{{{
 Plugin 'majutsushi/tagbar'
+let g:tagbar_left = 1
+"}}}
 
 " VIM-POWERLINE
 Plugin 'Lokaltog/vim-powerline'
