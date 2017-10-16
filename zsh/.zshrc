@@ -68,6 +68,7 @@ export PATH="$DOTFILES/scripts:$PATH"
 
 # [ -f $PROMPT_FILE ] && source $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
 # [ -f $PROMPT_FILE ] && source ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
+#
 [ -f $PROMPT_FILE ] && . $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
 [ -f $PROMPT_FILE ] && . ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
 
@@ -91,6 +92,11 @@ TRAPALRM() {
 	# echo $vcs_info_msg_0_
 }
 
+
+#	Base 16 config
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+#
 
 # Loading prompt settings
 autoload -Uz promptinit
@@ -134,3 +140,6 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 	# [ -f $ZSH_HIH ] && source $ZSH_HIH
 	[ -f $ZSH_HIH ] && . $ZSH_HIH
 fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

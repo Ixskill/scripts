@@ -49,6 +49,14 @@ Plugin 'majutsushi/tagbar'
 let g:tagbar_left = 1
 "}}}
 
+" BASE-16{{{
+Plugin 'chriskempson/base16-vim'
+if filereadable(expand("~/.vimrc_background"))
+	let base16colorspace=256
+	source ~/.vimrc_background
+endif
+" }}}
+
 " VIM-POWERLINE
 Plugin 'Lokaltog/vim-powerline'
 
@@ -128,7 +136,8 @@ set encoding=utf-8				"Enbaling utf8
 let g:Powerline_symbols = 'compatible' "Just loading fancy font
 
 " color ade-sede					"Loading my color scheme at ~/.vim/colors/.
-color atom-dark-256 "COLOR CHANGE
+" color atom-dark-256 "COLOR CHANGE
+" color iceberg
 
 " End of color and fonts}}}
 
