@@ -2,7 +2,7 @@ set background=dark
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" {{{
+" {{{ Vundle
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -47,11 +47,13 @@ let g:easytags_async=1
 "VIM-TAGBAR{{{
 Plugin 'majutsushi/tagbar'
 let g:tagbar_left = 1
+nnoremap <C-w><Tab>o :TagbarToggle<cr>
+nnoremap <C-w><Tab>p :TagbarTogglePause<cr>
 "}}}
 
 " BASE-16{{{
 Plugin 'chriskempson/base16-vim'
-if filereadable(expand("~/.vimrc_background"))
+if filereadable(expand("~/.vimrc_background")) && $base16 == "true"
 	let base16colorspace=256
 	source ~/.vimrc_background
 endif
@@ -81,8 +83,6 @@ hi! SyntasticError ctermbg=none ctermfg=red cterm=UNDERLINE
 
 " COMMENTARY
 Plugin 'tpope/vim-commentary'
-
-" VIM-LLDB
 
 
 " All of your Plugins must be added before the following line
@@ -114,30 +114,28 @@ nmap <C-w>8 <Plug>BufTabLine.Go(8)<C-c>
 nmap <C-w>9 <Plug>BufTabLine.Go(9)<C-c>
 nmap <C-w>0 <Plug>BufTabLine.Go(10)<C-c>
 
-nnoremap <S-tab> :bprev<cr>
-nnoremap <tab> :bnext<cr>
-"	YOLO -> Unmapping arrows. Time to grow up
-nnoremap <C-w><Up> <nop>
-inoremap <C-w><Up> <nop>
-nnoremap <C-w><Down> <nop>
-inoremap <C-w><Down> <nop>
-nnoremap <C-w><Right> <nop>
-inoremap <C-w><Right> <nop>
-nnoremap <C-w><Left> <nop>
-inoremap <C-w><Left> <nop>
 "	}}}
 
-"		HUD and CLarity	{{{
+"		HUD and Clarity	{{{
 "	Here are set the variable that define what my vim looks like, and how it behaves
 
 "	Color, font and syntax {{{
 set encoding=utf-8				"Enbaling utf8
 
-let g:Powerline_symbols = 'compatible' "Just loading fancy font
 
-" color ade-sede					"Loading my color scheme at ~/.vim/colors/.
-" color atom-dark-256 "COLOR CHANGE
-" color iceberg
+"Loading fancy font on archlinux
+if $HOSTNAME == "ade-sede-arch"
+	let g:Powerline_symbols = 'fancy'
+else
+	let g:Powerline_symbols = 'compatible'
+endif
+
+"Loading my color scheme at ~/.vim/colors/.
+" if $base16 != "true"
+	" color atom-dark-256
+	" color ade-sede
+	" color iceberg
+" endif
 
 " End of color and fonts}}}
 
@@ -151,8 +149,8 @@ set shiftwidth=4
 "	The line where the cursor is is highlighted
 set cursorline
 " Making a dummy sign column
-sign define dummy
-autocmd	BufAdd,BufRead,BufNewFile * :execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+" sign define dummy
+" autocmd	BufAdd,BufRead,BufNewFile * :execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 
 set hlsearch	"Turns highlight on search
@@ -283,13 +281,10 @@ nmap <Cr> o<esc>
 "		Setting up mapleader key
 let mapleader = ","
 
-"		toggle paste on/off
-nnoremap <leader>p : set paste!<cr>
 
 "		Toggles hlsearch on/off
 nnoremap <leader>n :nohl<cr>
 
-"       Selects a full word in visual mode" nnoremap <silent> <space> viw					
 "		Toggles display of tabs and newline
 nmap <silent> <leader><tab> :set nolist!<CR>
 
@@ -308,7 +303,7 @@ nnoremap <leader>sp :call <SID>SynStack()<CR>
 
 inoremap jk <esc>
 
-"	YOLO -> Unmapping arrows. Time to grow up
+"	Unmapping arrows.
 nnoremap <Up> <nop>
 inoremap <Up> <nop>
 nnoremap <Down> <nop>
@@ -317,11 +312,6 @@ nnoremap <Right> <nop>
 inoremap <Right> <nop>
 nnoremap <Left> <nop>
 inoremap <Left> <nop>
-
-"	As my delimiters are automatically closing, sometimes i need to get out
-"	of insert mode, la, just to keep typing on the other side of the
-"	delilimiter. so i mapped it
-inoremap <S-Tab> <esc>la
 
 "	Emergency backspace mapping
 inoremap <BS> <c-r>=Backspace()<CR>
@@ -346,12 +336,13 @@ nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 
 
 "	}}}
+"
 "	}}}
 
 "	Functions {{{
 
 " TREEE
-func Ptree()
+func! Ptree()
 	while line('.') != line('$')
 		if getline('.') =~ "^\s\+->.*"
 			echom "Found empty line"
@@ -367,7 +358,7 @@ func Ptree()
 endfunc
 
 "	Emergency mapping to recreate a basic backspace routine.
-func Backspace()
+func! Backspace()
 	if col('.') == 1
 		if line('.') != 1
 			return "\<ESC>kgJa"
@@ -444,5 +435,6 @@ endfunc
 command! -nargs=1 Search call setqflist([]) | silent! bufdo vimgrepadd! <args> %
 " }}}
 
+"{{{ Syntax
 syntax keyword TODO contained NOTE
-source $DOTFILES/zaz_header.vim
+"}}}

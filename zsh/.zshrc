@@ -88,9 +88,15 @@ TRAPALRM() {
 
 
 #	Base 16 config
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-#
+if [ "$(uname -s)" != "Linux" ]; then
+	BASE16_SHELL=$HOME/.config/base16-shell/
+	base16=true
+	auto_style=base16
+	[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+else
+	auto_style=wal
+	wal -t -r
+fi
 
 # Loading prompt settings
 autoload -Uz promptinit

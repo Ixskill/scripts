@@ -1,5 +1,5 @@
 [options]
-font = Hack 9
+font = Roboto Mono Medium for Powerline 11
 dynamic_title = true
 scroll_on_keystroke = true
 [colors]
