@@ -22,7 +22,7 @@ zstyle ':vcs_info:git*' formats " %b "
 
 ### Arch relative part : for my laptop only
 # Startx on boot
-if [[ "$(uname -s)" == "Linux" ]]; then
+if [ "$(uname -s)" = "Linux" ]; then
 	export TMPDIR="/var/tmp"
 	export HOSTNAME="ade-sede-arch"
 	alias pbcopy='xsel --clipboard --input'
@@ -33,13 +33,10 @@ if [[ "$(uname -s)" == "Linux" ]]; then
 	# source $HOME/.locale.conf
 fi
 
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-	eval $(keychain --eval --quiet ~/.ssh/id_rsa) && exec startx
-fi
 
 
 # Variables for each config file of my env and comfort settings
-if [[ "$(uname -s)" == "Darwin" ]]; then
+if [ "$(uname -s)" = "Darwin" ]; then
 	alias ls="ls -G"
 	export LDFLAGS="-L/Users/ade-sede/.brew/opt/llvm/lib -Wl, -rpath,/Users/ade-sede/.brew/opt/llvm/lib"
 	export ASAN_SYMBOLIZER_PATH="$HOME/.brew/opt/llvm/bin/llvm-symbolizer"
@@ -60,9 +57,6 @@ export EDITOR="$VISUAL"
 export PROMPT_FILE="$DOTFILES/zsh/.zsh_prompt.zsh"
 export BAR="$DOTFILES/config/.config/i3blocks/config"
 
-#Exporting path
-# export OLD_PATH="$PATH"
-export PATH="$DOTFILES/scripts:$PATH"
 
 # Cd and git resets prompt
 
@@ -135,7 +129,7 @@ if [ -e "$HOME/.brewconfig.zsh" ]; then
 	. $HOME/.brewconfig.zsh
 fi
 
-if [[ "$(uname -s)" == "Darwin" ]]; then
+if [ "$(uname -s)" = "Darwin" ]; then
 	ZSH_HIH="/Users/ade-sede/.brew/Cellar/zsh-syntax-highlighting/0.5.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 	# [ -f $ZSH_HIH ] && source $ZSH_HIH
 	[ -f $ZSH_HIH ] && . $ZSH_HIH
@@ -143,3 +137,12 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+#Exporting path
+# export OLD_PATH="$PATH"
+export PATH="$DOTFILES/scripts:$PATH"
+
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+	eval $(keychain --eval --quiet ~/.ssh/id_rsa) && exec startx
+elif [ "$(uname -s)" = "Darwin" ] ; then
+	eval $(keychain --eval --quiet ~/.ssh/id_rsa)
+fi

@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+if [ -n "$1" ]; then
+	target="$1"
+else
+	target="."
+fi
+dirlist=$(find $target -type d)
+
+for dir in $dirlist
+do
+	filelist=$(ls $dir)
+	for file in $filelist
+	do
+		echo "$dir/$file \\"
+	done
+	echo '\'
+done

@@ -1,8 +1,8 @@
-"	Vundle plugins{{{
 set background=dark
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" {{{
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -262,7 +262,6 @@ augroup sh_files
 augroup END
 "	}}}
 
-
 "		END AUGROUPS !!	}}}
 
 "		Swapfiles {{{
@@ -351,6 +350,22 @@ nnoremap <leader>[ viw<esc>a]<esc>hbi[<esc>lel
 
 "	Functions {{{
 
+" TREEE
+func Ptree()
+	while line('.') != line('$')
+		if getline('.') =~ "^\s\+->.*"
+			echom "Found empty line"
+			echom line('.')
+			put ="
+		else
+			echom "Found full line"
+			echom line('.')
+			normal viwy
+		endif
+		normal j
+	endwhile
+endfunc
+
 "	Emergency mapping to recreate a basic backspace routine.
 func Backspace()
 	if col('.') == 1
@@ -365,11 +380,37 @@ func Backspace()
 endfunc			
 
 "	Puts a printf with colors and #.
-function! StrDebug()
-	normal! Idprintf(2, MAG"#"CYN"%s"MAG"#\n"RESET,);
-	normal ==,C
-	normal! 2ba
-endfunc
+function! PrintDebug(...)
+	let l:str_debug = "\"MAG\"#\"CYN\"%s\"MAG\"#\"RESET\""
+	let l:int_debug = "\"MAG\"#\"CYN\"%d\"MAG\"#\"RESET\""
+	let l:size_t_debug = "\"MAG\"#\"CYN\"%zu\"MAG\"#\"RESET\""
+	let l:res = "dprintf(2, "
+	let	l:count = 0
+	let l:arg_list = deepcopy(a:000)
+	for arg in arg_list
+		if l:count % 2 == 0
+			if (arg == "str" || arg == "string")
+				let arg = l:str_debug
+			elseif (arg == "int")
+				let arg = l:int_debug
+			elseif (arg == "size_t")
+				let arg = l:size_t_debug
+			else
+				let arg = "\"" . arg . "\""
+			endif
+		else
+			if l:count != a:0 - 1
+				let arg = ", " . arg . ", "
+			else
+				let arg = ", " . arg
+			endif
+		endif
+		let l:count += 1
+		let l:res = l:res . arg
+	endfor
+	let l:res = l:res . ");"
+	put =l:res
+endfunction
 
 "Folds every conditional preprocessing from the first #if to #endif
 "Doesnt work in nested IFs.
@@ -399,6 +440,9 @@ endfunc
 
 "			}}}
 
+" Commands{{{
+command! -nargs=1 Search call setqflist([]) | silent! bufdo vimgrepadd! <args> %
+" }}}
+
 syntax keyword TODO contained NOTE
 source $DOTFILES/zaz_header.vim
-command! -nargs=1 Search call setqflist([]) | silent! bufdo vimgrepadd! <args> %
