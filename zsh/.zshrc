@@ -90,13 +90,13 @@ TRAPALRM() {
 #	Base 16 config
 if [ "$(uname -s)" != "Linux" ]; then
 	BASE16_SHELL=$HOME/.config/base16-shell/
-	base16=true
 	auto_style=base16
 	[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 else
 	auto_style=wal
 	wal -t -r
 fi
+export auto_style
 
 # Loading prompt settings
 autoload -Uz promptinit
@@ -122,7 +122,9 @@ alias gww="gcc -Wall -Wextra -Werror"
 alias grep="grep --color"
 alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
 alias ll="ls -alsh"
-alias v="vim -u $MYVIMRC"
+# alias v="vim -u $MYVIMRC"
+alias e=emacs
+alias v=vim
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias clean_swp="rm -rf /var/tmp/*.swp"
 alias cd.="cd ."
