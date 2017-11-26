@@ -53,7 +53,7 @@ nnoremap <C-w><Tab>p :TagbarTogglePause<cr>
 
 " BASE-16{{{
 Plugin 'chriskempson/base16-vim'
-if filereadable(expand("~/.vimrc_background")) && $base16 == "true"
+if filereadable(expand("~/.vimrc_background")) && $auto_style == "base16"
 	let base16colorspace=256
 	source ~/.vimrc_background
 endif
@@ -229,7 +229,7 @@ augroup c_files
 	autocmd FileType c setlocal comments=sO:/*,m1:**,ex:*/,f://
 	autocmd FileType c let maplocalleader = ","
 	" autocmd FileType c vnoremap <silent><localleader>c :<BS><BS><BS><BS><BS>silent! call CComment_42()<cr>
-	autocmd FileType c source $HOME/.vim/syntax/c.vim
+	" autocmd FileType c source $HOME/.vim/syntax/c.vim
 	autocmd FileType c nnoremap <localleader>C A//			REMOVE		<esc>
 	" autocmd FileType c setlocal foldmethod=expr
 	autocmd FileType c setlocal foldmethod=marker
@@ -263,8 +263,8 @@ augroup END
 "		END AUGROUPS !!	}}}
 
 "		Swapfiles {{{
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp "Sets backupdirectory for all swp files"
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp "}}}
+set backupdir=~/.vim/backup "Sets backupdirectory for all swp files"
+set directory=~/.vim/swap "}}}
 
 "		Command completion {{{
 set wildmenu										"Using <TAB> in the command line displays your options for completion
