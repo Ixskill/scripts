@@ -192,7 +192,7 @@ bar
 {
     status_command i3blocks
     position top
-    font pango:Hack, FontAwesome, Awesome, AIcons, icons 10
+    font pango: Roboto Mono Medium for Powerline, Hack, FontAwesome, Awesome, AIcons, icons 10
     strip_workspace_numbers yes
     separator_symbol "■"
     colors { 
