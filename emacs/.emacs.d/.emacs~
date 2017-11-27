@@ -1,0 +1,59 @@
+;(if (string= '(shell-command-to-string "uname -s") "Darwin")
+	;(setq config_files "/usr/share/emacs/site-lisp/")
+	;(1)
+	;)
+;(if (string= "Darwin" "Darwin")
+(if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin"))
+	(setq config_files "/usr/share/emacs/site-lisp/")
+	(print 1)
+	)
+
+(setq load-path (append (list nil config_files) load-path))
+(load "list.el")
+(load "string.el")
+(load "comments.el")
+(load "header.el")
+
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode t)
+(global-set-key (kbd "DEL") 'backward-delete-char)
+(setq-default c-backspace-function 'backward-delete-char)
+(setq-default c-basic-offset 4)
+(setq-default c-default-style "linux")
+(setq-default tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
+	  		  				 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))
+;; Column number displayed in the bar
+(column-number-mode)
+
+;; Enables highlight mode
+(global-font-lock-mode)
+(global-hi-lock-mode)
+
+;; Every file is sent to this backup directory
+(setq backup-directory-alist
+	  `((".*" . "~/.emacs.d")))
+
+;; Sourcing my modes
+(require 'package)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+
+;; Load evil-mode
+(require 'evil)
+(evil-mode t)
+
+;*******************************************************************************;
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(gud-gdb-command-name "gdb --annotate=1")
+ '(large-file-warning-threshold nil)
+ '(package-selected-packages (quote (evil))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
