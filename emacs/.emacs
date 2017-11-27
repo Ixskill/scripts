@@ -3,8 +3,6 @@
   (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/"))
   )
 
-
-
 ;; Sourcing packages necessary for 42 header
 (setq load-path (append (list nil config_files) load-path))
 (load "list.el")

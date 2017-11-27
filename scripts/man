@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+
+# Little wrapper for the man binary.
+# Using man -M is bothersome because the path your specify will become the exclusive path to mans, instead of
+# being an alternativ path.
+# This wrapper is here to fix that
+
+for path in `cat /etc/manpaths`
+do
+	if [ ${#MANPATH} -ne 0 ]; then
+		MANPATH="$MANPATH:$path:"
+	else
+		MANPATH="$path"
+	fi
+done
+MANPATH=`echo $MANPATH | sed -E 's/:$//g'`
+
+for i in $@
+do
+	case "$1"
+		in
+		(-M)
+			shift
+			if [ ${#MANPATH} -ne 0 ]; then
+				MANPATH="$MANPATH:$1:"
+			else
+				MANPATH="$1"
+			fi
+			MANPATH=`echo $MANPATH | sed -E 's/:$//g'`
+			shift;;
+	esac
+done
+MANPATH=`echo $MANPATH | sed -E 's/:$//g'`
+export MANPATH
+/usr/bin/man $@
