@@ -3,7 +3,8 @@
   (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/"))
   )
 
-
+;; Remaps C-c as the ESC key. Useful for EVIL, bad for EMACS i guess. 
+(evil-define-key 'insert global-mode-map (kbd "jk") 'evil-force-normal-state)
 
 ;; Sourcing packages necessary for 42 header
 (setq load-path (append (list nil config_files) load-path))
@@ -11,6 +12,7 @@
 (load "string.el")
 (load "comments.el")
 (load "header.el")
+
 ;; A few default settings, just to make sure everything works alright
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode t)
@@ -44,14 +46,6 @@
 (require 'powerline-evil)
 (evil-mode t)
 
-;; Remaps C-c as the ESC key. Useful for EVIL, bad for EMACS i guess. 
-(define-minor-mode custom-vim-mode
-				   "Learning"
-  :keymap (make-sparse-keymap)
-  :global)
-(add-hook 'program-mode-hook #'custom-vim-mode)
-(evil-define-key 'insert custom-vim-mode (kbd "jk") 'evil-force-normal-state)
-(evil-define-key 'visual custom-vim-mode (kbd "C-c") 'evil-force-normal-state)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
