@@ -87,7 +87,7 @@ TRAPALRM() {
 }
 
 
-#	Base 16 config
+#Base 16 config
 if [ "$(uname -s)" != "Linux" ]; then
 	BASE16_SHELL=$HOME/.config/base16-shell/
 	auto_style=base16
