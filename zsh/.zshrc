@@ -33,8 +33,6 @@ if [ "$(uname -s)" = "Linux" ]; then
 	# source $HOME/.locale.conf
 fi
 
-
-
 # Variables for each config file of my env and comfort settings
 if [ "$(uname -s)" = "Darwin" ]; then
 	alias ls="ls -G"
@@ -53,7 +51,8 @@ export TERMITERC="$DOTFILES/config/.config/termite/config"
 export TPLUGS="$DOTFILES/tmux/.tmux/plugins/"
 export TODO="$DOTFILES/TODO"
 export MAIL="adrien.de.sede@gmail.com"
-export VISUAL="vim"
+# export VISUAL="vim"
+export VISUAL="emacsclient"
 export EDITOR="$VISUAL"
 export PROMPT_FILE="$DOTFILES/zsh/.zsh_prompt.zsh"
 export BAR="$DOTFILES/config/.config/i3blocks/config"
@@ -67,37 +66,39 @@ export BAR="$DOTFILES/config/.config/i3blocks/config"
 [ -f $PROMPT_FILE ] && . $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
 [ -f $PROMPT_FILE ] && . ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
 
-setopt PROMPT_SUBST
-PS1=$(echo_prompt)
-cd () {
-	builtin cd $1
-	reset_prompt 
-}
-
-reset_prompt (){
+if [ $TERM != "eterm-color" ]; then
+	setopt PROMPT_SUBST
 	PS1=$(echo_prompt)
-}
+	cd () {
+		builtin cd $1
+		reset_prompt 
+	}
 
-reset_prompt
-
-# Resets prompts every TMOUT seconds
-TMOUT=2
-TRAPALRM() {
+	reset_prompt (){
+		PS1=$(echo_prompt)
+	}
 	reset_prompt
-	# echo $vcs_info_msg_0_
-}
 
-
-#Base 16 config
-if [ "$(uname -s)" != "Linux" ]; then
-	BASE16_SHELL=$HOME/.config/base16-shell/
-	auto_style=base16
-	[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-else
-	auto_style=wal
-	wal -t -r
+	# Resets prompts every TMOUT seconds
+	TMOUT=2
+	TRAPALRM() {
+		reset_prompt
+	}
 fi
-export auto_style
+
+
+#Style config
+# if [ $TERM != "eterm-color" ]; then
+# 	if [ "$(uname -s)" != "Linux" ]; then
+# 		BASE16_SHELL=$HOME/.config/base16-shell/
+# 		auto_style=base16
+# 		[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# 	else
+# 		auto_style=wal
+# 		wal -t -R -n -q
+# 	fi
+# fi
+# export auto_style
 
 # Loading prompt settings
 autoload -Uz promptinit
@@ -123,11 +124,9 @@ alias gww="gcc -Wall -Wextra -Werror"
 alias grep="grep --color"
 alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
 alias ll="ls -alsh"
-# alias v="vim -u $MYVIMRC"
-alias e=emacs
+alias em=emacs
 alias v=vim
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
-alias clean_swp="rm -rf /var/tmp/*.swp"
 alias cd.="cd ."
 alias i3lock="xbacklight -set 0 && i3lock -c 000000"
 
@@ -144,11 +143,11 @@ if [ "$(uname -s)" = "Darwin" ]; then
 	[ -f $ZSH_HIH ] && . $ZSH_HIH
 fi
 
+#Exporting path
+export PATH="$DOTFILES/scripts:$PATH"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-#Exporting path
-# export OLD_PATH="$PATH"
-export PATH="$DOTFILES/scripts:$PATH"
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	eval $(keychain --eval --quiet ~/.ssh/id_rsa) && exec startx

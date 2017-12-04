@@ -27,7 +27,8 @@ set $lightblue	#11DDDD
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # The size is to 0 so that no bars are shown
-font pango:Hack, Awesome, icons, AIcons 0
+font pango: Roboto Mono Medium for Powerline, Hack, Awesome, icons, AIcons 0
+
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -202,7 +203,7 @@ bar
 	inactive_workspace	$blackgrey	$darkgrey	$white
     }
 }
-# Wallpaper
+# Launch at RUNTIME
 exec --no-startup-id compton -b
 exec --no-startup-id nm-applet &
 exec --no-startup-id nitrogen --restore
