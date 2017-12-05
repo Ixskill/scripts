@@ -40,6 +40,11 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (package-initialize)
 
+;; Helm
+(require 'helm-config)
+;; Org mode
+(require 'org-install)
+
 ;; Load evil-mode
 (require 'evil)
 (evil-mode 1)
@@ -61,7 +66,8 @@
 ;; Loading theme depending on GUI or term
 (if (display-graphic-p)
 	; if part
-	(load-theme 'green-phosphor 'NO-CONFIRM)
+	;(load-theme 'green-phosphor 'NO-CONFIRM)
+	(load-theme 'nord 'NO-CONFIRM)
 	;(load-theme 'deeper-blue 'NO-CONFIRM)
 	;(load-theme 'subatomic 'NO-CONFIRM)
   ; else part
@@ -80,6 +86,23 @@
 	  scroll-conservatively 10000
 	  scroll-step 1)
 
+;; A few keymapings
+(global-set-key (kbd "M-O") 'mode-line-other-buffer)
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+;;; Functions
+;; Defining a few of my own functions
+(defun surround-region-with-paren ()
+  "Surrounds the active region with parentheses"
+ (interactive) 
+ (progn
+   (call-interactively 'kill-region)
+   (insert "(")
+   (insert (car kill-ring))
+	(insert ")")))
+
+(evil-define-key 'visual 'evil-visual-state-map (kbd "(") 'surround-region-with-paren)
+
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -93,7 +116,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(nord-theme subatomic-theme subatomic256-theme xterm-color evil-magit green-phosphor-theme magit evil))))
+	(async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color evil-magit green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
