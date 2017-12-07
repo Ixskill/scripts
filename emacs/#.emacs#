@@ -6,10 +6,10 @@
 ;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
-;    Updated: 2017/12/07 19:31:46 by ade-sede         ###   ########.fr        ;
+;    Updated: 2017/12/07 19:04:42 by ade-sede         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
-
+	
 ;; Conditionally loads the local site-lisp folder containing 42header ressources
 (if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
 	(setq config_files "/usr/share/emacs/site-lisp/")
