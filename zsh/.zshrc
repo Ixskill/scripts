@@ -43,7 +43,7 @@ fi
 export LLDB="/usr/bin/lldb"
 export DOTFILES="$HOME/.dotfiles"
 export MYVIMRC="$DOTFILES/vim/.vimrc"
-export EMACSRC="$DOTFILES/vim/.emacs"
+export EMACSRC="$DOTFILES/emacs/.emacs"
 export TMUXRC="$DOTFILES/tmux/.tmux.conf"
 export ZSHRC="$DOTFILES/zsh/.zshrc"
 export i3RC="$DOTFILES/config/.config/i3/config"

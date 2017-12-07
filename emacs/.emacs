@@ -1,3 +1,15 @@
+;******************************************************************************;
+;                                                                              ;
+;                                                         :::      ::::::::    ;
+;    .emacs                                             :+:      :+:    :+:    ;
+;                                                     +:+ +:+         +:+      ;
+;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
+;                                                 +#+#+#+#+#+   +#+            ;
+;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
+;    Updated: 2017/12/07 09:29:10 by ade-sede         ###   ########.fr        ;
+;                                                                              ;
+;******************************************************************************;
+
 ;; Conditionally loads the local site-lisp folder containing 42header ressources
 (if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
 	(setq config_files "/usr/share/emacs/site-lisp/")
@@ -59,9 +71,11 @@
 (evil-define-key 'replace 'evil-replace-state-map (kbd "C-c") 'evil-force-normal-state)
 
 ;; Disable toolbar mode
-(tool-bar-mode -1)
+(if (display-graphic-p)
+  (progn ((tool-bar-mode -1)
 (menu-bar-mode -1)
-(scroll-bar-mode -1)
+(scroll-bar-mode -1)))
+  ())
 
 ;; Loading theme depending on GUI or term
 (if (display-graphic-p)
@@ -87,13 +101,14 @@
 	  scroll-step 1)
 
 ;; A few keymapings
-(global-set-key (kbd "M-O") 'mode-line-other-buffer)
+;(global-set-key (kbd "M-O") 'mode-line-other-buffer) ;; HUGE PROBLEM
 (global-set-key (kbd "M-x") 'helm-M-x)
 
 ;;; Functions
 ;; Defining a few of my own functions
+
 (defun surround-region-with-paren ()
-  "Surrounds the active region with parentheses"
+  "Surrounds the active region with parentheses by killing the region, inserting parens and reinserting the region kill-ring inside"
  (interactive) 
  (progn
    (call-interactively 'kill-region)
@@ -103,12 +118,16 @@
 
 (evil-define-key 'visual 'evil-visual-state-map (kbd "(") 'surround-region-with-paren)
 
+
+;; Setting up c comment with 42 style
+(setq c-block-comment-prefix "** ")
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(comment-style (quote extra-line))
  '(custom-safe-themes
    (quote
 	("c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
