@@ -6,7 +6,7 @@
 ;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
-;    Updated: 2017/12/07 19:31:46 by ade-sede         ###   ########.fr        ;
+;    Updated: 2017/12/11 05:28:25 by ade-sede         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -126,6 +126,10 @@
 (setq c-block-comment-prefix "** ")
 
 ;; Setting up a hack for system clipboard in emacs
+;;;; TODO
+
+;; Compile options
+(setq compilation-scroll-output 1)
 
 ;*******************************************************************************;
 (custom-set-variables
