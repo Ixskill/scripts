@@ -6,20 +6,17 @@
 ;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
-;    Updated: 2017/12/11 05:28:25 by ade-sede         ###   ########.fr        ;
+;    Updated: 2017/12/11 17:14:05 by ade-sede         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
-
 ;; Conditionally loads the local site-lisp folder containing 42header ressources
 (if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
 	(setq config_files "/usr/share/emacs/site-lisp/")
-  (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/"))
-  )
+  (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/")))
 
 ;; Sourcing packages necessary for 42 header
 (setq load-path (append (list nil config_files) load-path))
-(load "list.el")
-(load "string.el")
+(load "list.el") (load "string.el")
 (load "comments.el")
 (load "header.el")
 
@@ -131,6 +128,28 @@
 ;; Compile options
 (setq compilation-scroll-output 1)
 
+;; Setting up clipboard copy and paste
+(if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
+	(defun paste-from-system-clipboard ()
+	  (interactive)
+	  (insert (shell-command-to-string "pbpaste")))
+  (defun paste-from-system-clipboard ()
+	(interactive)
+	(insert (shell-command-to-string "xsel --clipboard --output"))))
+
+
+(if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
+	(defun copy-region-to-system-clipboard ()
+	  (interactive)
+	  (call-interactively 'shell-command-on-region '"pbcopy"))
+  (defun copy-region-to-system-clipboard ()
+	(interactive)
+	(call-interactively 'shell-command-on-region '"xsel --clipboard --input")))
+
+;; Magit bind
+
+(global-set-key (kbd "M-g") 'magit-status)
+
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -145,7 +164,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color evil-magit green-phosphor-theme magit evil))))
+	(async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
