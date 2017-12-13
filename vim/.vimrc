@@ -264,7 +264,7 @@ augroup END
 
 "		Swapfiles {{{
 set backupdir=~/.vim/backup "Sets backupdirectory for all swp files"
-set directory=~/.vim/swap "}}}
+set directory=~/.vim/backup "}}}
 
 "		Command completion {{{
 set wildmenu										"Using <TAB> in the command line displays your options for completion

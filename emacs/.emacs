@@ -6,7 +6,7 @@
 ;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
-;    Updated: 2017/12/11 17:14:05 by ade-sede         ###   ########.fr        ;
+;    Updated: 2017/12/13 09:53:01 by ade-sede         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 ;; Conditionally loads the local site-lisp folder containing 42header ressources
@@ -60,6 +60,8 @@
 ;; Load evil-mode
 (require 'evil)
 (evil-mode 1)
+
+(evil-select-search-module 'evil-search-module 'evil-search)
 
 ;; Powerline,powerline
 (require 'powerline)
