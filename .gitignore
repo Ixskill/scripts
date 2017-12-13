@@ -5,4 +5,6 @@ config/*
 !config/.config/termite
 tmux/.tmux/resurrect
 tmux/.tmux/resurrect/last
+tmux/.tmux/plugins
+vim/.vim/bundle/
 *~
