@@ -71,7 +71,6 @@ OBJS = $(addprefix $(OBJ_DIR)/,$(SRC_FILE:.c=.o))
 
 all: hello_word lib $(OBJ_DIR) $(NAME) $(INCLUDES_DEP)
 	@printf "$(COLOR_CLEAR)$(COLOR_GREEN)successfully created $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
-	@echo $(MY_TERM)
 
 hello_word:
 	@printf "$(COLOR_VIOLET)$(COLOR_UNDERLINE)compiling$(COLOR_NOCOLOR) $(COLOR_BLUE)$(NAME) ...$(COLOR_NOCOLOR)\n"

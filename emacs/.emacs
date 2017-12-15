@@ -6,7 +6,7 @@
 ;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
-;    Updated: 2017/12/13 12:46:24 by ade-sede         ###   ########.fr        ;
+;    Updated: 2017/12/15 11:52:12 by ade-sede         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -165,6 +165,19 @@
 					"Insert make options: " (format "make -C %s " makefile-dir))))
 	  (print "Makefile not found"))))
 
+(defun shell-command-current-file ()
+  "Invokes the requested shell command with path current file as argument and displays it in a buffer"
+  (interactive)
+  (if (buffer-file-name)
+	  (shell-command (format "%s %s" (read-string "Program to invoke with current file as argument: ") (buffer-file-name)))
+	(print "No file is currently open")))
+
+(defun shell-command-current-file-to-string ()
+  "Invokes the requested shell command with path current file as argument and returns it as a string"
+  (interactive)
+  (if (buffer-file-name)
+	  (shell-command-to-string (format "%s %s" (read-string "Program to invoke with current file as argument: ") (buffer-file-name)))
+	(print "No file is currently open")))
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
