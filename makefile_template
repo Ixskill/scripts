@@ -1,3 +1,5 @@
+MY_TERM = ${TERM}
+ifneq ($(MY_TERM), dumb)
 COLOR_CLEAR		= \033[2K
 COLOR_UP		= \033[A
 COLOR_NOCOLOR	= \033[0m
@@ -12,20 +14,32 @@ COLOR_BLUE		= \033[1;34m
 COLOR_VIOLET	= \033[1;35m
 COLOR_CYAN		= \033[1;36m
 COLOR_WHITE		= \033[1;37m
-
+endif
 
 # **************************************************************************** #
-SRC_FILE =
+SRC_FILE =\
+	main.c \
+	draw.c \
+	coordinates.c \
+	parse.c
 
-INCLUDES_FILES =
+INCLUDES_FILES =\
+	fdf.h
 
-NAME ?= 42sh
+NAME ?= FdF
+SYSTEM = $(shell uname -s)
 
 # defining those variables allows auto completion to occure.
 APPEND=
 ASAN=
 TEST_FILE=
 
+ifeq ($(SYSTEM), Darwin)
+	MLX_DIR = minilibx_macos
+else
+	MLX_DIR = minilibx_linux
+endif
+MLX_INC = -I$(MLX_DIR)
 LIB_DIR = libft
 LIB_INC = -I$(LIB_DIR)/includes
 LOCAL_INC = -Iincludes -Iressources
@@ -39,8 +53,14 @@ endif
 OPTIMIZATION ?= -O0
 CFLAGS ?= -g3 -Wall -Wextra -Werror
 CC ?= gcc
-LDFLAGS = -L$(LIB_DIR)
-INCLUDES = $(LOCAL_INC) $(LIB_INC)
+
+ifeq ($(SYSTEM), Darwin)
+	LDFLAGS = -L$(LIB_DIR) -lft -L$(MLX_DIR) -lmlx -framework OpenGL -framework Appkit
+else
+	LDFLAGS = -L$(LIB_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11
+endif
+
+INCLUDES = $(LOCAL_INC) $(LIB_INC) $(MLX_INC)
 
 INCLUDES_DEP = $(addprefix ./includes/, $(INCLUDES_FILES))
 
@@ -48,16 +68,17 @@ SRCS = $(addprefix $(SRC_DIR)/,$(SRC_FILE:.c=.c))
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC_FILE:.c=.o))
 
-.phony: all test hello_word lib $(OBJ_DIR) $(NAME) clean fclean re
 
 all: hello_word lib $(OBJ_DIR) $(NAME) $(INCLUDES_DEP)
 	@printf "$(COLOR_CLEAR)$(COLOR_GREEN)successfully created $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
+	@echo $(MY_TERM)
 
 hello_word:
 	@printf "$(COLOR_VIOLET)$(COLOR_UNDERLINE)compiling$(COLOR_NOCOLOR) $(COLOR_BLUE)$(NAME) ...$(COLOR_NOCOLOR)\n"
 
 lib:
-	@make -C $(LIB_DIR) APPEND="$(APPEND)" OPTIMIZATION="$(OPTIMIZATION)" CC="$(CC)"
+	@make -C $(LIB_DIR) APPEND="$(APPEND)" OPTIMIZATION="$(OPTIMIZATION)" CC="$(CC)" MY_TERM="$(MY_TERM)"
+	@make -C $(MLX_DIR) CC="$(CC)"
 
 $(NAME): $(OBJS) 
 	@printf "$(COLOR_GREEN)successfully created objects files for binary $(COLOR_BLUE)$(NAME) !!!$(COLOR_NOCOLOR)\n"
@@ -65,16 +86,18 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) $(INCLUDES) $(SANITIZER) $(APPEND) $(OPTIMIZATION)
 
 $(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
 clean:
-	@make -C $(LIB_DIR) clean
+	@make -C $(LIB_DIR) clean MY_TERM="$(MY_TERM)"
 	@/bin/rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@make -C $(LIB_DIR) fclean
+	@make -C $(LIB_DIR) fclean MY_TERM="$(MY_TERM)"
 	@/bin/rm -f $(NAME)
 
 re: fclean
+	@make -C $(MLX_DIR) clean MY_TERM="$(MY_TERM)"
 	make
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
@@ -87,3 +110,5 @@ test:
 	@$(CC) -g $(TEST_FILE) $(INCLUDES) $(LDFLAGS) $(SANITIZER) $(APPEND)
 	@printf "$(COLOR_GREEN)done !!! launching $(TEST_FILE) now !!!\n$(COLOR_NOCOLOR)"
 	@./a.out
+
+.PHONY: all test hello_word lib $(OBJ_DIR) $(NAME) clean fclean re

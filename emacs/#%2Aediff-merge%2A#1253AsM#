@@ -6,7 +6,11 @@
 ;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
-;    Updated: 2017/12/13 12:46:24 by ade-sede         ###   ########.fr        ;
+<<<<<<< variant A
+;    Updated: 2017/12/13 09:53:01 by ade-sede         ###   ########.fr        ;
+>>>>>>> variant B
+;    Updated: 2017/12/11 20:01:14 by ade-sede         ###   ########.fr        ;
+======= end
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -152,18 +156,6 @@
 ;; Magit bind
 
 (global-set-key (kbd "M-g") 'magit-status)
-
-;; Little function to compile projecting looking for the closest makefile in the FS
-
-(defun my-make()
-  (interactive)
-  (let ((makefile-dir (locate-dominating-file "." "makefile")))
-	(if makefile-dir
-		(progn
-		  (print (format "Found Makefile in %s" makefile-dir))
-		  (compile (read-string
-					"Insert make options: " (format "make -C %s " makefile-dir))))
-	  (print "Makefile not found"))))
 
 ;*******************************************************************************;
 (custom-set-variables
