@@ -6,7 +6,7 @@
 ;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
-;    Updated: 2017/12/15 11:52:12 by ade-sede         ###   ########.fr        ;
+;    Updated: 2017/12/17 15:58:20 by ade-sede         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -192,7 +192,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

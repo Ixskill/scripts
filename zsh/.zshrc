@@ -149,6 +149,9 @@ export PATH="$DOTFILES/scripts:$PATH"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# Rust PATH
+export PATH="$HOME/.cargo/bin:$PATH"
+
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	eval $(keychain --eval --quiet ~/.ssh/id_rsa) && exec startx
 elif [ "$(uname -s)" = "Darwin" ] ; then

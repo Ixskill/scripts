@@ -1,0 +1,3 @@
+* Emacs
+  - All shell commands should be async.
+  - Close a buffer 

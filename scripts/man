@@ -5,20 +5,22 @@
 # being an alternativ path.
 # This wrapper is here to fix that
 
-for path in `cat /etc/manpaths`
-do
-	if [ ${#MANPATH} -ne 0 ]; then
-		MANPATH="$MANPATH:$path:"
-	else
-		MANPATH="$path"
-	fi
-done
+if [ -f /etc/manpaths ]; then
+	for path in `cat /etc/manpaths`
+	do
+		if [ ${#MANPATH} -ne 0 ]; then
+			MANPATH="$MANPATH:$path:"
+		else
+			MANPATH="$path"
+		fi
+	done
+fi
 MANPATH=`echo $MANPATH | sed -E 's/:$//g'`
 
 for i in $@
 do
 	case "$1"
-		in
+	in
 		(-M)
 			shift
 			if [ ${#MANPATH} -ne 0 ]; then
