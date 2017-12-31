@@ -6,7 +6,7 @@
 ;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
-;    Updated: 2017/12/17 15:58:20 by ade-sede         ###   ########.fr        ;
+;    Updated: 2017/12/31 12:53:11 by ade-sede         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -45,6 +45,8 @@
 ;; Every file is sent to this backup directory
 (setq backup-directory-alist
 	  `((".*" . "~/.emacs.d")))
+(setq auto-save-file-name-transforms
+          `((".*" ,"~/.emacs.d" t)))
 
 ;; Sourcing my modes a d packages init
 (require 'package)
@@ -84,12 +86,12 @@
 (if (display-graphic-p)
 	; if part
 	;(load-theme 'green-phosphor 'NO-CONFIRM)
-	(load-theme 'nord 'NO-CONFIRM)
+	;; (load-theme 'nord 'NO-CONFIRM)
 	;(load-theme 'deeper-blue 'NO-CONFIRM)
-	;(load-theme 'subatomic 'NO-CONFIRM)
+	(load-theme 'subatomic 'NO-CONFIRM)
   ; else part
-  ;(load-theme 'subatomic256 'NO-CONFIRM)
-  (load-theme 'nord 'NO-CONFIRM)
+  (load-theme 'subatomic256 'NO-CONFIRM)
+  ;; (load-theme 'nord 'NO-CONFIRM)
   )
 
 ;; Do not show the startup screen
@@ -187,12 +189,12 @@
  '(comment-style (quote extra-line))
  '(custom-safe-themes
    (quote
-	("c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
+	("d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
