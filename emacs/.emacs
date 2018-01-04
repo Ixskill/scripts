@@ -6,7 +6,7 @@
 ;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
-;    Updated: 2017/12/31 12:53:11 by ade-sede         ###   ########.fr        ;
+;    Updated: 2018/01/02 08:16:19 by ade-sede         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
@@ -180,6 +180,17 @@
   (if (buffer-file-name)
 	  (shell-command-to-string (format "%s %s" (read-string "Program to invoke with current file as argument: ") (buffer-file-name)))
 	(print "No file is currently open")))
+
+;; Defining custom completion
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-auto-complete t)
+(eval-after-load 'company
+  '(progn
+     (define-key company-active-map (kbd "C-n") 'company-complete-common-or-cycle)
+     (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+     (define-key company-active-map (kbd "<tab>") 'company-complete-common)))
+(evil-define-key 'insert 'evil-insert-state-map (kbd "C-n") 'company-complete)
+(evil-define-key 'insert 'evil-insert-state-map (kbd "C-p") 'company-complete)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -190,11 +201,12 @@
  '(custom-safe-themes
    (quote
 	("d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
+ '(global-company-mode nil)
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
