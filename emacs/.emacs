@@ -1,15 +1,3 @@
-;******************************************************************************;
-;                                                                              ;
-;                                                         :::      ::::::::    ;
-;    .emacs                                             :+:      :+:    :+:    ;
-;                                                     +:+ +:+         +:+      ;
-;    By: ade-sede <adrien.de.sede@gmail.com>        +#+  +:+       +#+         ;
-;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2017/12/07 08:49:59 by ade-sede          #+#    #+#              ;
-;    Updated: 2017/12/18 14:09:36 by ade-sede         ###   ########.fr        ;
-;                                                                              ;
-;******************************************************************************;
-
 ;; Conditionally loads the local site-lisp folder containing 42header ressources
 (if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
 	(setq config_files "/usr/share/emacs/site-lisp/")
@@ -45,6 +33,8 @@
 ;; Every file is sent to this backup directory
 (setq backup-directory-alist
 	  `((".*" . "~/.emacs.d")))
+(setq auto-save-file-name-transforms
+	  `((".*" ,"~/.emacs.d" t)))
 
 ;; Sourcing my modes a d packages init
 (require 'package)
@@ -75,21 +65,21 @@
 
 ;; Disable toolbar mode
 (if (display-graphic-p)
-  (progn ((tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)))
+	(progn ((tool-bar-mode -1)
+			(menu-bar-mode -1)
+			(scroll-bar-mode -1)))
   ())
 
 ;; Loading theme depending on GUI or term
 (if (display-graphic-p)
-	; if part
-	;(load-theme 'green-phosphor 'NO-CONFIRM)
-	(load-theme 'nord 'NO-CONFIRM)
-	;(load-theme 'deeper-blue 'NO-CONFIRM)
-	;(load-theme 'subatomic 'NO-CONFIRM)
-  ; else part
-  ;(load-theme 'subatomic256 'NO-CONFIRM)
-  (load-theme 'nord 'NO-CONFIRM)
+										; if part
+										;(load-theme 'green-phosphor 'NO-CONFIRM)
+	;; (load-theme 'nord 'NO-CONFIRM)
+										;(load-theme 'deeper-blue 'NO-CONFIRM)
+	(load-theme 'subatomic 'NO-CONFIRM)
+										; else part
+  (load-theme 'subatomic256 'NO-CONFIRM)
+  ;; (load-theme 'nord 'NO-CONFIRM)
   )
 
 ;; Do not show the startup screen
@@ -104,7 +94,7 @@
 	  scroll-step 1)
 
 ;; A few keymapings
-;(global-set-key (kbd "M-O") 'mode-line-other-buffer) ;; HUGE PROBLEM
+										;(global-set-key (kbd "M-O") 'mode-line-other-buffer) ;; HUGE PROBLEM
 (global-set-key (kbd "M-x") 'helm-M-x)
 
 ;;; Functions
@@ -112,11 +102,11 @@
 
 (defun surround-region-with-paren ()
   "Surrounds the active region with parentheses by killing the region, inserting parens and reinserting the region kill-ring inside"
- (interactive) 
- (progn
-   (call-interactively 'kill-region)
-   (insert "(")
-   (insert (car kill-ring))
+  (interactive) 
+  (progn
+	(call-interactively 'kill-region)
+	(insert "(")
+	(insert (car kill-ring))
 	(insert ")")))
 
 (evil-define-key 'visual 'evil-visual-state-map (kbd "(") 'surround-region-with-paren)
@@ -179,6 +169,7 @@
 	  (shell-command-to-string (format "%s %s" (read-string "Program to invoke with current file as argument: ") (buffer-file-name)))
 	(print "No file is currently open")))
 
+<<<<<<< HEAD
 
 ;; Setup multiple asynchronus shell-command
 (defadvice erase-buffer (around erase-buffer-noop)
@@ -187,36 +178,46 @@
 
 (defadvice shell-command (around shell-command-unique-buffer activate compile)
   (if (or current-prefix-arg
-          (not (string-match "[ \t]*&[ \t]*\\'" command)) ;; background
-          (bufferp output-buffer)
-          (stringp output-buffer))
-      ad-do-it ;; no behavior change
+		  (not (string-match "[ \t]*&[ \t]*\\'" command)) ;; background
+		  (bufferp output-buffer)
+		  (stringp output-buffer))
+	  ad-do-it ;; no behavior change
 
-    ;; else we need to set up buffer
-    (let* ((command-buffer-name
-            (format "*background: %s*"
-                    (substring command 0 (match-beginning 0))))
-           (command-buffer (get-buffer command-buffer-name)))
+	;; else we need to set up buffer
+	(let* ((command-buffer-name
+			(format "*background: %s*"
+					(substring command 0 (match-beginning 0))))
+		   (command-buffer (get-buffer command-buffer-name)))
 
-      (when command-buffer
-        ;; if the buffer exists, reuse it, or rename it if it's still in use
-        (cond ((get-buffer-process command-buffer)
-               (set-buffer command-buffer)
-               (rename-uniquely))
-              ('t
-               (kill-buffer command-buffer))))
-      (setq output-buffer command-buffer-name)
+	  (when command-buffer
+		;; if the buffer exists, reuse it, or rename it if it's still in use
+		(cond ((get-buffer-process command-buffer)
+			   (set-buffer command-buffer)
+			   (rename-uniquely))
+			  ('t
+			   (kill-buffer command-buffer))))
+	  (setq output-buffer command-buffer-name)
 
-      ;; insert command at top of buffer
-      (switch-to-buffer-other-window output-buffer)
-      (insert "Running command: " command
-              "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n")
+	  ;; insert command at top of buffer
+	  (switch-to-buffer-other-window output-buffer)
+	  (insert "Running command: " command
+			  "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n")
 
-      ;; temporarily blow away erase-buffer while doing it, to avoid
-      ;; erasing the above
-      (ad-activate-regexp "erase-buffer-noop")
-      ad-do-it
-      (ad-deactivate-regexp "erase-buffer-noop"))))
+	  ;; temporarily blow away erase-buffer while doing it, to avoid
+	  ;; erasing the above
+	  (ad-activate-regexp "erase-buffer-noop")
+	  ad-do-it
+	  (ad-deactivate-regexp "erase-buffer-noop"))))
+;; Defining custom completion
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-auto-complete t)
+(eval-after-load 'company
+  '(progn
+	 (define-key company-active-map (kbd "C-n") 'company-complete-common-or-cycle)
+	 (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+	 (define-key company-active-map (kbd "<tab>") 'company-complete-common)))
+(evil-define-key 'insert 'evil-insert-state-map (kbd "C-n") 'company-complete)
+(evil-define-key 'insert 'evil-insert-state-map (kbd "C-p") 'company-complete)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -226,12 +227,13 @@
  '(comment-style (quote extra-line))
  '(custom-safe-themes
    (quote
-	("c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
+	("d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
+ '(global-company-mode nil)
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
