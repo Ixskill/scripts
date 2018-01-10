@@ -169,8 +169,6 @@
 	  (shell-command-to-string (format "%s %s" (read-string "Program to invoke with current file as argument: ") (buffer-file-name)))
 	(print "No file is currently open")))
 
-<<<<<<< HEAD
-
 ;; Setup multiple asynchronus shell-command
 (defadvice erase-buffer (around erase-buffer-noop)
   "make erase-buffer do nothing")
@@ -218,6 +216,9 @@
 	 (define-key company-active-map (kbd "<tab>") 'company-complete-common)))
 (evil-define-key 'insert 'evil-insert-state-map (kbd "C-n") 'company-complete)
 (evil-define-key 'insert 'evil-insert-state-map (kbd "C-p") 'company-complete)
+
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -233,7 +234,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
