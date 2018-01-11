@@ -8,3 +8,5 @@ tmux/.tmux/resurrect/last
 tmux/.tmux/plugins
 vim/.vim/bundle/
 *~
+emacs/.emacs.d/!*
+emacs/.emacs.d/projectile*
