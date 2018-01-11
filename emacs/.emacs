@@ -228,7 +228,7 @@
         (ibuffer-do-sort-by-alphabetic))))
 (evil-ex-define-cmd "ls" 'ibuffer)
 ;; (ggtags-mode)
-;; (projectile-mode)
+(projectile-mode)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

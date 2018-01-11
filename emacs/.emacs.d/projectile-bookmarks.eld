@@ -1,1 +1,1 @@
-("~/.dotfiles/")
+("~/.dotfiles/" "~/projects/taskMaster/" "~/projects/rootme/" "~/projects/php/" "~/projects/libft/" "~/projects/ft_select/" "~/projects/ft_ls/" "~/projects/filler/" "~/projects/docker/" "~/projects/blog/" "~/projects/WebExtension/" "~/projects/GoodTimes/" "~/projects/FdF/" "~/projects/42sh/")
