@@ -15,6 +15,7 @@
 	branch = auto
 [merge]
 	tool = vimdiff
+	conflictstyle = diff3
 [git]
 	editor = vim
 [core]

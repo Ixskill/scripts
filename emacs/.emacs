@@ -232,6 +232,8 @@
 ;; Projectile with native indexing cus external doesnt fucking ignore files ...
 (projectile-mode)
 (setq projectile-indexing-method 'native)
+
+(global-auto-revert-mode t)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
