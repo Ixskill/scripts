@@ -24,7 +24,8 @@
 (add-hook 'prog-mode-hook (lambda() (show-paren-mode)))
 
 ;; NEED MY FUCKING TABS
-(add-hook 'prog-mode-hook (lambda() (local-set-key (kbd "TAB") 'self-insert-command)))
+;; (add-hook 'prog-mode-hook (lambda() (local-set-key (kbd "TAB") 'self-insert-command)))
+(add-hook 'prog-mode-hook (lambda() (local-set-key (kbd "TAB") 'tab-to-tab-stop)))
 
 ;; Enables highlight mode
 (global-font-lock-mode)
@@ -232,6 +233,12 @@
 ;; Projectile with native indexing cus external doesnt fucking ignore files ...
 (projectile-mode)
 (setq projectile-indexing-method 'native)
+
+(auto-revert-mode t)
+(setq auto-revert-check-vc-info t)
+
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+(setq ruby-indent-level 2)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -247,7 +254,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
