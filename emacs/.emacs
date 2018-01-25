@@ -239,6 +239,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (setq ruby-indent-level 2)
+(global-auto-revert-mode t)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
