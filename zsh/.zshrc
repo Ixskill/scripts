@@ -36,8 +36,6 @@ fi
 # Variables for each config file of my env and comfort settings
 if [ "$(uname -s)" = "Darwin" ]; then
 	alias ls="ls -G"
-	export LDFLAGS="-L/Users/ade-sede/.brew/opt/llvm/lib -Wl, -rpath,/Users/ade-sede/.brew/opt/llvm/lib"
-	export ASAN_SYMBOLIZER_PATH="$HOME/.brew/opt/llvm/bin/llvm-symbolizer"
 fi
 
 export LLDB="/usr/bin/lldb"
@@ -161,3 +159,9 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(rbenv init -)"
+
+if [ "$(uname -s)" = "Darwin" ]; then
+	source /Users/ade-sede/.rvm/scripts/rvm
+fi
