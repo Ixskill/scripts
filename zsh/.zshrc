@@ -35,6 +35,8 @@ fi
 
 # Variables for each config file of my env and comfort settings
 if [ "$(uname -s)" = "Darwin" ]; then
+	# export VAGRANT_HOME="/sgoinfre/goinfre/Perso/ade-sede/vagrant_home"
+	# mkdir -p "/sgoinfre/goinfre/Perso/ade-sede/vagrant_home"
 	alias ls="ls -G"
 fi
 
@@ -145,7 +147,9 @@ fi
 export PATH="$DOTFILES/scripts:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+if test -d $HOME/.rvm ; then
+	export PATH="$PATH:$HOME/.rvm/bin"
+fi
 
 # Rust PATH
 export PATH="$HOME/.cargo/bin:$PATH"
