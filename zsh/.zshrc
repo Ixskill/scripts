@@ -169,3 +169,8 @@ eval "$(rbenv init -)"
 # if [ "$(uname -s)" = "Darwin" ]; then
 # 	source /Users/ade-sede/.rvm/scripts/rvm
 # fi
+
+
+#zplug
+source ~/.zplug/init.zsh
+fpath=(~/.zsh/completion $fpath)

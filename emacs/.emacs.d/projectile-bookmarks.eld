@@ -1,1 +1,1 @@
-("~/.dotfiles/" "~/projects/init/init/" "~/projects/kmod/" "/private/tmp/lmontagn/" "/private/tmp/td/" "~/.brew/" "~/test/")
+("~/.dotfiles/" "~/projects/docker-1/" "~/projects/init/init/" "~/projects/kmod/" "/private/tmp/lmontagn/" "/private/tmp/td/" "~/.brew/" "~/test/")
