@@ -166,6 +166,6 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(rbenv init -)"
 
-if [ "$(uname -s)" = "Darwin" ]; then
-	source /Users/ade-sede/.rvm/scripts/rvm
-fi
+# if [ "$(uname -s)" = "Darwin" ]; then
+# 	source /Users/ade-sede/.rvm/scripts/rvm
+# fi
