@@ -151,6 +151,12 @@ if test -d $HOME/.rvm ; then
 	export PATH="$PATH:$HOME/.rvm/bin"
 fi
 
+if test -d $HOME/.sbcl ; then
+	export SBCL_HOME="$HOME/.sbcl/lib/sbcl"
+	export PATH="$PATH:$HOME/.sbcl/bin"
+	alias sbcl="sbcl --noinform"
+fi
+
 # Rust PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -163,8 +169,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-eval "$(rbenv init -)"
 
 if [ "$(uname -s)" = "Darwin" ]; then
 	source /Users/ade-sede/.rvm/scripts/rvm

@@ -44,43 +44,41 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (package-initialize)
 
-;; Helm
+;; Load Helm
 (require 'helm-config)
-;; Org mode
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+;; Load org mode
 (require 'org-install)
 
 ;; Load evil-mode
 (require 'evil)
 (evil-mode 1)
-
 (evil-select-search-module 'evil-search-module 'evil-search)
 
 ;; Powerline,powerline
 (require 'powerline)
 (powerline-center-evil-theme)
 
-;; Remaps C-c as the ESC key. Useful for EVIL, bad for EMACS i guess. 
-(evil-define-key 'insert 'evil-insert-state-map (kbd "C-c") 'evil-force-normal-state)
-(evil-define-key 'visual 'evil-visual-state-map (kbd "C-c") 'evil-force-normal-state)
-(evil-define-key 'replace 'evil-replace-state-map (kbd "C-c") 'evil-force-normal-state)
+;; Remaps C-space as the ESC key. (I need C-c for idiomatic emacs, but i just cant go back to hitting esc)
+(evil-define-key 'insert 'evil-insert-state-map (kbd "C-@") 'evil-force-normal-state)
+(evil-define-key 'visual 'evil-visual-state-map (kbd "C-@") 'evil-force-normal-state)
+(evil-define-key 'replace 'evil-replace-state-map (kbd "C-@") 'evil-force-normal-state)
 
-;; Disable toolbar mode
+;; Disable toolbar mode in GUI emacs
 (if (display-graphic-p)
 	(progn ((tool-bar-mode -1)
 			(menu-bar-mode -1)
 			(scroll-bar-mode -1)))
-  ())
+  )
 
 ;; Loading theme depending on GUI or term
 (if (display-graphic-p)
-										; if part
-										;(load-theme 'green-phosphor 'NO-CONFIRM)
-	;; (load-theme 'nord 'NO-CONFIRM)
-										;(load-theme 'deeper-blue 'NO-CONFIRM)
-	(load-theme 'subatomic 'NO-CONFIRM)
-										; else part
-  (load-theme 'subatomic256 'NO-CONFIRM)
-  ;; (load-theme 'nord 'NO-CONFIRM)
+	(load-theme 'nord 'NO-CONFIRM)
+  (progn
+	(load-theme 'atom-dark 'NO-CONFIRM)
+	(setq atom-dark-theme-force-faces-for-mode nil)
+	)
   )
 
 ;; Do not show the startup screen
@@ -94,9 +92,6 @@
 	  scroll-conservatively 10000
 	  scroll-step 1)
 
-;; A few keymapings
-										;(global-set-key (kbd "M-O") 'mode-line-other-buffer) ;; HUGE PROBLEM
-(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;;; Functions
 ;; Defining a few of my own functions
@@ -117,12 +112,6 @@
 (setq c-block-comment-prefix "** ")
 
 ;; Setting up a hack for system clipboard in emacs
-;;;; TODO
-
-;; Compile options
-(setq compilation-scroll-output 1)
-
-;; Setting up clipboard copy and paste
 (if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
 	(defun paste-from-system-clipboard ()
 	  (interactive)
@@ -140,8 +129,10 @@
 	(interactive)
 	(call-interactively 'shell-command-on-region '"xsel --clipboard --input")))
 
-;; Magit bind
+;; Compile options
+(setq compilation-scroll-output 1)
 
+;; Magit bind
 (global-set-key (kbd "M-g") 'magit-status)
 
 ;; Little function to compile projecting looking for the closest makefile in the FS
@@ -207,7 +198,18 @@
 	  (ad-activate-regexp "erase-buffer-noop")
 	  ad-do-it
 	  (ad-deactivate-regexp "erase-buffer-noop"))))
-;; Defining custom completion
+
+;; Ruby mode
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+(setq ruby-indent-level 2)
+(global-auto-revert-mode t)
+
+;; Set your lisp system and, optionally, some contribs
+(setq inferior-lisp-program (concat (getenv "HOME") "/.sbcl/bin/sbcl"))
+(setq slime-contribs '(slime-fancy))
+(slime-setup '(slime-fancy slime-company))
+
+;;;;;;;;; AUTO COMPLETE ;;;;;;;;;;;;;;;;;
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-auto-complete t)
 (eval-after-load 'company
@@ -228,18 +230,15 @@
       (unless (eq ibuffer-sorting-mode 'alphabetic)
         (ibuffer-do-sort-by-alphabetic))))
 (evil-ex-define-cmd "ls" 'ibuffer)
-;; (ggtags-mode)
 
-;; Projectile with native indexing cus external doesnt fucking ignore files ...
+;; Projectile with native indexing cus external doesnt ignore files ...
 (projectile-mode)
 (setq projectile-indexing-method 'native)
 
+;; Auto revert + auto revert with version control (allows to check branch within magit without issue)
 (auto-revert-mode t)
 (setq auto-revert-check-vc-info t)
 
-(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
-(setq ruby-indent-level 2)
-(global-auto-revert-mode t)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -249,13 +248,13 @@
  '(comment-style (quote extra-line))
  '(custom-safe-themes
    (quote
-	("d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
+	("e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
  '(global-company-mode nil)
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

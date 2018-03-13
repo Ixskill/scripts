@@ -1,1 +1,1 @@
-("~/projects/filler/" "~/projects/filler/libft/" "~/.dotfiles/" "~/projects/docker-1/" "~/projects/init/init/" "~/projects/kmod/" "/private/tmp/lmontagn/" "/private/tmp/td/" "~/.brew/" "~/test/")
+("~/projects/ft_select/" "~/.dotfiles/" "~/.brew/" "/private/tmp/spopieul/" "/private/tmp/will/" "/private/tmp/dv/" "~/projects/docker-1/" "~/projects/carnifex/" "~/projects/filler/" "~/projects/filler/libft/" "~/projects/init/init/" "~/projects/kmod/" "/private/tmp/lmontagn/" "/private/tmp/td/" "~/test/")
