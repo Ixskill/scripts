@@ -3,10 +3,10 @@
 	(setq config_files "/usr/share/emacs/site-lisp/")
   (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/")))
 
+(setq vc-follow-symlinks t)
 ;; Sourcing packages necessary for 42 header
 (setq load-path (append (list nil config_files) load-path))
-(load "list.el") (load "string.el")
-(load "comments.el")
+(load "list.el") (load "string.el") (load "comments.el")
 (load "header.el")
 
 ;; A few default settings, just to make sure everything works alright
