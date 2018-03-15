@@ -234,6 +234,7 @@
 ;; Projectile with native indexing cus external doesnt ignore files ...
 (projectile-mode)
 (setq projectile-indexing-method 'native)
+(setq projectile-globally-ignored-file-suffixes (list ".o"))
 
 ;; Auto revert + auto revert with version control (allows to check branch within magit without issue)
 (auto-revert-mode t)
