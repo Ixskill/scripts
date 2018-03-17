@@ -175,7 +175,7 @@
 
 	;; else we need to set up buffer
 	(let* ((command-buffer-name
-			(format "*background: %s*"
+			(format "%s *Async Shell Command*"
 					(substring command 0 (match-beginning 0))))
 		   (command-buffer (get-buffer command-buffer-name)))
 
@@ -190,24 +190,29 @@
 
 	  ;; insert command at top of buffer
 	  (switch-to-buffer-other-window output-buffer)
-	  (insert "Running command: " command
-			  "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n")
+	  (insert (format "Running %s\n\n" command))
 
-	  ;; temporarily blow away erase-buffer while doing it, to avoid
-	  ;; erasing the above
+	  ;temporarily blow away erase-buffer while doing it, to avoid
+	  erasing the above
 	  (ad-activate-regexp "erase-buffer-noop")
 	  ad-do-it
-	  (ad-deactivate-regexp "erase-buffer-noop"))))
+	  (ad-deactivate-regexp "erase-buffer-noop")))
+		;; Read the buffer content. if its empty, delete it
+		(font-lock-mode t)
+		(if (string= (buffer-string) (format "Running %s\n\n" command)) ; Contains only our inserted line
+			(kill-buffer)
+		  )
+		(font-lock-mode))
 
 ;; Ruby mode
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (setq ruby-indent-level 2)
 (global-auto-revert-mode t)
 
-;; Set your lisp system and, optionally, some contribs
-(setq inferior-lisp-program (concat (getenv "HOME") "/.sbcl/bin/sbcl"))
-(setq slime-contribs '(slime-fancy))
-(slime-setup '(slime-fancy slime-company))
+;; ;; Set your lisp system and, optionally, some contribs
+;; (setq inferior-lisp-program (concat (getenv "HOME") "/.sbcl/bin/sbcl"))
+;; (setq slime-contribs '(slime-fancy))
+;; (slime-setup '(slime-fancy slime-company))
 
 ;;;;;;;;; AUTO COMPLETE ;;;;;;;;;;;;;;;;;
 (add-hook 'after-init-hook 'global-company-mode)
@@ -230,15 +235,33 @@
       (unless (eq ibuffer-sorting-mode 'alphabetic)
         (ibuffer-do-sort-by-alphabetic))))
 (evil-ex-define-cmd "ls" 'ibuffer)
-
+lol
 ;; Projectile with native indexing cus external doesnt ignore files ...
 (projectile-mode)
 (setq projectile-indexing-method 'native)
 (setq projectile-globally-ignored-file-suffixes (list ".o"))
-
+lollol
 ;; Auto revert + auto revert with version control (allows to check branch within magit without issue)
 (auto-revert-mode t)
 (setq auto-revert-check-vc-info t)
+
+(defun create-tags (dir-name)
+    "Create tags file."
+    (interactive "DDirectory: ")
+    (async-shell-command
+     (format "%s -f %s -e -R %s" "ctags" (concat
+										  (read-directory-name "Save TAGS to directory: " default-directory default-directory nil nil)
+										  "TAGS")
+			 (directory-file-name dir-name)))
+  )
+
+(defun projectile-create-tags ()
+  "Create tag file for the current projectile project"
+  (interactive)
+    (async-shell-command
+     (format "%s -f %s -e -R %s" "ctags" (concat (projectile-project-root) "TAGS") (projectile-project-root)))
+  )
+  
 
 ;*******************************************************************************;
 (custom-set-variables
