@@ -179,7 +179,6 @@
 					(substring command 0 (match-beginning 0))))
 		   (command-buffer (get-buffer command-buffer-name)))
 
-	  (when command-buffer
 		;; if the buffer exists, reuse it, or rename it if it's still in use
 		(cond ((get-buffer-process command-buffer)
 			   (set-buffer command-buffer)
@@ -188,20 +187,16 @@
 			   (kill-buffer command-buffer))))
 	  (setq output-buffer command-buffer-name)
 
-	  ;; insert command at top of buffer
 	  (switch-to-buffer-other-window output-buffer)
-	  (insert (format "Running %s\n\n" command))
 
-	  ;temporarily blow away erase-buffer while doing it, to avoid
-	  erasing the above
+	  ;temporarily blow away erase-buffer while doing it, to avoid erasing the above
 	  (ad-activate-regexp "erase-buffer-noop")
 	  ad-do-it
-	  (ad-deactivate-regexp "erase-buffer-noop")))
-		;; Read the buffer content. if its empty, delete it
-		(font-lock-mode t)
-		(if (string= (buffer-string) (format "Running %s\n\n" command)) ; Contains only our inserted line
-			(kill-buffer))
-		(font-lock-mode))
+	  (ad-deactivate-regexp "erase-buffer-noop"))
+  )
+
+;; No prompt to kill buffer when theres a process running
+(setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
 
 ;; Ruby mode
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
