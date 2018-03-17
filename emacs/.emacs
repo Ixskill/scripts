@@ -200,8 +200,7 @@
 		;; Read the buffer content. if its empty, delete it
 		(font-lock-mode t)
 		(if (string= (buffer-string) (format "Running %s\n\n" command)) ; Contains only our inserted line
-			(kill-buffer)
-		  )
+			(kill-buffer))
 		(font-lock-mode))
 
 ;; Ruby mode
@@ -235,12 +234,10 @@
       (unless (eq ibuffer-sorting-mode 'alphabetic)
         (ibuffer-do-sort-by-alphabetic))))
 (evil-ex-define-cmd "ls" 'ibuffer)
-lol
 ;; Projectile with native indexing cus external doesnt ignore files ...
 (projectile-mode)
 (setq projectile-indexing-method 'native)
 (setq projectile-globally-ignored-file-suffixes (list ".o"))
-lollol
 ;; Auto revert + auto revert with version control (allows to check branch within magit without issue)
 (auto-revert-mode t)
 (setq auto-revert-check-vc-info t)
