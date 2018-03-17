@@ -2,7 +2,6 @@
 (if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
 	(setq config_files "/usr/share/emacs/site-lisp/")
   (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/")))
-
 (setq vc-follow-symlinks t)
 ;; Sourcing packages necessary for 42 header
 (setq load-path (append (list nil config_files) load-path))
@@ -161,40 +160,6 @@
 	  (shell-command-to-string (format "%s %s" (read-string "Program to invoke with current file as argument: ") (buffer-file-name)))
 	(print "No file is currently open")))
 
-;; Setup multiple asynchronus shell-command
-(defadvice erase-buffer (around erase-buffer-noop)
-  "make erase-buffer do nothing")
-
-
-(defadvice shell-command (around shell-command-unique-buffer activate compile)
-  (if (or current-prefix-arg
-		  (not (string-match "[ \t]*&[ \t]*\\'" command)) ;; background
-		  (bufferp output-buffer)
-		  (stringp output-buffer))
-	  ad-do-it ;; no behavior change
-
-	;; else we need to set up buffer
-	(let* ((command-buffer-name
-			(format "%s *Async Shell Command*"
-					(substring command 0 (match-beginning 0))))
-		   (command-buffer (get-buffer command-buffer-name)))
-
-		;; if the buffer exists, reuse it, or rename it if it's still in use
-		(cond ((get-buffer-process command-buffer)
-			   (set-buffer command-buffer)
-			   (rename-uniquely))
-			  ('t
-			   (kill-buffer command-buffer))))
-	  (setq output-buffer command-buffer-name)
-
-	  (switch-to-buffer-other-window output-buffer)
-
-	  ;temporarily blow away erase-buffer while doing it, to avoid erasing the above
-	  (ad-activate-regexp "erase-buffer-noop")
-	  ad-do-it
-	  (ad-deactivate-regexp "erase-buffer-noop"))
-  )
-
 ;; No prompt to kill buffer when theres a process running
 (setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
 
@@ -253,8 +218,18 @@
     (async-shell-command
      (format "%s -f %s -e -R %s" "ctags" (concat (projectile-project-root) "TAGS") (projectile-project-root)))
   )
-  
+ ;; (setq helm-projectile-fuzzy-match nil)
+(require 'helm-projectile)
+(helm-projectile-on) 
 
+(require 'company-irony-c-headers)
+;; Load with `irony-mode` as a grouped backend
+(eval-after-load 'company
+  '(add-to-list
+    'company-backends '(company-irony-c-headers company-irony)))
+
+ 
+(setq tags-add-tables nil)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -270,7 +245,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
