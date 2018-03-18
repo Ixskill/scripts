@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "atom-dark-theme" "atom-dark-theme.el" (23208
-;;;;;;  714 0 0))
+;;;### (autoloads nil "atom-dark-theme" "atom-dark-theme.el" (23212
+;;;;;;  63147 757974 692000))
 ;;; Generated autoloads from atom-dark-theme.el
 
 (and load-file-name (boundp 'custom-theme-load-path) (add-to-list 'custom-theme-load-path (file-name-as-directory (file-name-directory load-file-name))))

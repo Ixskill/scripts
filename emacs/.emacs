@@ -2,7 +2,6 @@
 (if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
 	(setq config_files "/usr/share/emacs/site-lisp/")
   (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/")))
-
 (setq vc-follow-symlinks t)
 ;; Sourcing packages necessary for 42 header
 (setq load-path (append (list nil config_files) load-path))
@@ -161,53 +160,18 @@
 	  (shell-command-to-string (format "%s %s" (read-string "Program to invoke with current file as argument: ") (buffer-file-name)))
 	(print "No file is currently open")))
 
-;; Setup multiple asynchronus shell-command
-(defadvice erase-buffer (around erase-buffer-noop)
-  "make erase-buffer do nothing")
-
-
-(defadvice shell-command (around shell-command-unique-buffer activate compile)
-  (if (or current-prefix-arg
-		  (not (string-match "[ \t]*&[ \t]*\\'" command)) ;; background
-		  (bufferp output-buffer)
-		  (stringp output-buffer))
-	  ad-do-it ;; no behavior change
-
-	;; else we need to set up buffer
-	(let* ((command-buffer-name
-			(format "*background: %s*"
-					(substring command 0 (match-beginning 0))))
-		   (command-buffer (get-buffer command-buffer-name)))
-
-	  (when command-buffer
-		;; if the buffer exists, reuse it, or rename it if it's still in use
-		(cond ((get-buffer-process command-buffer)
-			   (set-buffer command-buffer)
-			   (rename-uniquely))
-			  ('t
-			   (kill-buffer command-buffer))))
-	  (setq output-buffer command-buffer-name)
-
-	  ;; insert command at top of buffer
-	  (switch-to-buffer-other-window output-buffer)
-	  (insert "Running command: " command
-			  "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n")
-
-	  ;; temporarily blow away erase-buffer while doing it, to avoid
-	  ;; erasing the above
-	  (ad-activate-regexp "erase-buffer-noop")
-	  ad-do-it
-	  (ad-deactivate-regexp "erase-buffer-noop"))))
+;; No prompt to kill buffer when theres a process running
+(setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
 
 ;; Ruby mode
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (setq ruby-indent-level 2)
 (global-auto-revert-mode t)
 
-;; Set your lisp system and, optionally, some contribs
-(setq inferior-lisp-program (concat (getenv "HOME") "/.sbcl/bin/sbcl"))
-(setq slime-contribs '(slime-fancy))
-(slime-setup '(slime-fancy slime-company))
+;; ;; Set your lisp system and, optionally, some contribs
+;; (setq inferior-lisp-program (concat (getenv "HOME") "/.sbcl/bin/sbcl"))
+;; (setq slime-contribs '(slime-fancy))
+;; (slime-setup '(slime-fancy slime-company))
 
 ;;;;;;;;; AUTO COMPLETE ;;;;;;;;;;;;;;;;;
 (add-hook 'after-init-hook 'global-company-mode)
@@ -230,16 +194,42 @@
       (unless (eq ibuffer-sorting-mode 'alphabetic)
         (ibuffer-do-sort-by-alphabetic))))
 (evil-ex-define-cmd "ls" 'ibuffer)
-
 ;; Projectile with native indexing cus external doesnt ignore files ...
 (projectile-mode)
 (setq projectile-indexing-method 'native)
 (setq projectile-globally-ignored-file-suffixes (list ".o"))
-
 ;; Auto revert + auto revert with version control (allows to check branch within magit without issue)
 (auto-revert-mode t)
 (setq auto-revert-check-vc-info t)
 
+(defun create-tags (dir-name)
+    "Create tags file."
+    (interactive "DDirectory: ")
+    (async-shell-command
+     (format "%s -f %s -e -R %s" "ctags" (concat
+										  (read-directory-name "Save TAGS to directory: " default-directory default-directory nil nil)
+										  "TAGS")
+			 (directory-file-name dir-name)))
+  )
+
+(defun projectile-create-tags ()
+  "Create tag file for the current projectile project"
+  (interactive)
+    (async-shell-command
+     (format "%s -f %s -e -R %s" "ctags" (concat (projectile-project-root) "TAGS") (projectile-project-root)))
+  )
+ ;; (setq helm-projectile-fuzzy-match nil)
+(require 'helm-projectile)
+(helm-projectile-on) 
+
+(require 'company-irony-c-headers)
+;; Load with `irony-mode` as a grouped backend
+(eval-after-load 'company
+  '(add-to-list
+    'company-backends '(company-irony-c-headers company-irony)))
+
+ 
+(setq tags-add-tables nil)
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -255,7 +245,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

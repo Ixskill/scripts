@@ -76,7 +76,7 @@ hello_word:
 	@printf "$(COLOR_VIOLET)$(COLOR_UNDERLINE)compiling$(COLOR_NOCOLOR) $(COLOR_BLUE)$(NAME) ...$(COLOR_NOCOLOR)\n"
 
 lib:
-	@make -C $(LIB_DIR) APPEND="$(APPEND)" OPTIMIZATION="$(OPTIMIZATION)" CC="$(CC)" MY_TERM="$(MY_TERM)"
+	@make -C $(LIB_DIR) APPEND="$(APPEND)" OPTIMIZATION="$(OPTIMIZATION)" CC="$(CC)" MY_TERM="$(MY_TERM)" ASAN="$(ASAN)"
 	@make -C $(MLX_DIR) CC="$(CC)"
 
 $(NAME): $(OBJS) 
@@ -96,7 +96,7 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 
 re: fclean
-	@make -C $(MLX_DIR) clean MY_TERM="$(MY_TERM)"
+	@make -C $(MLX_DIR) clean MY_TERM="$(MY_TERM)" ASAN="$(ASAN)"
 	make
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
