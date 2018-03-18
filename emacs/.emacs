@@ -222,7 +222,11 @@
 (require 'helm-projectile)
 (helm-projectile-on) 
 
-(require 'company-irony-c-headers)
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
 ;; Load with `irony-mode` as a grouped backend
 (eval-after-load 'company
   '(add-to-list
