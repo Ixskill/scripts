@@ -176,5 +176,8 @@ fi
 
 
 #zplug
-source ~/.zplug/init.zsh
+if [ -f "~/.zplug/init.zsh" ]; then
+	source ~/.zplug/init.zsh
+fi
+
 fpath=(~/.zsh/completion $fpath)
