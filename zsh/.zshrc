@@ -147,6 +147,7 @@ fi
 export PATH="$DOTFILES/scripts:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+
 if test -d $HOME/.rvm ; then
 	export PATH="$PATH:$HOME/.rvm/bin"
 fi
@@ -159,6 +160,9 @@ fi
 
 # Rust PATH
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Brew path
+export PATH=$HOME/.brew/bin:$PATH
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	eval $(keychain --eval --quiet ~/.ssh/id_rsa) && exec startx
