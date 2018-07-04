@@ -146,10 +146,11 @@ fi
 #Exporting path
 export PATH="$DOTFILES/scripts:$PATH"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-if test -d $HOME/.rvm ; then
-	export PATH="$PATH:$HOME/.rvm/bin"
-fi
+# # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+
+# if test -d $HOME/.rvm ; then
+# 	export PATH="$PATH:$HOME/.rvm/bin"
+# fi
 
 if test -d $HOME/.sbcl ; then
 	export SBCL_HOME="$HOME/.sbcl/lib/sbcl"
@@ -159,6 +160,9 @@ fi
 
 # Rust PATH
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Brew path
+export PATH=$HOME/.brew/bin:$PATH
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	eval $(keychain --eval --quiet ~/.ssh/id_rsa) && exec startx
@@ -170,9 +174,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if [ "$(uname -s)" = "Darwin" ]; then
-	source /Users/ade-sede/.rvm/scripts/rvm
-fi
+# if [ "$(uname -s)" = "Darwin" ]; then
+# 	source /Users/ade-sede/.rvm/scripts/rvm
+# fi
 
 
 #zplug
@@ -181,3 +185,5 @@ if [ -f "~/.zplug/init.zsh" ]; then
 fi
 
 fpath=(~/.zsh/completion $fpath)
+
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
