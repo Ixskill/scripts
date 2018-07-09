@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+continue="1"
+concat=""
+
+while [ "$continue" -eq "1" ]; do
+	if [ -n "$1" ]; then
+		echo $1
+		concat="$concat $1"
+	else
+		continue="0"
+	fi
+	shift 1
+done
+echo $concat
