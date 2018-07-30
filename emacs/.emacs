@@ -1,5 +1,5 @@
-;; Conditionally loads the local site-lisp folder containing 42header ressources
-(if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
+;;ads the local site-lisp folder containing 42header ressources
+if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
 	(setq config_files "/usr/share/emacs/site-lisp/")
   (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/")))
 (setq vc-follow-symlinks t)
@@ -228,6 +228,7 @@
 (add-hook 'objc-mode-hook 'irony-mode)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
+
 ;; Load with `irony-mode` as a grouped backend
 (eval-after-load 'company
   '(add-to-list
@@ -255,7 +256,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
