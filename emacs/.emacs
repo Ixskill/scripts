@@ -1,5 +1,5 @@
 ;;ads the local site-lisp folder containing 42header ressources
-if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
+(if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
 	(setq config_files "/usr/share/emacs/site-lisp/")
   (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/")))
 (setq vc-follow-symlinks t)
