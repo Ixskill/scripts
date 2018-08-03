@@ -203,16 +203,6 @@
 (auto-revert-mode t)
 (setq auto-revert-check-vc-info t)
 
-(defun create-tags (dir-name)
-    "Create tags file."
-    (interactive "DDirectory: ")
-    (async-shell-command
-     (format "%s -f %s -e -R %s" "ctags" (concat
-										  (read-directory-name "Save TAGS to directory: " default-directory default-directory nil nil)
-										  "TAGS")
-			 (directory-file-name dir-name)))
-  )
-
 (defun projectile-create-tags ()
   "Create tag file for the current projectile project"
   (interactive)
