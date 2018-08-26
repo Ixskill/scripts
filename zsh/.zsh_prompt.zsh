@@ -35,11 +35,11 @@ prompt_end() {
 }
 
 prompt_context() {
-    prompt_segment 32 236 " $USER "
+    prompt_segment 115 236 " $USER "
 }
 
 prompt_dir() {
-  prompt_segment 157 grey " %~ "
+  prompt_segment 236 grey " %~ "
 }
 
 prompt_git() {
@@ -70,7 +70,7 @@ prompt_git() {
 		if uncommited_changes; then
 			str="$str$PLUSMINUS"
 		fi
-		prompt_segment 226 236 " $str"
+		prompt_segment 14 236 " $str"
 	fi
 }
 
