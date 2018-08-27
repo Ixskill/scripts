@@ -9,10 +9,4 @@
 (define-prefix-command 'tag-map)
 (define-prefix-command 'other-window-tag-map)
 
-(global-set-key (kbd "g") tag-map)
-(define-key tag-map (kbd "o") 'other-window-tag-map)
-
-(define-key tag-map (kbd "C-]") 'xref-find-definitions)
-(define-key other-window-tag-map (kbd "C-]") 'xref-find-definitions-other-window)
-
 (provide 'tags)

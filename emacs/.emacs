@@ -96,9 +96,9 @@
 	(load-theme 'nord 'NO-CONFIRM)
   (progn
 	;;(load-theme 'leuven 'NO-CONFIRM)
-	;;(load-theme 'atom-dark 'NO-CONFIRM)
-	(load-theme 'nord 'NO-CONFIRM)
-	;;(setq atom-dark-theme-force-faces-for-mode nil)
+	(load-theme 'atom-dark 'NO-CONFIRM)
+	;; (load-theme 'nord 'NO-CONFIRM)
+	(setq atom-dark-theme-force-faces-for-mode nil)
 	(global-hl-line-mode +1)
 	)
   )
