@@ -100,6 +100,9 @@
 	;; (load-theme 'nord 'NO-CONFIRM)
 	(setq atom-dark-theme-force-faces-for-mode nil)
 	(global-hl-line-mode +1)
+	(set-face-background 'hl-line "red")
+	(set-face-foreground 'font-lock-comment-face "green")
+	(set-face-background 'font-lock-comment-face "dark-grey")
 	)
   )
 
