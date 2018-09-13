@@ -12,7 +12,7 @@
 (load "c-config.el")
 (load "tags.el")
 (load "shell.el")
-
+ 
 ;; A few default settings, just to make sure everything works alright
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode t)
@@ -95,9 +95,14 @@
 (if (display-graphic-p)
 	(load-theme 'nord 'NO-CONFIRM)
   (progn
-	(load-theme 'leuven 'NO-CONFIRM)
-	;; (setq atom-dark-theme-force-faces-for-mode nil)
+	;;(load-theme 'leuven 'NO-CONFIRM)
+	(load-theme 'atom-dark 'NO-CONFIRM)
+	;; (load-theme 'nord 'NO-CONFIRM)
+	(setq atom-dark-theme-force-faces-for-mode nil)
 	(global-hl-line-mode +1)
+	(set-face-background 'hl-line "red")
+	(set-face-foreground 'font-lock-comment-face "green")
+	(set-face-background 'font-lock-comment-face "dark-grey")
 	)
   )
 

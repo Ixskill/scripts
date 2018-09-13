@@ -4,14 +4,10 @@
   (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/")))
 (setq vc-follow-symlinks t)
 ;; Sourcing packages necessary for 42 header
-(setq load-path (append (list nil config_files) load-path))
-(load "list.el")
+(setq load-path (append (list nil config_files) load-path)) (load "list.el")
 (load "string.el")
 (load "comments.el")
 (load "header.el")
-(load "c-config.el")
-(load "tags.el")
-(load "shell.el")
 
 ;; A few default settings, just to make sure everything works alright
 (setq-default tab-width 4)
@@ -162,9 +158,68 @@
 (require 'helm-projectile)
 (helm-projectile-on) 
 
+;; Compile options
+(setq compilation-scroll-output 1)
 
+(defun make(path rule)
+  (interactive "*fMakefile location: \nsRule to use: ")
+  (compile (format "make -C %s %s" path rule))
+  )
+
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'hs-minor-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;; Load with `irony-mode` as a grouped backend
+(eval-after-load 'company
+  '(add-to-list
+'company-backends '(company-irony-c-headers company-irony)))
  
 
+;; Setting up a hack for system clipboard in emacs
+(if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
+	(defun paste-from-system-clipboard ()
+	  (interactive)
+	  (insert (shell-command-to-string "pbpaste")))
+  (defun paste-from-system-clipboard ()
+	(interactive)
+	(insert (shell-command-to-string "xsel --clipboard --output"))))
+
+
+(if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
+	(defun copy-region-to-system-clipboard ()
+	  (interactive)
+	  (call-interactively 'shell-command-on-region '"pbcopy"))
+  (defun copy-region-to-system-clipboard ()
+	(interactive)
+	(call-interactively 'shell-command-on-region '"xsel --clipboard --input")))
+
+(defun shell-command-current-file ()
+  "Invokes the requested shell command with path current file as argument and displays it in a buffer"
+  (interactive)
+  (if (buffer-file-name)
+	  (shell-command (format "%s %s" (read-string "Program to invoke with current file as argument: ") (buffer-file-name)))
+	(print "No file is currently open")))
+
+(defun shell-command-current-file-to-string ()
+  "Invokes the requested shell command with path current file as argument and returns it as a string"
+  (interactive)
+  (if (buffer-file-name)
+	  (shell-command-to-string (format "%s %s" (read-string "Program to invoke with current file as argument: ") (buffer-file-name)))
+(print "No file is currently open")))
+
+(defun projectile-create-tags ()
+  "Create tag file for the current projectile project"
+  (interactive)
+    (async-shell-command
+     (format "%s -f %s -e -R %s" "ctags" (concat (projectile-project-root) "TAGS") (projectile-project-root)))
+  )
+
+(setq tags-add-tables nil)
+(define-prefix-command 'tag-map)
+(define-prefix-command 'other-window-tag-map)
 
 (add-hook 'after-init-hook (lambda ()
   (when (fboundp 'auto-dim-other-buffers-mode)
