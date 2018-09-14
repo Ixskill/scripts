@@ -148,9 +148,10 @@
         (ibuffer-do-sort-by-alphabetic))))
 (evil-ex-define-cmd "ls" 'ibuffer)
 ;; Projectile with native indexing cus external doesnt ignore files ...
-(projectile-mode)
-(setq projectile-indexing-method 'native)
+(projectile-mode +1)
+;;(setq projectile-indexing-method 'native)
 (setq projectile-globally-ignored-file-suffixes (list ".o"))
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 ;; Auto revert + auto revert with version control (allows to check branch within magit without issue)
 (auto-revert-mode t)
 (setq auto-revert-check-vc-info t)
@@ -240,7 +241,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
