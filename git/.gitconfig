@@ -7,7 +7,7 @@
 	s = status
 	co = checkout
 	p = push
-	tree = log --graph --pretty
+	tree = log --all --pretty --oneline --graph
 
 [color]
 	dif = auto
