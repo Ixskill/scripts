@@ -139,9 +139,12 @@ fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
 	ZSH_HIH="/Users/ade-sede/.brew/Cellar/zsh-syntax-highlighting/0.5.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-	# [ -f $ZSH_HIH ] && source $ZSH_HIH
+	[ -f $ZSH_HIH ] && . $ZSH_HIH
+	elif [ "$(uname -s)" = "Linux" ]; then
+	ZSH_HIH="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 	[ -f $ZSH_HIH ] && . $ZSH_HIH
 fi
+
 
 #Exporting path
 export PATH="$DOTFILES/scripts:$PATH"
