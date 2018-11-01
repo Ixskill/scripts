@@ -170,12 +170,23 @@
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'hs-minor-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
+
+
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 ;; Load with `irony-mode` as a grouped backend
 (eval-after-load 'company
-  '(add-to-list
-'company-backends '(company-irony-c-headers company-irony)))
+  '(add-to-list 'company-backends '(company-irony-c-headers company-irony)))
+
+;; (add-hook 'c-mode-hook 'lsp-ccls-enable)
+;; (add-hook 'c++-mode-hook 'lsp-ccls-enable)
+
+;; (require 'ccls)
+;; ;;(setq ccls-executable "/usr/bin/ccls")
+
+;; (require 'company-lsp)
+;; (setq company-lsp-async 1)
+;; (setq company-lsp-enable-recompletion 1)
  
 
 ;; Setting up a hack for system clipboard in emacs
