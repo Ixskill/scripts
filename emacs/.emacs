@@ -166,27 +166,39 @@
   (compile (format "make -C %s %s" path rule))
   )
 
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
+(require 'yasnippet)
+(yas-global-mode 1)
+
+(require 'helm-xref)
+(setq xref-show-xrefs-function 'helm-xref-show-xrefs)
+
+(add-hook 'c-mode-hook 'lsp-ccls-enable)
+(add-hook 'c++-mode-hook 'lsp-ccls-enable)
 (add-hook 'c-mode-hook 'hs-minor-mode)
+(add-hook 'objc-mode-hook 'lsp-ccls-enable)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
 
 
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
+(require 'lsp-ui)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+(add-hook 'c-mode-hook 'flycheck-mode)
+(require 'ccls)
+(require 'company-lsp)
+
+(setq company-lsp-async 1)
+(setq company-lsp-enable-recompletion 1)
+;;(setq company-lsp-enable-snippet 1)
+
 ;; Load with `irony-mode` as a grouped backend
 (eval-after-load 'company
-  '(add-to-list 'company-backends '(company-irony-c-headers company-irony)))
+  '(add-to-list 'company-backends '(company-lsp company-irony-c-headers company-irony)))
 
-;; (add-hook 'c-mode-hook 'lsp-ccls-enable)
-;; (add-hook 'c++-mode-hook 'lsp-ccls-enable)
 
-;; (require 'ccls)
-;; ;;(setq ccls-executable "/usr/bin/ccls")
 
-;; (require 'company-lsp)
-;; (setq company-lsp-async 1)
-;; (setq company-lsp-enable-recompletion 1)
  
 
 ;; Setting up a hack for system clipboard in emacs
@@ -254,7 +266,7 @@
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-	(company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(yasnippet-classic-snippets helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
