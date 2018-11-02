@@ -10,7 +10,7 @@ AllowShortCaseLabelsOnASingleLine: false
 AlwaysBreakAfterReturnType: None
 BinPackArguments: false
 BreakStringLiterals: true
-DerivePointerAlignement: true
+DerivePointerAlignment: true
 ReflowComments: true
 IncludeBlocks: Merge
 SortIncludes: true
