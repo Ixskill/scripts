@@ -192,6 +192,8 @@
 (require 'company-lsp)
 (setq company-lsp-async 1)
 (setq company-lsp-enable-recompletion 1)
+(setq ccls-sem-highlight-method 'font-lock)
+(ccls-use-default-rainbow-sem-highlight)
 ;;(setq company-lsp-enable-snippet 1)
 
 ;; Load with `irony-mode` as a grouped backend
@@ -267,23 +269,27 @@
  '(comment-style (quote extra-line))
  '(custom-safe-themes
    (quote
-	("87a431903d22fa1cbb2becd88572e7d985e28c2253935448d0d754c13e85a980" "9a155066ec746201156bb39f7518c1828a73d67742e11271e4f24b7b178c4710" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
+    ("87a431903d22fa1cbb2becd88572e7d985e28c2253935448d0d754c13e85a980" "9a155066ec746201156bb39f7518c1828a73d67742e11271e4f24b7b178c4710" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
  '(global-company-mode t)
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
+ '(lsp-ui-doc-border "black")
+ '(lsp-ui-doc-enable t)
  '(lsp-ui-doc-header t)
  '(lsp-ui-doc-include-signature t)
- '(lsp-ui-doc-position (quote at-point))
+ '(lsp-ui-doc-position (quote top))
  '(lsp-ui-doc-use-childframe t)
  '(lsp-ui-peek-always-show t)
  '(lsp-ui-peek-fontify (quote never))
  '(lsp-ui-peek-list-width 80)
  '(lsp-ui-sideline-ignore-duplicate t)
  '(lsp-ui-sideline-show-code-actions t)
+ '(lsp-ui-sideline-show-hover nil)
  '(lsp-ui-sideline-update-mode (quote line))
+ '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-	(load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
+    (load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -292,6 +298,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t nil)))
+ '(lsp-face-highlight-read ((t (:foreground "orchid"))))
+ '(lsp-face-highlight-textual ((t (:foreground "green"))))
+ '(lsp-face-highlight-write ((t (:foreground "turquoise3"))))
  '(lsp-ui-peek-highlight ((t (:foreground "medium orchid" :box nil))))
  '(lsp-ui-peek-line-number ((t nil)))
  '(lsp-ui-peek-list ((t (:background "powder blue"))))
