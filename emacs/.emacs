@@ -50,7 +50,6 @@
 ;; Load Helm
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
-
 ;; Load org mode
 (require 'org-install)
 
@@ -63,18 +62,7 @@
 (evil-define-key 'insert 'evil-insert-state-map (kbd "C-@") 'evil-force-normal-state)
 (evil-define-key 'visual 'evil-visual-state-map (kbd "C-@") 'evil-force-normal-state)
 (evil-define-key 'replace 'evil-replace-state-map (kbd "C-@") 'evil-force-normal-state)
-
-(evil-define-key 'visual 'evil-visual-state-map (kbd "(") 'surround-region-with-paren)
-(defun surround-region-with-paren ()
-  "Surrounds the active region with parentheses by killing the region, inserting parens and reinserting the region kill-ring inside"
-  (interactive) 
-  (progn
-	(call-interactively 'kill-region)
-	(insert "(")
-	(insert (car kill-ring))
-	(insert ")")))
-
-(provide 'evil-config)
+(define-key evil-normal-state-map (kbd "C-]") 'lsp-ui-peek-find-definitions)
 
 
 (evil-set-initial-state 'ansi-term 'emacs)
@@ -102,7 +90,6 @@
 (defun load-term-env ()
 	  (load-theme 'atom-dark 'NO-CONFIRM)
 	  (setq atom-dark-theme-force-faces-for-mode nil)
-	  (set-face-foreground 'font-lock-comment-face "lightgreen")
 	  )
 
 (defun try-loading-graphical-env ()
@@ -137,6 +124,7 @@
 	 (define-key company-active-map (kbd "C-n") 'company-complete-common-or-cycle)
 	 (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
 	 (define-key company-active-map (kbd "<tab>") 'company-complete-common)))
+
 (evil-define-key 'insert 'evil-insert-state-map (kbd "C-n") 'company-complete)
 (evil-define-key 'insert 'evil-insert-state-map (kbd "C-p") 'company-complete)
 
@@ -194,6 +182,7 @@
 (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
 (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
+
 (require 'ccls)
 (require 'company-lsp)
 (setq company-lsp-async 1)
@@ -202,7 +191,8 @@
 
 ;; Load with `irony-mode` as a grouped backend
 (eval-after-load 'company
-  '(add-to-list 'company-backends '(company-lsp company-irony-c-headers company-irony)))
+  ;;'(add-to-list 'company-backends '(company-lsp company-irony-c-headers company-irony)))
+  '(add-to-list 'company-backends '(company-lsp company-irony-c-headers)))
 
 
 
@@ -274,7 +264,7 @@
  '(custom-safe-themes
    (quote
 	("87a431903d22fa1cbb2becd88572e7d985e28c2253935448d0d754c13e85a980" "9a155066ec746201156bb39f7518c1828a73d67742e11271e4f24b7b178c4710" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
- '(global-company-mode nil)
+ '(global-company-mode t)
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(lsp-ui-doc-header t)
@@ -289,7 +279,7 @@
  '(lsp-ui-sideline-update-mode (quote line))
  '(package-selected-packages
    (quote
-	(organic-green-theme company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
+	(load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces

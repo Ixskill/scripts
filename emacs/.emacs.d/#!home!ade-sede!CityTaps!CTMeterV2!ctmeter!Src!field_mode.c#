@@ -1,0 +1,492 @@
+/**
+******************************************************************************
+* File Name          : field_mode.c
+* Description        : This file .
+******************************************************************************
+** 
+* COPYRIGHT(c) 2017 CityTaps. All right reserved.
+*
+******************************************************************************
+*/
+	
+/** @addtogroup ctmeter_modes Modes
+ * @{
+ */
+	
+
+/** @addtogroup ctmeter_modes_field Field
+ * @{
+ */
+	
+/* Includes ------------------------------------------------------------------*/
+#include "stm32l0xx_hal.h"
+#include "pulse_meter.h"
+#include "variables.h"
+#include "ctmeter.h"
+#include "lid.h"
+#include "eeprom.h"
+#include "lora.h"
+#include "field_private.h"
+#include "field.h"
+#include "communication.h"
+#include "watchdog.h"
+#include "magnet.h"
+	
+/* Private ---------------------------------------------------------*/
+
+
+/*
+ * Some functions are still poorly named. Sometimes there might be
+ * confusion because the function is actually just a wrapper around a
+ * lower level function with a very similar name. This will be sorted
+ * out later.
+ *
+ * Right now, some global variables / singleton are still in use
+ * I think the code implementation should stop using those variables,
+ * and use the interface of lower level modules instead. This is why they are
+ * available globally instead of being given as an argument.
+ * In the future we might want to pass them as argument / remove them completely
+ * I'd prefer the later so I removed them from the interfaces, to abstract the
+ * implementation
+ */ 
+
+
+/* Dont know where the "50" magic number comes from */
+char						*get_uplink_message(void) {
+	static char					uplink_message[50];
+	static BOOL_StatusTypeDef	get = BOOL_FALSE;
+
+	if (!get) {
+		memset(uplink_message, 0, 50);
+		get = BOOL_TRUE;
+	}
+	return	uplink_message;
+}
+
+UPLK_StatusTypeDef			*get_nextTransmissionData(void) {
+	static BOOL_StatusTypeDef	get = BOOL_FALSE;
+	static UPLK_StatusTypeDef	nextTransmission;
+
+	if (!get) {
+		get = BOOL_TRUE;
+		memset(&nextTransmission, 0, sizeof(UPLK_StatusTypeDef));
+	}
+	return &nextTransmission;
+}
+
+char						*get_loramoduleReceptionBuffer(void) {
+	return (char*)usartrx_buffer;
+}
+
+char						*get_downlinkMessageBuffer(void) {
+	static char	downlink_message[MAX_RESPONSE_LENGTH];
+	static BOOL_StatusTypeDef	get = BOOL_FALSE;
+
+	if (!get) {
+		memset(downlink_message, 0, MAX_RESPONSE_LENGTH);
+		get = BOOL_TRUE;
+	}
+	return	downlink_message;
+}
+
+BOOL_StatusTypeDef			*get_storage_pending_addr(void) {
+	static BOOL_StatusTypeDef	storage_pending = BOOL_FALSE;	
+
+	return &storage_pending;
+}
+
+void						set_storagePending(BOOL_StatusTypeDef value) {
+	BOOL_StatusTypeDef	*storage_pending;	
+
+	storage_pending = get_storage_pending_addr();
+	*storage_pending = value;
+}
+
+void						send_uplinkMessage(void) {
+	UPLK_StatusTypeDef		*nextTransmission = get_nextTransmissionData();
+	char					*uplink_message = get_uplink_message();
+	DWNLK_messageTypeDef	*decodedDownlinkMessage = get_decodedDownlinkMessage();
+
+	comms_buildMessage(uplink_message, 50, nextTransmission, decodedDownlinkMessage);
+	comms_sendMessage(uplink_message);
+	nextTransmission->pending_flag = BOOL_FALSE;
+	set_nextMessageType(STATUS_MSG);
+}
+
+void						set_nextMessageType(UPLK_MessageTypeDef type) {
+	UPLK_StatusTypeDef	*nextTransmission = get_nextTransmissionData();
+
+	nextTransmission->next_message_to_send = type;
+}	
+
+void						restore_messageInterval(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	load_from_non_volatile_memory(MESSAGE_INTERVAL_TYPE, &meter->message_interval);
+	if (meter->message_interval == 0) {
+		meter->message_interval = MESSAGE_INTERVAL_INIT;
+	}
+}
+
+BOOL_StatusTypeDef			uplinkMessage_is_pending(void) {
+	UPLK_StatusTypeDef	*nextTransmission = get_nextTransmissionData();
+
+	return (nextTransmission->pending_flag && comms_isTXavailable());
+}
+
+BOOL_StatusTypeDef			message_requires_acknowledgement_in_4_minutes(DWNLK_CommandTypeDef message_number) {
+	if (message_number != (GET_INFORMATION | RESET_MCU))
+		return BOOL_TRUE;
+	return BOOL_FALSE;
+
+}
+
+BOOL_StatusTypeDef			storage_is_pending(void) {
+	BOOL_StatusTypeDef	*storage_pending;	
+
+	storage_pending = get_storage_pending_addr();
+	return *storage_pending;
+}
+
+void						set_messageInterval(uint32_t interval) {
+	CTMeter				*meter = CTMeter_get();
+
+	meter->message_interval = interval;
+}
+
+DWNLK_messageTypeDef		*get_decodedDownlinkMessage(void) {
+	static DWNLK_messageTypeDef	decodedDownlinkMessage;
+	static BOOL_StatusTypeDef	get = BOOL_FALSE;
+
+	if (!get) {
+		get = BOOL_TRUE;
+		memset(&decodedDownlinkMessage, 0, sizeof(DWNLK_messageTypeDef));
+	}
+
+	return &decodedDownlinkMessage;
+}
+
+BOOL_StatusTypeDef			last_join_attempt_was_denied(void) {
+	if(strstr((const char *) usartrx_buffer, "enied") != NULL)
+		return BOOL_TRUE;
+	return BOOL_FALSE;
+}
+
+void						set_uplinkMessage_as_pending(UPLK_MessageTypeDef message_type) {
+	UPLK_StatusTypeDef	*nextTransmission = get_nextTransmissionData();
+
+	set_nextMessageType(message_type);
+	nextTransmission->pending_flag = BOOL_TRUE;
+	reset_messageTimer();
+}
+
+/*
+ * Resetting the timer causes the next message to be sent
+ * message_interval from now. This timer is increased in the RTC wake
+ * up interrupt
+ */
+void						reset_messageTimer(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	meter->events.EVT_Timer = 0;
+}
+
+void						radio_wake_up(void) {
+	loramodule_radioWakeup();
+	HAL_Delay(DELAY_AFTER_LORAMODULE_OPERATIONS);
+}
+
+BOOL_StatusTypeDef			meter_joining_for_the_first_time(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	if (meter->radio_status.first_join_network == 0)
+		return BOOL_TRUE;
+	return BOOL_FALSE;
+}
+
+void						mark_network_as_joined(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	if (meter_joining_for_the_first_time()) {
+		meter->radio_status.first_join_network = 1;
+		save_to_non_volatile_memory(FIRST_JOIN_NETWORK_TYPE, meter->radio_status.first_join_network);
+	}
+	meter->radio_status.nb_try_joining = 0;
+}
+
+void						handle_joinSuccess(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	DEBUG("[FIELD] Connection to the network successful\n\r");
+	if (!meter_joining_for_the_first_time()
+		&& meter->error_flag != RESTART_CLEARED) {
+		comms_sendRestartMessage(meter->error_flag);
+	} else {
+		comms_sendStartMessage();
+	}
+	mark_network_as_joined();
+}
+
+/*
+ * In case we failed joining for the first time :
+ * We restart the loramodule to prevent having a "free
+ * channel" error after several connection attemps
+ */
+void						handle_joinFailure(ct_state *next_mode) {
+	DEBUG("[FIELD] Connection to the network failed\n\r");
+	if (meter_joining_for_the_first_time()) {
+		loramodule_radioReset();
+		HAL_Delay(DELAY_AFTER_LORAMODULE_OPERATIONS);
+		loramodule_radioSleep(LORAMODULE_MAX_SLEEP_DURATION);
+		*next_mode = CTMETER_IN_STORAGE_MODE;
+	} else {
+		CTMeter_Reset(RESTART_JOINERROR);
+	}
+}
+
+void						connect_to_network(ct_state *next_mode) {
+	CTMeter				*meter = CTMeter_get();
+	BOOL_StatusTypeDef	buzzerUsage;
+
+	buzzerUsage = meter_joining_for_the_first_time() ? BOOL_TRUE : BOOL_FALSE;
+	if (!meter_joining_for_the_first_time()) {
+		if (meter->radio_status.nb_try_joining >= MAXIMUM_NUMBER_OF_JOIN_ATTEMPT_BEFORE_NONETWORK) {
+			*next_mode = CTMETER_IN_NONETWORK_MODE;
+			return ;
+		}
+		++meter->radio_status.nb_try_joining;
+	}
+	if (meter->radio_status.awake_state == RADIO_SLEEP) {
+		DEBUG("[FIELD] radio is sleeping\n\r");
+		radio_wake_up();
+	}	
+	if (comms_connectToNetwork(buzzerUsage) == BOOL_TRUE) {
+		handle_joinSuccess();
+	} else {
+		handle_joinFailure(next_mode);
+	}
+}
+
+BOOL_StatusTypeDef			index_reached_ceiling(void) {
+	if (PulseMeter_GetIndex() >= PulseMeter_GetCeiling())
+		return BOOL_TRUE;
+	return BOOL_FALSE;
+}
+
+BOOL_StatusTypeDef			messageTimer_is_elapsed(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	if (meter->events.EVT_Timer >= meter->message_interval/IWDG_REFRESH_UNIT_S)
+		return BOOL_TRUE;
+	return BOOL_FALSE;
+}
+
+BOOL_StatusTypeDef			downlinkMessage_is_pending(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	if (meter->events.EVT_Message_from_radio_module == 1)
+		return BOOL_TRUE;
+	return BOOL_FALSE;
+}
+
+#ifdef DEBUG_MODE
+void		alert_summary(CTMeter *meter) {
+	if (meter->accelerometer_status == ACCEL_ABOVE_THRESHOLD)
+		DEBUG("[FIELD] Meter is not properly installed\n\r");
+	if (meter->fuse_sen_status == FUSE_BLOWN)
+		DEBUG("[FIELD] Fuse of water sensor power is blown\n\r");
+	if (meter->fuse_mot_status == FUSE_BLOWN)
+		DEBUG("[FIELD] Fuse of motor power is blown\n\r");
+	if (meter->magnetic_counter > 0)
+		DEBUG("[FIELD] The magnetic counter has been triggered\n\r");
+# ifndef PCB_0666_01
+	if (get_LidState() == LID_OPEN)
+		DEBUG("[FIELD] LID is open, sending an alert instead of a status_msg\r\n");
+# endif
+}
+#endif
+
+#ifndef PCB_0666_01			
+BOOL_StatusTypeDef			lid_has_just_been_opened(void) {
+	CTMeter	*meter = CTMeter_get();
+	if (meter->lid_has_just_been_opened == BOOL_TRUE)
+		return BOOL_TRUE;
+	return BOOL_FALSE;
+}
+#endif
+
+BOOL_StatusTypeDef			alertFlags_are_up(void) {
+	CTMeter		*meter = CTMeter_get();
+	LidState_t	lidstate = LID_CLOSED;
+
+#ifndef PCB_0666_01
+	lidstate = get_LidState();
+#endif
+	meter->accelerometer_status = get_accelState();
+	meter->fuse_sen_status = fuse_getSensorStatus();
+	meter->fuse_mot_status = fuse_getMotorStatus();
+	if (meter->accelerometer_status == ACCEL_ABOVE_THRESHOLD
+		|| meter->fuse_sen_status == FUSE_BLOWN
+		|| meter->fuse_mot_status == FUSE_BLOWN
+		|| lidstate == LID_OPEN
+		|| meter->magnetic_counter > 0) {
+		DEBUG_DO(alert_summary(meter));
+		return BOOL_TRUE;
+	}
+	return BOOL_FALSE;
+}
+
+void						ensure_network_is_joined(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	if (last_join_attempt_was_denied()) {
+		loramodule_radioWakeup();
+		HAL_Delay(DELAY_AFTER_LORAMODULE_OPERATIONS);
+		if(loramodule_radioJoinABP() == BOOL_TRUE){
+			meter->radio_status.send_state = RADIO_NOT_BUSY;
+			loramodule_radioSleep(0xFFFFFFFF);
+		} else {
+			CTMeter_Reset(RESTART_RADIODENIED);
+		}
+	}
+}
+
+void						setup_acknowledgement(void) {
+	DWNLK_messageTypeDef	*decodedDownlinkMessage = get_decodedDownlinkMessage();
+
+	if (message_requires_acknowledgement_in_4_minutes(decodedDownlinkMessage->message_number)){
+		set_messageInterval(ACKNOWLEDGEMENT_INTERVAL);
+		set_nextMessageType(ACKNOWLEDGEMENT_MSG);
+		reset_messageTimer();
+	}
+}
+
+/*
+ * "comms_isDownlinkMessage" verifies if the
+ * message fits the protocol v4 criterias, not if there was a message
+ * from the network.
+ *
+ * downlinkMessageBuffer is a buffer used to store the downlink_message
+ * loramoduleReceptionBuffer is the buffer storing the message sent by the radio module
+ *
+ * decodedDownlinkMessage is the addresse of structure. We're giving it to a lower level function
+ * so that it can fill the structure
+ */
+void						process_downlinkMessage() {
+	CTMeter					*meter = CTMeter_get();
+	char					*downlinkMessageBuffer = get_downlinkMessageBuffer(); 
+	char					*loramoduleReceptionBuffer = get_loramoduleReceptionBuffer();
+	UPLK_StatusTypeDef		*nextTransmission = get_nextTransmissionData();
+	DWNLK_messageTypeDef	*decodedDownlinkMessage = get_decodedDownlinkMessage();
+
+	if (comms_isDownlinkMessage(loramoduleReceptionBuffer, downlinkMessageBuffer)) {
+		increment_DownlinkMessageCounter();
+		comms_processDownlinkMessage(downlinkMessageBuffer, nextTransmission, decodedDownlinkMessage);
+		setup_acknowledgement();
+		if (decodedDownlinkMessage->message_number == GO_TO_STORAGE_MODE){
+			set_storagePending(BOOL_TRUE);
+		}
+	}
+	meter->events.EVT_Message_from_radio_module = 0;
+}
+
+void						increment_DownlinkMessageCounter(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	meter->downlink_counter++;
+	save_to_non_volatile_memory(DOWNLINK_COUNTER_TYPE, meter->downlink_counter);
+	DEBUG("[FIELD] Downlink message counter: %lu\n\r", meter->downlink_counter);
+}
+
+void						handle_valve(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	if (index_reached_ceiling()
+		&& meter->valve_status == VALVE_OPEN) {
+		DEBUG("[FIELD] Index reached/exceeds ceiling while valve is open\r\n");
+		valve_close();
+		set_uplinkMessage_as_pending(STATUS_MSG);
+	}
+}
+#ifndef PCB_0666_01			
+void						handle_lid(void) {
+	CTMeter				*meter = CTMeter_get();
+
+	if (lid_has_just_been_opened()) {
+		meter->lid_has_just_been_opened = BOOL_FALSE;
+		set_uplinkMessage_as_pending(ALERT_MSG);
+	}
+}
+#endif
+
+BOOL_StatusTypeDef			radio_is_joined(void) {
+	CTMeter *meter;
+
+	meter = CTMeter_get();
+	if (meter->radio_status.join_state == RADIO_JOINED)
+		return BOOL_TRUE;
+	return BOOL_FALSE;
+}
+
+void						__FieldMode_Run(ct_state *next_mode) {
+	UPLK_StatusTypeDef		*nextTransmission = get_nextTransmissionData();
+	UPLK_MessageTypeDef		next_message_type = nextTransmission->next_message_to_send;
+
+	if (messageTimer_is_elapsed()) {
+		CTMeter_StoreCheckPoint();
+		if (alertFlags_are_up() && nextTransmission->next_message_to_send == STATUS_MSG)
+			next_message_type = ALERT_MSG;
+		set_uplinkMessage_as_pending(next_message_type);
+	}
+	handle_valve();
+	process_magnetEvent();
+#ifndef PCB_0666_01			
+	handle_lid();
+#endif
+	if (downlinkMessage_is_pending()) {
+		ensure_network_is_joined();
+		process_downlinkMessage();
+	}
+	if (uplinkMessage_is_pending()) {
+		send_uplinkMessage();
+		restore_messageInterval();
+		if (storage_is_pending()) {
+			*next_mode = CTMETER_IN_STORAGE_MODE;
+			set_storagePending(BOOL_FALSE);
+		}
+	}
+}
+
+/* Public Functions ----------------------------------------------------------*/
+
+/* If the downlink message is a GO_TO_STORAGE_MODE message, we cannot send the CTMeter 
+ * immediatly to Storage Mode because we need first to send un ACKNOWLEDGEMENT_MSG.
+ * Therefore we set raise flag, and when ACKNOWLEDGEMENT_MSG is sent
+ * we send the CTMeter to Storage Mode
+ */
+
+/*
+ * Returns the next mode of operation:	CTMETER_IN_FIELD_MODE
+ *										CTMETER_IN_STORAGE_MODE
+ *										CTMETER_IN_NONETWORK_MODE
+ */
+ct_state FieldMode_Run(void) {
+	ct_state				next_mode = CTMETER_IN_FIELD_MODE;
+
+	if (radio_is_joined()) {
+		__FieldMode_Run(&next_mode);
+	} else {
+		connect_to_network(&next_mode);
+	}
+	return next_mode;
+}
+
+/**
+ * @}
+ */
+	
+/**
+ * @}
+ */
+	
+/************************ (C) COPYRIGHT CityTaps *****END OF FILE****/
