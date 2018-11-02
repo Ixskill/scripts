@@ -19,6 +19,8 @@
 (setq-default tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
 								64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))
 
+;; Do not show the startup screen
+(setq inhibit-startup-screen t)
 ;; Activates lines numbers
 (add-hook 'prog-mode-hook (lambda() (linum-mode)))
 (add-hook 'prog-mode-hook (lambda() (show-paren-mode)))
@@ -35,7 +37,7 @@
 ;; Every file is sent to this backup directory
 (setq backup-directory-alist
 	  `((".*" . "~/.emacs.d/backup")))
-256(setq auto-save-file-name-transforms
+(setq auto-save-file-name-transforms
 	  `((".*" ,"~/.emacs.d/auto_save" t)))
 
 ;; Sourcing my modes a d packages init
@@ -63,7 +65,6 @@
 (evil-define-key 'replace 'evil-replace-state-map (kbd "C-@") 'evil-force-normal-state)
 
 (evil-define-key 'visual 'evil-visual-state-map (kbd "(") 'surround-region-with-paren)
-
 (defun surround-region-with-paren ()
   "Surrounds the active region with parentheses by killing the region, inserting parens and reinserting the region kill-ring inside"
   (interactive) 
@@ -75,35 +76,12 @@
 
 (provide 'evil-config)
 
-;; Powerline,powerline
-(require 'powerline)
-(powerline-center-evil-theme)
 
-
-;; Disable toolbar mode in GUI emacs
-(if (display-graphic-p)
-	(progn
-	  (tool-bar-mode -1)
-	  (scroll-bar-mode -1)
-	  (menu-bar-mode -1))
-  )
-
-;; Loading theme depending on GUI or term
-(global-hl-line-mode +1)
-(set-face-underline 'hl-line t)
-(if (display-graphic-p)
-	(load-theme 'nord 'NO-CONFIRM)
-  (progn
-	(load-theme 'atom-dark 'NO-CONFIRM)
-	(setq atom-dark-theme-force-faces-for-mode nil)
-	(set-face-foreground 'font-lock-comment-face "lightgreen")
-	)
-  )
-
-;; Do not show the startup screen
-(setq inhibit-startup-screen t)
+(evil-set-initial-state 'ansi-term 'emacs)
+(evil-set-initial-state 'term-mode 'emacs)
 
 ;; Putting font
+(set-face-attribute 'default nil :font "Roboto Mono Medium for Powerline 11")
 (set-default-font "Roboto Mono Medium for Powerline-11")
 
 ;; Scroll settings
@@ -111,6 +89,39 @@
 	  scroll-conservatively 10000
 	  scroll-step 1)
 
+(defun activate-hl-line-underlined-mode ()
+  (hl-line-mode +1)
+  (set-face-underline 'hl-line t)
+  )
+(add-hook 'prog-mode-hook 'activate-hl-line-underlined-mode)
+
+(defun load-graphical-env (frame)
+  (load-theme 'nord 'NO-CONFIRM)
+  )
+
+(defun load-term-env ()
+	  (load-theme 'atom-dark 'NO-CONFIRM)
+	  (setq atom-dark-theme-force-faces-for-mode nil)
+	  (set-face-foreground 'font-lock-comment-face "lightgreen")
+	  )
+
+(defun try-loading-graphical-env ()
+  (if (display-graphic-p)
+	  (progn
+		(print "Sucessfully creating a graphical window")
+		(load-graphical-env t))
+	(progn
+	  (print "Failed creating graphical window")
+	(load-term-env))))
+
+(load-term-env)
+(add-hook 'after-make-frame-functions 'load-graphical-env)
+(add-hook 'server-switch-hook 'try-loading-graphical-env)
+
+;; POWERLINE,powerline
+;; (require 'powerline)
+;; (require 'powerline-evil)
+;; (powerline-center-evil-theme)
 
 ;; Magit bind
 (global-set-key (kbd "M-g") 'magit-status)
@@ -277,7 +288,9 @@
  '(lsp-ui-sideline-update-mode (quote line))
  '(package-selected-packages
    (quote
-	(nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
+ '(scroll-bar-mode nil)
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

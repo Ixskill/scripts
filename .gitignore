@@ -3,6 +3,7 @@ config/*
 !config/.config/i3
 !config/.config/i3blocks
 !config/.config/termite
+!config/.config/systemd
 tmux/.tmux/resurrect
 tmux/.tmux/resurrect/last
 tmux/.tmux/plugins
