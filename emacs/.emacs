@@ -172,6 +172,11 @@
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
 
+(with-eval-after-load 'projectile
+  (setq projectile-project-root-files-top-down-recurring
+        (append '("compile_commands.json"
+                  ".ccls")
+                projectile-project-root-files-top-down-recurring)))
 
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
@@ -191,8 +196,7 @@
 
 ;; Load with `irony-mode` as a grouped backend
 (eval-after-load 'company
-  ;;'(add-to-list 'company-backends '(company-lsp company-irony-c-headers company-irony)))
-  '(add-to-list 'company-backends '(company-lsp company-irony-c-headers)))
+  '(add-to-list 'company-backends '(company-lsp company-irony-c-headers company-irony)))
 
 
 

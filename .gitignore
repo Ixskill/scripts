@@ -12,3 +12,4 @@ vim/.vim/bundle/
 emacs/.emacs.d/!*
 emacs/.emacs.d/projectile*
 emacs/.emacs.d/projectile-bookmarks.eld
+emacs/.emacs.d/#*
