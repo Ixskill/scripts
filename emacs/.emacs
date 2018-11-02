@@ -93,10 +93,10 @@
   (hl-line-mode +1)
   (set-face-underline 'hl-line t)
   )
-(add-hook 'prog-mode-hook 'activate-hl-line-underlined-mode)
+;;(add-hook 'prog-mode-hook 'activate-hl-line-underlined-mode)
 
 (defun load-graphical-env (frame)
-  (load-theme 'nord 'NO-CONFIRM)
+  (load-theme 'organic-green 'NO-CONFIRM)
   )
 
 (defun load-term-env ()
@@ -114,7 +114,6 @@
 	  (print "Failed creating graphical window")
 	(load-term-env))))
 
-(load-term-env)
 (add-hook 'after-make-frame-functions 'load-graphical-env)
 (add-hook 'server-switch-hook 'try-loading-graphical-env)
 
@@ -260,9 +259,10 @@
 (define-prefix-command 'tag-map)
 (define-prefix-command 'other-window-tag-map)
 
-(add-hook 'after-init-hook (lambda ()
-  (when (fboundp 'auto-dim-other-buffers-mode)
-    (auto-dim-other-buffers-mode t))))
+;;; Not using with light themes
+;; (add-hook 'after-init-hook (lambda ()
+;;   (when (fboundp 'auto-dim-other-buffers-mode)
+;;     (auto-dim-other-buffers-mode t))))
 
 ;*******************************************************************************;
 (custom-set-variables
@@ -273,22 +273,23 @@
  '(comment-style (quote extra-line))
  '(custom-safe-themes
    (quote
-	("9a155066ec746201156bb39f7518c1828a73d67742e11271e4f24b7b178c4710" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
+	("87a431903d22fa1cbb2becd88572e7d985e28c2253935448d0d754c13e85a980" "9a155066ec746201156bb39f7518c1828a73d67742e11271e4f24b7b178c4710" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default)))
  '(global-company-mode nil)
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
  '(lsp-ui-doc-header t)
  '(lsp-ui-doc-include-signature t)
- '(lsp-ui-doc-position (quote top))
+ '(lsp-ui-doc-position (quote at-point))
+ '(lsp-ui-doc-use-childframe t)
  '(lsp-ui-peek-always-show t)
- '(lsp-ui-peek-fontify (quote always))
- '(lsp-ui-peek-list-width 60)
+ '(lsp-ui-peek-fontify (quote never))
+ '(lsp-ui-peek-list-width 80)
  '(lsp-ui-sideline-ignore-duplicate t)
  '(lsp-ui-sideline-show-code-actions t)
  '(lsp-ui-sideline-update-mode (quote line))
  '(package-selected-packages
    (quote
-	(company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
+	(organic-green-theme company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -297,12 +298,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t nil)))
- '(lsp-ui-peek-highlight ((t (:background "white" :distant-foreground "white" :foreground "color-32" :box (:line-width -1 :color "white")))))
- '(lsp-ui-peek-line-number ((t (:foreground "white"))))
- '(lsp-ui-peek-list ((t (:background "color-34"))))
- '(lsp-ui-peek-peek ((t (:background "color-106"))))
- '(lsp-ui-peek-selection ((t (:background "white" :foreground "color-32"))))
- '(lsp-ui-sideline-code-action ((t (:foreground "brightred"))))
- '(lsp-ui-sideline-current-symbol ((t (:foreground "color-32" :box (:line-width -1 :color "white") :underline t :weight bold :height 0.99))))
- '(lsp-ui-sideline-symbol ((t (:foreground "white" :box (:line-width -1 :color "grey") :height 0.99)))))
+ '(lsp-ui-peek-highlight ((t (:foreground "medium orchid" :box nil))))
+ '(lsp-ui-peek-line-number ((t nil)))
+ '(lsp-ui-peek-list ((t (:background "powder blue"))))
+ '(lsp-ui-peek-peek ((t (:background "light blue"))))
+ '(lsp-ui-peek-selection ((t (:background "powder blue" :weight bold :height 1.1))))
+ '(lsp-ui-sideline-code-action ((t (:foreground "red" :underline (:color foreground-color :style wave)))))
+ '(lsp-ui-sideline-current-symbol ((t (:foreground "orchid" :box nil :underline t :weight bold :height 0.99))))
+ '(lsp-ui-sideline-symbol ((t (:foreground "lime green" :box nil :height 0.99)))))
 (put 'narrow-to-region 'disabled nil)
