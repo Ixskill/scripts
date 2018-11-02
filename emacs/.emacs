@@ -117,11 +117,6 @@
 (add-hook 'after-make-frame-functions 'load-graphical-env)
 (add-hook 'server-switch-hook 'try-loading-graphical-env)
 
-;; POWERLINE,powerline
-;; (require 'powerline)
-;; (require 'powerline-evil)
-;; (powerline-center-evil-theme)
-
 ;; Magit bind
 (global-set-key (kbd "M-g") 'magit-status)
 
@@ -259,10 +254,15 @@
 (define-prefix-command 'tag-map)
 (define-prefix-command 'other-window-tag-map)
 
+
 ;;; Not using with light themes
 ;; (add-hook 'after-init-hook (lambda ()
 ;;   (when (fboundp 'auto-dim-other-buffers-mode)
 ;;     (auto-dim-other-buffers-mode t))))
+
+;; POWERLINE,powerline
+(require 'powerline)
+(powerline-center-evil-theme)
 
 ;*******************************************************************************;
 (custom-set-variables
