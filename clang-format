@@ -13,7 +13,7 @@ BreakStringLiterals: true
 DerivePointerAlignment: true
 ReflowComments: true
 IncludeBlocks: Merge
-SortIncludes: true
+SortIncludes: false
 SpaceAfterCStyleCast: false
 IndentPPDirectives: AfterHash
 AccessModifierOffset: 0
