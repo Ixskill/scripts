@@ -125,6 +125,7 @@ alias grep="grep --color"
 alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
 alias ll="ls -alsh"
 alias em="emacsclient -nw -a '' "
+alias vem="emacsclient -nc -a ''"
 alias v=vim
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias cd.="cd ."

@@ -82,21 +82,20 @@
 
 ;; Disable toolbar mode in GUI emacs
 (if (display-graphic-p)
-	(progn ((tool-bar-mode -1)
-	
-			(scroll-bar-mode -1)))
+	(progn
+	  (tool-bar-mode -1)
+	  (scroll-bar-mode -1)
+	  (menu-bar-mode -1))
   )
 
 ;; Loading theme depending on GUI or term
+(global-hl-line-mode +1)
+(set-face-underline 'hl-line t)
 (if (display-graphic-p)
 	(load-theme 'nord 'NO-CONFIRM)
   (progn
-	;;(load-theme 'leuven 'NO-CONFIRM)
 	(load-theme 'atom-dark 'NO-CONFIRM)
-	;; (load-theme 'nord 'NO-CONFIRM)
 	(setq atom-dark-theme-force-faces-for-mode nil)
-	(global-hl-line-mode +1)
-	(set-face-underline 'hl-line t)
 	(set-face-foreground 'font-lock-comment-face "lightgreen")
 	)
   )
@@ -169,8 +168,8 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(require 'helm-xref)
-(setq xref-show-xrefs-function 'helm-xref-show-xrefs)
+;;(require 'helm-xref)
+;;(setq xref-show-xrefs-function 'helm-xref-show-xrefs)
 
 (add-hook 'c-mode-hook 'lsp-ccls-enable)
 (add-hook 'c++-mode-hook 'lsp-ccls-enable)
@@ -186,9 +185,12 @@
 (require 'lsp-ui)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
+
+(define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+(define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+
 (require 'ccls)
 (require 'company-lsp)
-
 (setq company-lsp-async 1)
 (setq company-lsp-enable-recompletion 1)
 ;;(setq company-lsp-enable-snippet 1)
@@ -267,18 +269,26 @@
  '(lsp-ui-doc-header t)
  '(lsp-ui-doc-include-signature t)
  '(lsp-ui-doc-position (quote top))
+ '(lsp-ui-peek-always-show t)
+ '(lsp-ui-peek-fontify (quote always))
+ '(lsp-ui-peek-list-width 60)
  '(lsp-ui-sideline-ignore-duplicate t)
  '(lsp-ui-sideline-show-code-actions t)
  '(lsp-ui-sideline-update-mode (quote line))
  '(package-selected-packages
    (quote
-	(clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
+	(nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers company-irony helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme moe-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t nil)))
+ '(lsp-ui-peek-highlight ((t (:background "white" :distant-foreground "white" :foreground "color-32" :box (:line-width -1 :color "white")))))
+ '(lsp-ui-peek-line-number ((t (:foreground "white"))))
+ '(lsp-ui-peek-list ((t (:background "color-34"))))
+ '(lsp-ui-peek-peek ((t (:background "color-106"))))
+ '(lsp-ui-peek-selection ((t (:background "white" :foreground "color-32"))))
  '(lsp-ui-sideline-code-action ((t (:foreground "brightred"))))
  '(lsp-ui-sideline-current-symbol ((t (:foreground "color-32" :box (:line-width -1 :color "white") :underline t :weight bold :height 0.99))))
  '(lsp-ui-sideline-symbol ((t (:foreground "white" :box (:line-width -1 :color "grey") :height 0.99)))))
