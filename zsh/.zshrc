@@ -27,7 +27,6 @@ if [ "$(uname -s)" = "Linux" ]; then
 	export HOSTNAME="ade-sede-arch"
 	alias pbcopy='xsel --clipboard --input'
 	alias pbpaste='xsel --clipboard --output'
-	alias docker="sudo docker"
 	alias ls="ls --colo=auto"
 	alias ll="ls --color=auto -alsh"
 	# source $HOME/.locale.conf
