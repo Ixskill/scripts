@@ -172,10 +172,21 @@
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
 
-(require 'lsp-javascript-flow)
-(add-hook 'js-mode-hook #'lsp-javascript-flow-enable)
-(add-hook 'js2-mode-hook #'lsp-javascript-flow-enable) ;; for js2-mode support
-(add-hook 'rjsx-mode #'lsp-javascript-flow-enable) ;; for rjsx-mode support
+(require 'lsp-javascript-typescript)
+(add-hook 'js-mode-hook #'lsp-javascript-typescript-enable)
+(add-hook 'typescript-mode-hook #'lsp-javascript-typescript-enable) ;; for typescript support
+(add-hook 'js3-mode-hook #'lsp-javascript-typescript-enable) ;; for js3-mode support
+(add-hook 'rjsx-mode #'lsp-javascript-typescript-enable) ;; for rjsx-mode support
+
+(defun my-company-transformer (candidates)
+  (let ((completion-ignore-case t))
+    (all-completions (company-grab-symbol) candidates)))
+
+(defun my-js-hook nil
+  (make-local-variable 'company-transformers)
+  (push 'my-company-transformer company-transformers))
+
+(add-hook 'js-mode-hook 'my-js-hook)
 
 (with-eval-after-load 'projectile
   (setq projectile-project-root-files-top-down-recurring
@@ -188,6 +199,9 @@
 (require 'lsp-ui)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
+(add-hook 'js-mode-hook 'flycheck-mode)
+(add-hook 'js3-mode-hook 'flycheck-mode)
+(add-hook 'rjsx-mode-hook 'flycheck-mode)
 
 (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
 (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
@@ -303,7 +317,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-	(lsp-javascript-flow rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
+	(lsp-javascript-typescript bash-completion lsp-javascript-flow rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
