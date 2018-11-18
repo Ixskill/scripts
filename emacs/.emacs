@@ -19,6 +19,10 @@
 (setq-default tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
 								64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))
 
+(defun reload-dotfile ()
+  (interactive)
+  (load-file "~/.emacs"))
+
 ;; Do not show the startup screen
 (setq inhibit-startup-screen t)
 ;; Activates lines numbers
@@ -57,6 +61,8 @@
 (require 'evil)
 (evil-mode 1)
 (evil-select-search-module 'evil-search-module 'evil-search)
+(require 'evil-surround)
+(global-evil-surround-mode)
 
 ;; Remaps C-space as the ESC key. (I need C-c for idiomatic emacs, but i just cant go back to hitting esc)
 (evil-define-key 'insert 'evil-insert-state-map (kbd "C-@") 'evil-force-normal-state)
@@ -287,6 +293,9 @@
             (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
             (define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
 
+(require 'evil-exchange)
+(evil-exchange-install)
+
 ;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -305,7 +314,7 @@
  '(lsp-ui-doc-enable t)
  '(lsp-ui-doc-header t)
  '(lsp-ui-doc-include-signature t)
- '(lsp-ui-doc-position (quote top))
+ '(lsp-ui-doc-position (quote bottom))
  '(lsp-ui-doc-use-childframe t)
  '(lsp-ui-peek-always-show t)
  '(lsp-ui-peek-fontify (quote never))
@@ -317,7 +326,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-	(lsp-javascript-typescript bash-completion lsp-javascript-flow rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
+	(evil-surround default-text-scale evil-exchange lsp-javascript-typescript bash-completion lsp-javascript-flow rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit evil)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
