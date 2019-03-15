@@ -75,8 +75,8 @@
 (evil-set-initial-state 'term-mode 'emacs)
 
 ;; Putting font
-(set-face-attribute 'default nil :font "Roboto Mono Medium for Powerline 11")
-(set-default-font "Roboto Mono Medium for Powerline-11")
+;;(set-default-font "Roboto Mono Medium for Powerline-11")
+(set-face-attribute 'default nil :font "Roboto Mono Medium for Powerline-18")
 
 ;; Scroll settings
 (setq scroll-margin 3
@@ -178,11 +178,11 @@
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
 
-(require 'lsp-javascript-typescript)
-(add-hook 'js-mode-hook #'lsp-javascript-typescript-enable)
-(add-hook 'typescript-mode-hook #'lsp-javascript-typescript-enable) ;; for typescript support
-(add-hook 'js3-mode-hook #'lsp-javascript-typescript-enable) ;; for js3-mode support
-(add-hook 'rjsx-mode #'lsp-javascript-typescript-enable) ;; for rjsx-mode support
+;; (require 'lsp-javascript-typescript)
+;; (add-hook 'js-mode-hook #'lsp-javascript-typescript-enable)
+;; (add-hook 'typescript-mode-hook #'lsp-javascript-typescript-enable) ;; for typescript support
+;; (add-hook 'js3-mode-hook #'lsp-javascript-typescript-enable) ;; for js3-mode support
+;; (add-hook 'rjsx-mode #'lsp-javascript-typescript-enable) ;; for rjsx-mode support
 
 (defun my-company-transformer (candidates)
   (let ((completion-ignore-case t))
