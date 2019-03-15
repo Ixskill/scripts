@@ -131,7 +131,7 @@ alias cd.="cd ."
 alias i3lock="xbacklight -set 0 && i3lock -c 000000"
 
 
-export BREW_HOME = /sgoinfre/goinfre/Perso/ade-sede/.brew
+export BREW_HOME="$HOME/.brew"
 # Load Homebrew config script
 if [ -e "$HOME/.brewconfig.zsh" ]; then
 	# source $HOME/.brewconfig.zsh
