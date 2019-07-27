@@ -131,6 +131,7 @@ alias cd.="cd ."
 alias i3lock="xbacklight -set 0 && i3lock -c 000000"
 
 
+export BREW_HOME="$HOME/.brew"
 # Load Homebrew config script
 if [ -e "$HOME/.brewconfig.zsh" ]; then
 	# source $HOME/.brewconfig.zsh
@@ -138,7 +139,7 @@ if [ -e "$HOME/.brewconfig.zsh" ]; then
 fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
-	ZSH_HIH="/Users/ade-sede/.brew/Cellar/zsh-syntax-highlighting/0.5.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+	ZSH_HIH="$BREW_HOME/Cellar/zsh-syntax-highlighting/0.5.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 	[ -f $ZSH_HIH ] && . $ZSH_HIH
 	elif [ "$(uname -s)" = "Linux" ]; then
 	ZSH_HIH="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -165,7 +166,7 @@ fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Brew path
-export PATH=$HOME/.brew/bin:$PATH
+export PATH=$BREW_HOME/bin:$PATH
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	eval $(keychain --eval --quiet ~/.ssh/id_rsa) && exec startx
@@ -190,3 +191,7 @@ fi
 fpath=(~/.zsh/completion $fpath)
 
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
+
+if [ "$(uname -s)" = "Darwin" ]; then
+	export PATH=$HOME/osx_binutils:$PATH
+fi
