@@ -35,8 +35,9 @@
   (evil-select-search-module 'evil-search-module 'evil-search)
   (evil-ex-define-cmd "ls" 'ibuffer)
   (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
+  (evil-define-key 'insert 'evil-insert-state-map (kbd "C-]") 'lsp-ui-peek-find-definitions)
   :bind (:map evil-normal-state-map
-			  ("C-]" . lsp-ui-peek-find-definitions)
+			  ;;("C-]" . lsp-ui-peek-find-definitions)
 			  :map evil-insert-state-map
 			  ("C-n" . company-complete)
 			  ("C-p" . company-complete)))
@@ -103,6 +104,9 @@
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
+(use-package rust-mode
+  :hook (rust-mode . lsp))
+
 (use-package company-lsp :commands company-lsp
   :config
 	(setq company-lsp-async 1)
@@ -112,9 +116,11 @@
 (use-package ccls
   :config
   (ccls-use-default-rainbow-sem-highlight)
+  (setq ccls-executable "/usr/bin/ccls")
   :hook ((c-mode c++-mode objc-mode) .
 		 (lambda () (require 'ccls) (lsp) (hs-minor-mode) (irony-mode) (flycheck-mode)))
-  (irony-mode . irony-cdb-autosetup-compile-options))
+ ;; (irony-mode . irony-cdb-autosetup-compile-options)
+  )
 
 
 (use-package evil-snipe
@@ -166,7 +172,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-	(csv-mode focus python-mode evil-surround default-text-scale evil-exchange lsp-javascript-typescript bash-completion lsp-javascript-flow rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref lsp-ui company-lsp ccls js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit)))
+	(ccls company-lsp powerline yasnippet lsp-ui lsp-mode csv-mode focus python-mode evil-surround default-text-scale evil-exchange bash-completion rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
