@@ -20,6 +20,8 @@
 (use-package helm-config
   :bind ("M-x" . 'helm-M-x))
 
+(use-package dap-gdb-lldb)
+
 (use-package helm-projectile
   :config (helm-projectile-on))
 
@@ -41,6 +43,13 @@
 			  :map evil-insert-state-map
 			  ("C-n" . company-complete)
 			  ("C-p" . company-complete)))
+(use-package toml-mode)
+
+(use-package flycheck-rust
+  :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+(use-package cargo
+  :hook (rust-mode . cargo-minor-mode))
 
 (use-package evil-surround
   :config (global-evil-surround-mode))
@@ -162,6 +171,8 @@
  '(lsp-ui-doc-include-signature t)
  '(lsp-ui-doc-position (quote bottom))
  '(lsp-ui-doc-use-childframe t)
+ '(lsp-ui-flycheck-enable t)
+ '(lsp-ui-flycheck-list-position (quote right))
  '(lsp-ui-peek-always-show t)
  '(lsp-ui-peek-fontify (quote never))
  '(lsp-ui-peek-list-width 80)
@@ -172,7 +183,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-	(ccls company-lsp powerline yasnippet lsp-ui lsp-mode csv-mode focus python-mode evil-surround default-text-scale evil-exchange bash-completion rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit)))
+	(ripgrep helm-lsp dap-mode lsp-treemacs cargo flycheck-rust toml-mode ccls company-lsp powerline yasnippet lsp-ui lsp-mode csv-mode focus python-mode evil-surround default-text-scale evil-exchange bash-completion rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
