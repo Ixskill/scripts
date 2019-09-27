@@ -1,11 +1,12 @@
 ;;ads the local site-lisp folder containing 42header ressources
-(if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
-	(setq config_files "/usr/share/emacs/site-lisp/")
-  (setq config_files (concat (getenv "DOTFILES") "/emacs/site-lisp/")))
+(setq load-path (append (list nil (concat (getenv "DOTFILES") "/emacs/site-lisp/")) load-path))
+;;(setq load-path (append (list 'load-path "/usr/share/emacs/site-lisp/")))
+;;(if (string= (shell-command-to-string "printf %s $(uname -s)") "Darwin")
+;;(setq load-path (append (list nil "/usr/share/emacs/site-lisp/") load-path)))
 (setq vc-follow-symlinks t)
 
 ;; Sourcing packages 
-(setq load-path (append (list nil config_files) load-path)) (load "list.el")
+(load "list.el")
 (load "string.el")
 (load "comments.el")
 (load "header.el")
