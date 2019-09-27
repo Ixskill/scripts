@@ -116,6 +116,9 @@
 (use-package rust-mode
   :hook (rust-mode . lsp))
 
+(use-package js2-mode
+  :hook (js2-mode . npm-mode))
+
 (use-package company-lsp :commands company-lsp
   :config
 	(setq company-lsp-async 1)
@@ -183,7 +186,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-	(ripgrep helm-lsp dap-mode lsp-treemacs cargo flycheck-rust toml-mode ccls company-lsp powerline yasnippet lsp-ui lsp-mode csv-mode focus python-mode evil-surround default-text-scale evil-exchange bash-completion rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit)))
+	(indium npm-mode ripgrep helm-lsp dap-mode lsp-treemacs cargo flycheck-rust toml-mode ccls company-lsp powerline yasnippet lsp-ui lsp-mode csv-mode focus python-mode evil-surround default-text-scale evil-exchange bash-completion rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
