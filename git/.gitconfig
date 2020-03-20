@@ -8,6 +8,7 @@
 	co = checkout
 	p = push
 	tree = log --all --pretty --oneline --graph
+	blame = slut
 
 [color]
 	dif = auto

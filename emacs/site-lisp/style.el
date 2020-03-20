@@ -11,7 +11,8 @@
 (set-default-font "Roboto Mono Medium for Powerline-11")
 
 (defun load-graphical-env (frame)
-  (load-theme 'organic-green 'NO-CONFIRM)
+  (load-theme 'atom-dark 'NO-CONFIRM)
+  (setq atom-dark-theme-force-faces-for-mode nil)
   )
 
 (defun load-term-env ()
