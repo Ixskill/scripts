@@ -7,6 +7,7 @@
 
 ;; Sourcing packages 
 (load "list.el")
+(load "term-cfg.el")
 (load "string.el")
 (load "comments.el")
 (load "header.el")
@@ -48,6 +49,7 @@
 
 (use-package flycheck-rust
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
 
 (use-package cargo
   :hook (rust-mode . cargo-minor-mode))
@@ -115,10 +117,12 @@
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
 (use-package rust-mode
+  :config (setq lsp-rust-server 'rust-analyzer)
   :hook (rust-mode . lsp))
 
 (use-package python-mode
-  :hook (python-mode . lsp))
+  :hook (python-mode . lsp)
+  :hook (python-mode . flycheck-mode))
 
 (use-package js2-mode
   :hook (js2-mode . npm-mode))
@@ -178,7 +182,7 @@
  '(lsp-ui-doc-include-signature t)
  '(lsp-ui-doc-position (quote bottom))
  '(lsp-ui-doc-use-childframe t)
- '(lsp-ui-flycheck-enable t)
+ '(lsp-ui-flycheck-enable nil)
  '(lsp-ui-flycheck-list-position (quote right))
  '(lsp-ui-peek-always-show t)
  '(lsp-ui-peek-fontify (quote never))
@@ -190,7 +194,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-	(py-autopep8 eslint-fix elpy indium npm-mode ripgrep helm-lsp dap-mode lsp-treemacs cargo flycheck-rust toml-mode ccls company-lsp powerline yasnippet lsp-ui lsp-mode csv-mode focus python-mode evil-surround default-text-scale evil-exchange bash-completion rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit)))
+	(py-autopep8 eslint-fix elpy indium npm-mode ripgrep helm-lsp dap-mode lsp-treemacs cargo flycheck-rust toml-mode ccls company-lsp powerline yasnippet lsp-ui csv-mode focus python-mode evil-surround default-text-scale evil-exchange bash-completion rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
