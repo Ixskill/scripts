@@ -65,25 +65,25 @@ export BAR="$DOTFILES/config/.config/i3blocks/config"
 [ -f $PROMPT_FILE ] && . $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
 [ -f $PROMPT_FILE ] && . ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
 
-if [ $TERM != "eterm-color" ]; then
-	setopt PROMPT_SUBST
+# if [ $TERM != "eterm-color" ]; then
+setopt PROMPT_SUBST
+PS1=$(echo_prompt)
+cd () {
+	builtin cd $1
+	reset_prompt 
+}
+
+reset_prompt (){
 	PS1=$(echo_prompt)
-	cd () {
-		builtin cd $1
-		reset_prompt 
-	}
+}
+reset_prompt
 
-	reset_prompt (){
-		PS1=$(echo_prompt)
-	}
+# Resets prompts every TMOUT seconds
+TMOUT=2
+TRAPALRM() {
 	reset_prompt
-
-	# Resets prompts every TMOUT seconds
-	TMOUT=2
-	TRAPALRM() {
-		reset_prompt
-	}
-fi
+}
+# fi
 
 
 #Style config
