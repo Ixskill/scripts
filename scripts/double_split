@@ -3,6 +3,10 @@
 if [ -n "$1" ]; then
 	if [ "$1" = "right" ]; then
 		xrandr --output VGA1 --auto --right-of LVDS1
+	elif [ "$1" = "above" ]; then
+		xrandr --output VGA1 --auto --above LVDS1
+	elif [ "$1" = "below" ]; then
+		xrandr --output VGA1 --auto --below LVDS1
 	else
 		xrandr --output VGA1 --auto --left-of LVDS1
 	fi

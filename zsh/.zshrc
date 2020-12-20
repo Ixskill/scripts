@@ -59,13 +59,13 @@ export BAR="$DOTFILES/config/.config/i3blocks/config"
 
 # Cd and git resets prompt
 
-# [ -f $PROMPT_FILE ] && source $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
-# [ -f $PROMPT_FILE ] && source ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
-#
+[ -f $PROMPT_FILE ] && source $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
+[ -f $PROMPT_FILE ] && source ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
+
 [ -f $PROMPT_FILE ] && . $PROMPT_FILE || echo "Cannot load $PROMPT_FILE, file doesn't exist"
 [ -f $PROMPT_FILE ] && . ~/.git-prompt.sh || echo "Cannot load $HOME/.git-prompt.sh, file doesn't exist"
 
-# if [ $TERM != "eterm-color" ]; then
+if [ $TERM != "eterm-color" ]; then
 setopt PROMPT_SUBST
 PS1=$(echo_prompt)
 cd () {
@@ -78,12 +78,12 @@ reset_prompt (){
 }
 reset_prompt
 
-# Resets prompts every TMOUT seconds
+#Resets prompts every TMOUT seconds
 TMOUT=2
 TRAPALRM() {
 	reset_prompt
 }
-# fi
+fi
 
 
 #Style config
@@ -124,7 +124,6 @@ alias grep="grep --color"
 alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
 alias ll="ls -alsh"
 alias em="emacsclient -nw -a '' "
-alias vem="emacsclient -nc -a ''"
 alias v=vim
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias cd.="cd ."
@@ -141,8 +140,8 @@ fi
 if [ "$(uname -s)" = "Darwin" ]; then
 	ZSH_HIH="$BREW_HOME/Cellar/zsh-syntax-highlighting/0.5.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 	[ -f $ZSH_HIH ] && . $ZSH_HIH
-	elif [ "$(uname -s)" = "Linux" ]; then
-	ZSH_HIH="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+elif [ "$(uname -s)" = "Linux" ]; then
+ZSH_HIH="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 	[ -f $ZSH_HIH ] && . $ZSH_HIH
 fi
 

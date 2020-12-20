@@ -6,10 +6,6 @@ border_right=0
 border_bottom=2
 align=center
 
-[xwindow]
-command=~/.dotfiles/scripts/xwindow.py
-interval=persist
-signal=3
 
 [separator]
 full_text= ■ 

@@ -8,7 +8,7 @@
 
 ;; Putting font
 (set-face-attribute 'default nil :font "Roboto Mono Medium for Powerline 11")
-(set-default-font "Roboto Mono Medium for Powerline-11")
+;;(set-default-font "Roboto Mono Medium for Powerline-11")
 
 (defun load-graphical-env (frame)
   (load-theme 'atom-dark 'NO-CONFIRM)

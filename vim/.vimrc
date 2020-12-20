@@ -1,5 +1,7 @@
 set background=dark
 set nocompatible              " be iMproved, required
+set nobackup
+set noswapfile
 filetype off                  " required
 
 " {{{ Vundle
@@ -17,8 +19,8 @@ Plugin 'lrvick/Conque-Shell'
 "}}}
 
 " Color{{{
-Plugin 'fabi1cazenave/kalahari.vim'
-Plugin 'cocopon/iceberg.vim'
+""Plugin 'fabi1cazenave/kalahari.vim'
+""Plugin 'cocopon/iceberg.vim'
 "}}}
 
 " VIM-EASY-ALIGN{{{
@@ -52,11 +54,11 @@ nnoremap <C-w><Tab>p :TagbarTogglePause<cr>
 "}}}
 
 " BASE-16{{{
-Plugin 'chriskempson/base16-vim'
-if filereadable(expand("~/.vimrc_background")) && $auto_style == "base16"
-	let base16colorspace=256
-	source ~/.vimrc_background
-endif
+""Plugin 'chriskempson/base16-vim'
+""if filereadable(expand("~/.vimrc_background")) && $auto_style == "base16"
+	""let base16colorspace=256
+	""source ~/.vimrc_background
+""endif
 " }}}
 
 " VIM-POWERLINE
@@ -124,11 +126,11 @@ set encoding=utf-8				"Enbaling utf8
 
 
 "Loading fancy font on archlinux
-if $HOSTNAME == "ade-sede-arch"
-	let g:Powerline_symbols = 'fancy'
-else
-	let g:Powerline_symbols = 'compatible'
-endif
+"if $HOSTNAME == "ade-sede-arch"
+	"let g:Powerline_symbols = 'fancy'
+"else
+	"let g:Powerline_symbols = 'compatible'
+"endif
 
 "Loading my color scheme at ~/.vim/colors/.
 " if $base16 != "true"
@@ -148,6 +150,8 @@ set shiftwidth=4
 
 "	The line where the cursor is is highlighted
 set cursorline
+
+
 " Making a dummy sign column
 " sign define dummy
 " autocmd	BufAdd,BufRead,BufNewFile * :execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
@@ -182,6 +186,8 @@ set history=1000					"Vim now remembers the 1000 last cmd you used
 set timeoutlen=500					"The time you have to complete the command / mapping before it expires
 
 set hidden						"Allows buffer to be set in BG without writing on the disk
+
+color atom-dark-256
 
 "	Statusline settings {{{
 set laststatus=2					"The status bar is always displayed at the bottom
@@ -261,10 +267,6 @@ augroup END
 "	}}}
 
 "		END AUGROUPS !!	}}}
-
-"		Swapfiles {{{
-set backupdir=~/.vim/backup "Sets backupdirectory for all swp files"
-set directory=~/.vim/backup "}}}
 
 "		Command completion {{{
 set wildmenu										"Using <TAB> in the command line displays your options for completion
