@@ -18,7 +18,6 @@
 (load "misc.el")
 (load "compilation.el")
 
-
 (use-package helm-config
 			 :bind ("M-x" . 'helm-M-x))
 
@@ -116,13 +115,20 @@
 			 (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
 			 (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
+(defun pretty-lambda ()
+  "make some word or string show as pretty Unicode symbols"
+  (setq prettify-symbols-alist
+        '(
+          ("lambda" . 955) ; λ
+          )))
 (use-package rust-mode
 			 :config (setq lsp-rust-server 'rust-analyzer)
+			 :hook (rust-mode . pretty-lambda)
 			 :hook (rust-mode . lsp))
 
 (use-package python-mode
 			 :hook (python-mode . lsp)
-			 :hook (python-mode . flymake--backend-state)
+			 :hook (python-mode . pretty-lambda)
 			 ;;:hook (python-mode . flycheck-mode))
 			 )
 
@@ -155,14 +161,18 @@
 (define-prefix-command 'other-window-tag-map)
 
 
-(use-package powerline
-			 :config
-			 (powerline-center-evil-theme))
 
 
 (use-package evil-exchange
 			 :config
 			 (evil-exchange-install))
+
+(use-package anzu
+  :config
+  (global-anzu-mode 1))
+
+(use-package evil-anzu
+  :defer t)
 
 ;*******************************************************************************;
 (custom-set-variables
@@ -196,7 +206,7 @@
  '(lsp-ui-sideline-update-mode 'line)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(pylint helm-rg py-autopep8 eslint-fix elpy indium npm-mode ripgrep helm-lsp dap-mode lsp-treemacs cargo flycheck-rust toml-mode ccls company-lsp powerline yasnippet lsp-ui csv-mode focus python-mode evil-surround default-text-scale evil-exchange bash-completion rjsx-mode load-theme-buffer-local organic-green-theme company-irony nordless-theme clang-format helm-xref js-format nodejs-repl evil-snipe projectile-direnv auto-complete-clang cmake-ide ac-rtags rtags leuven-theme solarized-theme auto-dim-other-buffers company-irony-c-headers helm-ag atom-dark-theme slime-company slime irony vagrant dockerfile-mode yaml-mode enh-ruby-mode projectile-rails helm-projectile ibuffer-projectile projectile ggtags php-mode racer babel company ac-helm auto-complete seoul256-theme rust-mode async-await helm nord-theme subatomic-theme subatomic256-theme xterm-color green-phosphor-theme magit))
+   '(pretty-symbols evil-anzu org-pomodoro auto-compile spaceline-all-the-icons spaceline ergoemacs-status 0xc pylint helm-rg py-autopep8 eslint-fix npm-mode ripgrep flycheck-rust toml-mode company-lsp focus default-text-scale evil-exchange rjsx-mode load-theme-buffer-local company-irony nordless-theme clang-format js-format projectile-direnv auto-complete-clang ac-rtags auto-dim-other-buffers company-irony-c-headers atom-dark-theme vagrant ggtags racer babel ac-helm auto-complete seoul256-theme async-await subatomic-theme subatomic256-theme green-phosphor-theme))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces

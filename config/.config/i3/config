@@ -190,8 +190,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 && pkill -RTMIN+2 i3blocks
 
 #### GAPS SETUP
 
-gaps inner 8
-gaps outer 50
+gaps inner 3
+gaps outer 3
 smart_gaps on
 
 

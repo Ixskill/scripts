@@ -2,6 +2,10 @@
   (interactive)
   (load-file "~/.emacs"))
 
+(defun my-init (file)
+  (print file)
+  (reload-dotfile))
+
 (defun shell-command-current-file ()
   "Invokes the requested shell command with path current file as argument and displays it in a buffer"
   (interactive)

@@ -1,3 +1,24 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-exec emacsclient -nc -a '' -e '(reload-dotfile)'
+launch_emacs () {
+	emacsclient -nc -a '' $1 #-e $ev
+
+	#If there is already a server launched, will return 1
+	if  [ "$?" == "1" ]; then
+		echo Trying to connect to an existing emacs server
+		emacsclient -nc $1 #-e $ev
+	fi
+}
+
+function kill_emacs() {
+	emacsclient -e '(save-buffers-kill-emacs)'
+}
+
+if [ "$1" == "shutdown" ]; then
+	kill_emacs
+elif [ "$1" == "restart" ]; then
+	kill_emacs
+	launch_emacs "$2"
+else
+	launch_emacs "$1"
+fi
