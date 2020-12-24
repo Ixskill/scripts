@@ -54,7 +54,7 @@ export MAIL="adrien.de.sede@gmail.com"
 export VISUAL="emacsclient -nw -a ''"
 export EDITOR="$VISUAL"
 export PROMPT_FILE="$DOTFILES/zsh/.zsh_prompt.zsh"
-export BAR="$DOTFILES/config/.config/i3blocks/config"
+export BAR="$DOTFILES/config/.config/polybar/config"
 
 
 # Cd and git resets prompt
@@ -124,10 +124,10 @@ alias grep="grep --color"
 alias 42fc="sh ~/42FileChecker/42FileChecker.sh"
 alias ll="ls -alsh"
 alias em="emacsclient -nw -a '' "
+alias vem="emacsclient -nc -a '' "
 alias v=vim
 alias clean_tmux="rm ~/.tmux/resurrect/*.txt"
 alias cd.="cd ."
-alias i3lock="xbacklight -set 0 && i3lock -c 000000"
 
 
 export BREW_HOME="$HOME/.brew"
@@ -194,3 +194,5 @@ export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 if [ "$(uname -s)" = "Darwin" ]; then
 	export PATH=$HOME/osx_binutils:$PATH
 fi
+
+eval $(thefuck --alias)

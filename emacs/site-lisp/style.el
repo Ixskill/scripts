@@ -8,18 +8,29 @@
 
 ;; Putting font
 ;;(set-face-attribute 'default nil :font "Roboto Mono Medium for Powerline 11")
-(set-face-attribute 'default nil :font "Cascadia Code 12")
-(setq default-frame-alist '((font . "Cascadia Code 12")))
+;; (set-face-attribute 'default nil :font "Cascadia Code 12")
+;; (setq default-frame-alist '((font . "Cascadia Code 12")))
+;; (set-face-attribute 'default nil :font "Fira Code 12")
+;; (setq default-frame-alist '((font . "Fira Code 12")))
+(set-face-attribute 'default nil :font "JetBrains Mono Bold 12")
+(setq default-frame-alist '((font . "JetBrains Mono Bold 12")))
 
 (defun load-graphical-env (frame)
-  (load-theme 'atom-dark 'NO-CONFIRM)
-  (setq atom-dark-theme-force-faces-for-mode nil)
+  ;; (load-theme 'atom-dark 'NO-CONFIRM)
+  ;; (setq atom-dark-theme-force-faces-for-mode nil)
+  (load-theme 'doom-rouge 'NO-CONFIRM)
   )
 
 (defun load-term-env ()
-	  (load-theme 'atom-dark 'NO-CONFIRM)
-	  (setq atom-dark-theme-force-faces-for-mode nil)
-	  )
+  ;; (load-theme 'atom-dark 'NO-CONFIRM)
+  ;; (setq atom-dark-theme-force-faces-for-mode nil)
+  (load-theme 'doom-rouge 'NO-CONFIRM)
+  )
+
+;; Not using with light themes
+(add-hook 'after-init-hook (lambda ()
+  (when (fboundp 'auto-dim-other-buffers-mode)
+    (auto-dim-other-buffers-mode t))))
 
 (defun try-loading-graphical-env ()
   (if (display-graphic-p)
@@ -38,10 +49,6 @@
 	  scroll-conservatively 10000
 	  scroll-step 1)
 
-;;; Not using with light themes
-;; (add-hook 'after-init-hook (lambda ()
-;;   (when (fboundp 'auto-dim-other-buffers-mode)
-;;     (auto-dim-other-buffers-mode t))))
 
 ;; Opting out of powerline because it's not easily configurable and I find the provided themes ugly / messy
 ;; (use-package powerline
@@ -100,3 +107,11 @@
   (global-ligature-mode t))
 
 (global-prettify-symbols-mode 1)
+
+(defun pretty-lambda ()
+  "Make lambda show as a pretty symbol"
+  (setq prettify-symbols-alist
+        '(
+          ("lambda" . 955) ; λ
+          ("Lambda" . 955) ; λ
+          )))

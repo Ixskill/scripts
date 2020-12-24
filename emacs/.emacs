@@ -6,6 +6,9 @@
 (setq vc-follow-symlinks t)
 
 ;; Sourcing packages 
+(load "evil-org.el")
+(load "evil-org-agenda.el")
+(load "evil-org-test.el")
 (load "list.el")
 (load "term-cfg.el")
 (load "string.el")
@@ -115,12 +118,6 @@
 			 (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
 			 (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
-(defun pretty-lambda ()
-  "make some word or string show as pretty Unicode symbols"
-  (setq prettify-symbols-alist
-        '(
-          ("lambda" . 955) ; λ
-          )))
 (use-package rust-mode
 			 :config (setq lsp-rust-server 'rust-analyzer)
 			 :hook (rust-mode . pretty-lambda)
@@ -145,9 +142,11 @@
 			 :config
 			 (ccls-use-default-rainbow-sem-highlight)
 			 (setq ccls-executable "/usr/bin/ccls")
-			 :hook ((c-mode c++-mode objc-mode) .
-												(lambda () (require 'ccls) (lsp) (hs-minor-mode) (irony-mode) (flycheck-mode)))
-			 ;; (irony-mode . irony-cdb-autosetup-compile-options)
+			 :hook ((c-mode c++-mode objc-mode) . (lambda () (require
+													'ccls) (lsp)
+													(hs-minor-mode)
+													(irony-mode)
+													(flycheck-mode)))
 			 )
 
 
@@ -171,8 +170,28 @@
   :config
   (global-anzu-mode 1))
 
-(use-package evil-anzu
-  :defer t)
+(with-eval-after-load 'evil
+  (require 'evil-anzu))
+
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dashboard-startup-banner 'logo)
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+  (setq dashboard-items '((recents  . 5)
+						  (projects . 5)
+						  (agenda . 5)
+						  (registers . 5)))
+  (dashboard-setup-startup-hook))
+
+(use-package evil-org
+  :ensure t
+  :after org
+  :hook (org-mode . (lambda () evil-org-mode))
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
 
 ;*******************************************************************************;
 (custom-set-variables
@@ -184,7 +203,7 @@
  '(ccls-sem-variable-colors nil)
  '(comment-style 'extra-line)
  '(custom-safe-themes
-   '("2642a1b7f53b9bb34c7f1e032d2098c852811ec2881eec2dc8cc07be004e45a0" "82358261c32ebedfee2ca0f87299f74008a2e5ba5c502bde7aaa15db20ee3731" "d7383f47263f7969baf3856ab8b3df649eb77eafdff0c5731bee2ad18e0faed2" "ae3a3bed17b28585ce84266893fa3a4ef0d7d721451c887df5ef3e24a9efef8c" "bf390ecb203806cbe351b966a88fc3036f3ff68cd2547db6ee3676e87327b311" "87a431903d22fa1cbb2becd88572e7d985e28c2253935448d0d754c13e85a980" "9a155066ec746201156bb39f7518c1828a73d67742e11271e4f24b7b178c4710" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default))
+   '("e6ff132edb1bfa0645e2ba032c44ce94a3bd3c15e3929cdf6c049802cf059a2a" "54cf3f8314ce89c4d7e20ae52f7ff0739efb458f4326a2ca075bf34bc0b4f499" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "c4bdbbd52c8e07112d1bfd00fee22bf0f25e727e95623ecb20c4fa098b74c1bd" "4bca89c1004e24981c840d3a32755bf859a6910c65b829d9441814000cf6c3d0" "3df5335c36b40e417fec0392532c1b82b79114a05d5ade62cfe3de63a59bc5c6" "e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" "2642a1b7f53b9bb34c7f1e032d2098c852811ec2881eec2dc8cc07be004e45a0" "82358261c32ebedfee2ca0f87299f74008a2e5ba5c502bde7aaa15db20ee3731" "d7383f47263f7969baf3856ab8b3df649eb77eafdff0c5731bee2ad18e0faed2" "ae3a3bed17b28585ce84266893fa3a4ef0d7d721451c887df5ef3e24a9efef8c" "bf390ecb203806cbe351b966a88fc3036f3ff68cd2547db6ee3676e87327b311" "87a431903d22fa1cbb2becd88572e7d985e28c2253935448d0d754c13e85a980" "9a155066ec746201156bb39f7518c1828a73d67742e11271e4f24b7b178c4710" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "d494af9adbd2c04bec4b5c414983fefe665cd5dadc5e5c79fd658a17165e435a" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "b85fc9f122202c71b9884c5aff428eb81b99d25d619ee6fde7f3016e08515f07" "b34636117b62837b3c0c149260dfebe12c5dad3d1177a758bb41c4b15259ed7e" "c158c2a9f1c5fcf27598d313eec9f9dceadf131ccd10abc6448004b14984767c" default))
  '(global-company-mode t)
  '(gud-gdb-command-name "gdb --annotate=1")
  '(large-file-warning-threshold nil)
@@ -206,7 +225,7 @@
  '(lsp-ui-sideline-update-mode 'line)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(pretty-symbols evil-anzu org-pomodoro auto-compile spaceline-all-the-icons spaceline ergoemacs-status 0xc pylint helm-rg py-autopep8 eslint-fix npm-mode ripgrep flycheck-rust toml-mode company-lsp focus default-text-scale evil-exchange rjsx-mode load-theme-buffer-local company-irony nordless-theme clang-format js-format projectile-direnv auto-complete-clang ac-rtags auto-dim-other-buffers company-irony-c-headers atom-dark-theme vagrant ggtags racer babel ac-helm auto-complete seoul256-theme async-await subatomic-theme subatomic256-theme green-phosphor-theme))
+   '(evil-org org-gcal dashboard page-break-lines doom-themes zenburn-theme pretty-symbols evil-anzu org-pomodoro auto-compile spaceline-all-the-icons spaceline ergoemacs-status 0xc pylint helm-rg py-autopep8 eslint-fix npm-mode ripgrep flycheck-rust toml-mode company-lsp focus default-text-scale evil-exchange rjsx-mode load-theme-buffer-local company-irony nordless-theme clang-format js-format projectile-direnv auto-complete-clang ac-rtags auto-dim-other-buffers company-irony-c-headers atom-dark-theme vagrant ggtags racer babel ac-helm auto-complete seoul256-theme async-await subatomic-theme subatomic256-theme green-phosphor-theme))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces

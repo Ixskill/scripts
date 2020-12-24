@@ -46,7 +46,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec terminator -b -p ade-sede
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -54,7 +54,11 @@ bindsym $mod+Shift+q kill
 # Window border size
 new_window pixel 0
 
-# start dmenu (a program launcher)
+for_window [class="powermenu.py"] floating enable
+for_window [class="Powermenu.py"] floating enable
+
+
+# start program launcher
 bindsym $mod+d exec "rofi -show run"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -190,9 +194,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 && pkill -RTMIN+2 i3blocks
 
 #### GAPS SETUP
 
-gaps inner 3
-gaps outer 3
-smart_gaps on
+gaps inner 10
+gaps outer 45
 
 
 
@@ -200,22 +203,27 @@ smart_gaps on
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-bar
-{
-    status_command i3blocks
-    position top
-    font pango: Roboto Mono Medium for Powerline, Hack, FontAwesome, Awesome, AIcons, icons 10
-    strip_workspace_numbers yes
-    separator_symbol "■"
-    colors { 
-	background	$blackgrey
-#				BORDER		background	TEXT
-	focused_workspace	$blackgrey	$grey		$lightblue
-	inactive_workspace	$blackgrey	$darkgrey	$white
-    }
-}
+# bar
+# {
+#     status_command i3blocks
+#     position top
+#     font pango: Roboto Mono Medium for Powerline, Hack, FontAwesome, Awesome, AIcons, icons 10
+#     strip_workspace_numbers yes
+#     separator_symbol "■"
+#     colors { 
+# 	background	$blackgrey
+# #				BORDER		background	TEXT
+# 	focused_workspace	$blackgrey	$grey		$lightblue
+# 	inactive_workspace	$blackgrey	$darkgrey	$white
+#     }
+# }
 # Launch at RUNTIME
-exec --no-startup-id compton -b
+
+exec --no-startup-id /home/ade-sede/.config/polybar/launch.sh &
+exec --no-startup-id dunst &
+exec --no-startup-id picom &
 exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id nitrogen --restore &
+# exec --no-startup-id conky &
+exec --no-startup-id autorandr --change &
