@@ -9,6 +9,11 @@
 								64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))
 
 ;; Activates lines numbers
-(add-hook 'prog-mode-hook (lambda() (linum-mode)))
+(defvar linum-format "%4d \u2502")
+(add-hook 'org-mode-hook (lambda () (linum-mode)))
+(add-hook 'prog-mode-hook (lambda () (linum-mode)))
 (add-hook 'prog-mode-hook (lambda() (show-paren-mode)))
 (add-hook 'prog-mode-hook (lambda() (local-set-key (kbd "TAB") 'tab-to-tab-stop)))
+
+
+

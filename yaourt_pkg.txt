@@ -1,0 +1,357 @@
+community/ack 3.1.1-1
+community/acpi 1.7-2
+local/adduser 1.15-5
+local/adg-gtk-theme 3.22.3-3
+community/alacritty 0.3.3-3
+local/alacritty-terminfo 0.3.3-3
+community/alex 3.2.4-12
+extra/alsa-utils 1.1.9-1
+local/android-studio 4.1.1.0-1
+extra/archiso 50.1-1
+community/arm-none-eabi-gcc 9.2.0-1
+community/arm-none-eabi-gdb 9.1-1
+community/arm-none-eabi-newlib 3.1.0-1
+community/arp-scan 1.9.5-1
+core/autoconf 2.69-7 (base-devel)
+core/automake 1.16.2-3 (base-devel)
+community/autorandr 1.11-2
+community/avr-binutils 2.32-1
+community/avr-gcc 9.2.0-1
+community/avr-libc 2.0.0-3
+core/bash 5.0.009-1 (base)
+extra/bc 1.07.1-3
+local/bear-git 2.3.13.0.g2473a67-1
+core/binutils 2.35-2 (base-devel)
+community/birdfont 2.29.1-1
+core/bison 3.7.2-1 (base-devel)
+community/blueman 2.1.4-1
+extra/bluez-hid2hci 5.53-1
+extra/bluez-utils 5.50-7
+local/brother-mfc-9330cdw 1.1.2-4
+core/bzip2 1.0.8-2 (base)
+community/cabal-install 2.4.0.0-132
+community/catdoc 0.95-2
+local/cava 0.7.3-1
+community/ccls 0.20201025-1
+extra/clisp 2.49.93-2
+extra/conky 1.11.6-1
+core/coreutils 8.31-1 (base)
+local/cpputest 3.8-1
+core/cryptsetup 2.2.0-1 (base)
+local/csvtools-git r313.739892b-1
+extra/ctags 1:r20200106+ga3c87ab5-1
+extra/cups 1:2.3.3op1-1
+extra/cups-pdf 3.0.1-5
+community/debootstrap 1.0.115-1
+core/device-mapper 2.02.186-1 (base)
+community/dfu-util 0.9-2
+extra/dhclient 4.4.1-4
+core/dhcpcd 7.2.2-1 (base)
+core/dialog 1:1.3_20190808-1
+core/diffutils 3.7-1 (base)
+community/ditaa 0.11.0-3
+community/dmenu 4.9-1
+extra/dnsmasq 2.80-4
+community/docker-compose 1.24.1-1
+community/docker-machine 0.16.2-1
+community/dropbear 2019.78-1
+community/dunst 1.5.0-1
+core/e2fsprogs 1.45.3-1 (base)
+core/efibootmgr 16-1
+local/emacs-git 28.0.50.144425-1
+community/exa 0.9.0-1
+local/exercism-bin 3.0.12-4
+core/fakeroot 1.24-2 (base-devel)
+extra/feh 3.6.1-1
+core/file 5.39-1 (base-devel)
+core/filesystem 2019.05-2 (base)
+community/filezilla 3.46.3-1
+core/findutils 4.7.0-2 (base-devel)
+extra/firefox 81.0.1-1
+community/firefox-developer-edition 82.0b9-1
+core/flex 2.6.4-3 (base-devel)
+local/fontview-git r217.0860a85-1
+community/fzf 0.18.0-2
+local/ganttproject 2.8.11-2
+core/gawk 5.1.0-1 (base-devel)
+core/gcc 10.2.0-3 (base-devel)
+core/gcc-libs 10.2.0-3
+extra/gdb 9.2-2
+core/gettext 0.21-1 (base-devel)
+community/ghc 8.6.5-1
+community/ghi 1.2.0.r23.g0bf0e97-1
+extra/gimp 2.10.22-1
+extra/git 2.28.0-1
+core/glibc 2.32-4
+local/gngeo-git 0.8.r21.ged06739-1
+extra/gnome-backgrounds 3.32.0-1 (gnome)
+community/gnome-icon-theme 3.12.0-6
+extra/gnome-themes-extra 3.28-1 (gnome)
+extra/graphviz 2.44.1-6
+core/grep 3.4-1 (base-devel)
+community/gsimplecal 2.1-4
+extra/gst-libav 1.18.0-1
+extra/gtk2 2.24.32-2
+core/gzip 1.10-3 (base-devel)
+community/happy 1.19.11-1
+extra/hddtemp 0.3.beta15.53-3
+local/heroku-cli 6.15.13-1
+community/higan 110-1
+extra/htop 2.2.0-2
+extra/hunspell 1.7.0-3
+community/i3-gaps 4.19-1 (i3)
+local/i3-resurrect 1.4.3-2
+local/i3blocks-gaps-git 1.4.r36.g578e878-1
+local/i3lock-color 2.13.c.1-1
+community/i3status 2.13-2 (i3)
+core/inetutils 1.9.4-7 (base)
+core/iproute2 5.2.0-1 (base)
+core/iputils 20180629.f6aac8d-4 (base)
+extra/irssi 1.2.2-1
+community/isync 1.3.3-1
+extra/java-environment-common 3-1
+local/javascript-typescript-langserver 2.11.3-1
+core/jfsutils 1.1.15-6 (base)
+local/jlink 20160122-1
+community/jq 1.6-2
+community/kernel-headers-musl 3.12.6_6-1
+extra/keychain 2.8.5-1
+local/kicad-footprints-git r1482.1e3a9da4-1
+community/kitty 0.19.3-1
+local/kompose-bin 1.18.0-1
+community/kotlin 1.4.21-1
+local/kotlin-language-server 0.7.0-1
+community/kubectl 1.15.2-1
+local/lcov 1.13-3
+core/less 551-1 (base)
+extra/lftp 4.9.1-1
+local/lib32-gnutls 3.6.9-1
+local/lib32-libldap 2.4.48-1
+extra/libcmis 0.5.2-6
+local/libg15 1.2.7-4
+extra/libnss_nis 3.1-2
+community/libretro-snes9x 1339-1 (libretro)
+core/libtool 2.4.6+42+gb88cebd5-14 (base-devel)
+core/libxcrypt 4.4.17-1
+core/licenses 20181104-1 (base)
+core/linux 5.2.11.arch1-1 (base)
+core/linux-docs 5.2.11.arch1-1
+core/linux-headers 5.2.11.arch1-1
+extra/llvm 11.0.0-4
+core/logrotate 3.15.0-1 (base)
+core/lvm2 2.02.186-1 (base)
+community/lxinput 0.3.5-3 (lxde)
+extra/lynx 2.8.9-2
+core/m4 1.4.18-3 (base-devel)
+core/make 4.3-3 (base-devel)
+community/mame 0.226-1
+core/man-db 2.8.7-1 (base)
+core/man-pages 5.02-1 (base)
+core/mdadm 4.1-1 (base)
+extra/mesa-demos 8.4.0-4
+extra/mesa-vdpau 20.3.1-1
+local/microchip-mplabxc32-bin 1.44-1
+local/minecraft-launcher 2.2.909-1
+local/mingw-w64-termcap 1.3.1-8 (mingw-w64)
+community/minicom 2.7.1-2
+community/minikube 1.4.0-2
+local/mongodb-shell-bin 4.2.2-1
+local/mongodb-tools 4.0.3-1
+community/moreutils 0.63-1
+extra/mpc 0.33-3
+extra/mpd 0.22.3-2
+community/mps-youtube 0.2.8-4
+local/mu 1.4.13-1
+local/mycli 1.20.1-1
+core/nano 4.4-1 (base)
+extra/nasm 2.15.05-1
+community/nbd 3.20-2
+extra/ncmpc 0.42-1
+community/ncmpcpp 0.9-2
+community/neovim 0.3.8-1
+core/net-tools 1.60.20181103git-1
+core/netctl 1.23-1
+extra/network-manager-applet 1.18.0-1
+extra/networkmanager 1.26.2-1 (gnome)
+extra/networkmanager-openvpn 1.8.12-1
+extra/nitrogen 1.6.1-3
+extra/nmap 7.80-1
+extra/nss-mdns 0.14.1-3
+extra/ntp 4.2.8.p13-2
+extra/ocaml 4.08.1-1
+extra/ocaml-compiler-libs 4.08.1-1
+community/openocd 1:0.10.0-3
+core/openssh 8.0p1-2
+extra/openvpn 2.5.0-3
+community/otf-cascadia-code 2009.22-1
+community/otf-fira-mono 2:3.206-4
+community/otf-fira-sans 1:4.301-2
+community/otf-font-awesome 5.15.1-1
+local/otf-font-awesome-4 4.7.0-5
+extra/p7zip 16.02-5
+local/package-query 1.11-1
+core/pacman 5.2.2-1 (base-devel)
+community/pandoc 2.7.3-39
+community/papirus-icon-theme 20201201-1
+core/patch 2.7.6-8 (base-devel)
+core/pciutils 3.6.2-1 (base)
+local/pcmciautils 018-8 (base)
+extra/pepper-flash 32.0.0.238-1
+core/perl 5.30.0-3 (base)
+local/perl-xml-parser-lite-tree 0.14-1
+community/picom 8.2-1
+core/pkgconf 1.7.3-1 (base-devel)
+community/plantuml 1.2021.0-1
+local/polybar 3.5.2-1
+core/procps-ng 3.3.15-1 (base)
+core/psmisc 23.2-1 (base)
+extra/pulseaudio 14.0-1
+extra/pulseaudio-alsa 1:1.2.2-2
+extra/pulseaudio-bluetooth 14.0-1
+community/pv 1.6.6-2
+local/pychecker 0.8.19-6
+extra/python 3.9.1-1
+local/python-chardet-git 3.0.3.r8.gd82ccd1-1
+extra/python-pip 20.2.2-1
+community/python-pyalsa 1.1.6-5 (alsa)
+extra/python-virtualenv 16.1.0-1
+extra/python2 2.7.18-2
+community/ranger 1.9.3-3
+local/rbenv 1.1.1-1
+core/reiserfsprogs 3.6.27-2 (base)
+community/ripgrep 11.0.2-1
+community/rofi 1.6.0-1
+community/rust-analyzer 20210104-1
+community/rustup 1.23.1-1
+core/s-nail 14.9.15-1 (base)
+extra/sbcl 1.5.5-1
+extra/screen 4.6.2-1
+community/scrot 1.4-1
+core/sed 4.8-1 (base-devel)
+core/shadow 4.7-2 (base)
+local/silver-searcher-git 2.2.0.2.gbd82cd3.r1999.bd82cd3-1
+community/sl 5.02-5
+community/snes9x 1.60-7
+extra/socat 1.7.3.4-1
+community/spotifyd 0.2.24-2
+community/squid 4.8-1
+community/stlink 1.5.1-1
+local/stm32cubemx 5.4.0-1
+local/stm32flash 0.5-3
+community/stow 2.3.1-2
+extra/strace 5.2-1
+core/sudo 1.9.3.p1-1 (base-devel)
+core/sysfsutils 2.1.0-10 (base)
+core/syslinux 6.04.pre2.r11.gbf6db5b4-1
+community/sysstat 12.1.5-1
+core/systemd-sysvcompat 242.84-2 (base)
+core/tar 1.32-1 (base)
+extra/tcpdump 4.9.3-1
+community/teamspeak3 3.3.2-1
+local/termcap 1.3.1-4
+community/termite 15-3
+local/tesseract-ocr-git 4.00.00dev.r697.gcdc35338-1
+core/texinfo 6.7-3 (base-devel)
+extra/texlive-core 2020.57066-1 (texlive-most)
+extra/texlive-fontsextra 2020.57042-1 (texlive-most)
+extra/texlive-latexextra 2020.57067-1 (texlive-most)
+extra/texlive-pictures 2020.57065-1 (texlive-most)
+extra/tftp-hpa 5.2-8
+community/thefuck 3.29-1
+extra/thunar 1.8.16-1 (xfce4)
+community/time 1.9-2
+community/tmux 3.1_b-1
+local/tmuxinator 0.9.0-1
+core/traceroute 2.1.0-2
+extra/tree 1.8.0-1
+community/ttf-cascadia-code 2009.22-1
+community/ttf-fira-code 5.2-1
+community/ttf-font-awesome 5.15.1-1
+local/ttf-font-awesome-4 4.7.0-5
+extra/ttf-hack 3.003-3
+community/ttf-jetbrains-mono 2.210-1
+local/ttf-material-design-icons 4.0.0-1
+local/ttf-material-design-icons-desktop-git r1229.4ab5255-1
+extra/unrar 1:5.8.1-1
+extra/upower 0.99.11-3
+community/urxvt-perls 2.2-2
+core/usbutils 012-1 (base)
+core/util-linux 2.34-3 (base base-devel)
+extra/vde2 2.3.2-11
+core/vi 1:070224-3 (base)
+extra/vim 8.2.1704-1
+local/vim-easytags 3.11-1 (vim-plugins)
+community/virtualbox-guest-iso 6.0.12-1
+local/virtualbox-guest-modules-arch 6.0.12-1
+community/virtualbox-guest-utils 6.0.12-1
+community/virtualbox-host-modules-arch 6.0.12-1
+local/vitunes 2.3-1
+community/vivaldi 3.3.2022.47-1
+local/vivaldi-widevine 1:4.10.1679.0-1
+community/volatility 2.6.1-1
+community/vsftpd 3.0.3-6
+extra/wget 1.20.3-3
+core/which 2.21-5 (base-devel)
+extra/whois 5.5.1-1
+community/woff2-cascadia-code 2009.22-1
+extra/xclip 0.13-3
+community/xdotool 3.20160805.1-2
+extra/xf86-video-intel 1:2.99.917+913+g9236c582-1 (xorg-drivers)
+extra/xf86-video-vesa 2.5.0-1 (xorg-drivers xorg)
+core/xfsprogs 4.20.0-2 (base)
+extra/xorg-bdftopcf 1.1-2 (xorg xorg-apps)
+extra/xorg-docs 1.7.1-3 (xorg)
+extra/xorg-font-util 1.3.2-2 (xorg-fonts xorg)
+extra/xorg-fonts-100dpi 1.0.3-7 (xorg)
+extra/xorg-fonts-75dpi 1.0.3-7 (xorg)
+extra/xorg-fonts-encodings 1.0.5-2 (xorg-fonts xorg)
+extra/xorg-iceauth 1.0.8-2 (xorg-apps xorg)
+local/xorg-luit 1.1.1-3 (xorg xorg-apps)
+extra/xorg-mkfontscale 1.2.1-2 (xorg-apps xorg)
+extra/xorg-server 1.20.9-2 (xorg)
+extra/xorg-server-common 1.20.9-2 (xorg)
+extra/xorg-server-devel 1.20.9-2 (xorg)
+local/xorg-server-xdmx 1.20.5-2 (xorg)
+extra/xorg-server-xephyr 1.20.9-2 (xorg)
+extra/xorg-server-xnest 1.20.9-2 (xorg)
+extra/xorg-server-xvfb 1.20.9-2 (xorg)
+local/xorg-server-xwayland 1.20.9-2 (xorg)
+extra/xorg-sessreg 1.1.2-2 (xorg-apps xorg)
+extra/xorg-setxkbmap 1.3.2-2 (xorg-apps xorg)
+extra/xorg-smproxy 1.0.6-3 (xorg-apps xorg)
+extra/xorg-x11perf 1.6.1-2 (xorg-apps xorg)
+extra/xorg-xauth 1.1-2 (xorg-apps xorg)
+extra/xorg-xbacklight 1.2.3-2 (xorg-apps xorg)
+extra/xorg-xcmsdb 1.0.5-3 (xorg-apps xorg)
+extra/xorg-xcursorgen 1.0.7-2 (xorg-apps xorg)
+extra/xorg-xdpyinfo 1.3.2-4 (xorg-apps xorg)
+extra/xorg-xdriinfo 1.0.6-2 (xorg-apps xorg)
+extra/xorg-xev 1.2.4-1 (xorg-apps xorg)
+extra/xorg-xgamma 1.0.6-3 (xorg-apps xorg)
+extra/xorg-xhost 1.0.8-2 (xorg-apps xorg)
+extra/xorg-xinit 1.4.1-1
+extra/xorg-xinput 1.6.3-2 (xorg-apps xorg)
+extra/xorg-xkbcomp 1.4.3-1 (xorg-apps xorg)
+extra/xorg-xkbevd 1.1.4-3 (xorg-apps xorg)
+extra/xorg-xkbutils 1.0.4-4 (xorg-apps xorg)
+extra/xorg-xkill 1.0.5-2 (xorg-apps xorg)
+extra/xorg-xlsatoms 1.1.3-2 (xorg-apps xorg)
+extra/xorg-xlsclients 1.1.4-2 (xorg-apps xorg)
+extra/xorg-xmodmap 1.0.10-2 (xorg-apps xorg)
+extra/xorg-xpr 1.0.5-2 (xorg-apps xorg)
+extra/xorg-xprop 1.2.4-2 (xorg-apps xorg)
+extra/xorg-xrandr 1.5.1-2 (xorg-apps xorg)
+extra/xorg-xrdb 1.2.0-2 (xorg-apps xorg)
+extra/xorg-xrefresh 1.0.6-2 (xorg-apps xorg)
+extra/xorg-xset 1.2.4-2 (xorg-apps xorg)
+extra/xorg-xsetroot 1.1.2-2 (xorg-apps xorg)
+extra/xorg-xvinfo 1.1.4-2 (xorg-apps xorg)
+extra/xorg-xwd 1.0.7-2 (xorg-apps xorg)
+extra/xorg-xwininfo 1.1.5-2 (xorg-apps xorg)
+extra/xorg-xwud 1.0.5-2 (xorg-apps xorg)
+community/xsel 1.2.0.20160929-2
+extra/xterm 348-1
+local/yaourt 1.9-1
+local/zoom 5.4.57450.1220-1
+extra/zsh 5.8-1
+community/zsh-syntax-highlighting 0.7.1-1

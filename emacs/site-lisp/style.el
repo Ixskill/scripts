@@ -6,14 +6,14 @@
 (global-font-lock-mode)
 (global-hi-lock-mode)
 
-;; Putting font
+;; Setting font
+(set-face-attribute 'default nil :font "JetBrains Mono Bold 12")
+(setq default-frame-alist '((font . "JetBrains Mono Bold 12")))
 ;;(set-face-attribute 'default nil :font "Roboto Mono Medium for Powerline 11")
 ;; (set-face-attribute 'default nil :font "Cascadia Code 12")
 ;; (setq default-frame-alist '((font . "Cascadia Code 12")))
 ;; (set-face-attribute 'default nil :font "Fira Code 12")
 ;; (setq default-frame-alist '((font . "Fira Code 12")))
-(set-face-attribute 'default nil :font "JetBrains Mono Bold 12")
-(setq default-frame-alist '((font . "JetBrains Mono Bold 12")))
 
 (defun load-graphical-env (frame)
   ;; (load-theme 'atom-dark 'NO-CONFIRM)
@@ -102,6 +102,32 @@
 									   "?=" "?."  "??"  ";;" "/*" "/="
 									   "/>" "//" "__" "~~" "(*" "*)"
 									   "://"))
+    (ligature-set-ligatures 'org-mode '("|||>" "<|||" "<==>" "<!--"
+									   "####" "~~>" "***" "||=" "||>"
+									   ":::" "::=" "=:=" "===" "==>"
+									   "=!=" "=>>" "=<<" "=/=" "!=="
+									   "!!." ">=>" ">>=" ">>>" ">>-"
+									   ">->" "->>" "-->" "---" "-<<"
+									   "<~~" "<~>" "<*>" "<||" "<|>"
+									   "<$>" "<==" "<=>" "<=<" "<->"
+									   "<--" "<-<" "<<=" "<<-" "<<<"
+									   "<+>" "</>" "###" "#_(" "..<"
+									   "..." "+++" "/==" "///" "_|_"
+									   "www" "&&" "^=" "~~" "~@" "~="
+									   "~>" "~-" "**" "*>" "*/" "||"
+									   "|}" "|]" "|=" "|>" "|-" "{|"
+									   "[|" "]#" "::" ":=" ":>" ":<"
+									   "$>" "==" "=>" "!=" "!!"  ">:"
+									   ">=" ">>" ">-" "-~" "-|" "->"
+									   "--" "-<" "<~" "<*" "<|" "<:"
+									   "<$" "<=" "<>" "<-" "<<" "<+"
+									   "</" "#{" "#[" "#:" "#=" "#!"
+									   "##" "#(" "#?" "#_" "%%" ".="
+									   ".-" ".."  ".?"  "+>" "++" "?:"
+									   "?=" "?."  "??"  ";;" "/*" "/="
+									   "/>" "//" "__" "~~" "(*" "*)"
+									   "://"))
+
   ;; Enables ligature checks globally in all buffers. You can also do it
   ;; per mode with `ligature-mode'.
   (global-ligature-mode t))

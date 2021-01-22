@@ -5,166 +5,223 @@
 
 (setq vc-follow-symlinks t)
 
-;; Sourcing packages 
+;; Sourcing packages
 (load "evil-org.el")
-(load "evil-org-agenda.el")
-(load "evil-org-test.el")
+;;(load "evil-org-agenda.el")
+;;(load "evil-org-test.el")
 (load "list.el")
 (load "term-cfg.el")
 (load "string.el")
 (load "comments.el")
-(load "header.el")
+;(load "header.el")
 (load "custom-functions.el")
 (load "style.el")
 (load "prog-style.el")
 (load "package-manager.el")
 (load "misc.el")
 (load "compilation.el")
+;;(load "dap.el")
 
+(tab-bar-mode 1)
+(setq tab-bar-new-button-show nil)
+(setq tab-bar-close-button-show nil)
 (use-package helm-config
-			 :bind ("M-x" . 'helm-M-x))
+  :bind ("M-x" . 'helm-M-x))
 
-(use-package dap-gdb-lldb)
+
+(use-package lua-mode)
 
 (use-package helm-projectile
-			 :config (helm-projectile-on))
+  :config (helm-projectile-on))
+
+(use-package flyspell-correct
+  :after flyspell
+  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+
+(use-package flyspell-correct-popup
+  :after flyspell-correct)
 
 (use-package org
-			 :mode (("\\.org$" . org-mode))
-			 :ensure org-plus-contrib)
+  :mode (("\\.org$" . org-mode))
+  :hook (org-mode-hook . flyspell-mode)
+  :config
+  (setq org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0.11.jar")
+  (setq fill-column 100)
+  (setq org-log-into-drawer 'LOGBOOK)
+  (add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
+  (org-babel-do-load-languages 'org-babel-load-languages '(
+														   (plantuml . t)
+														   (ditaa . t)
+														   ))
+  :ensure org-plus-contrib)
 
 (use-package evil
-			 :init 
-			 :config (evil-mode)
-			 (evil-set-initial-state 'ansi-term 'emacs)
-			 (evil-set-initial-state 'term-mode 'emacs)
-			 (evil-select-search-module 'evil-search-module 'evil-search)
-			 (evil-ex-define-cmd "ls" 'ibuffer)
-			 (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
-			 (evil-define-key 'insert 'evil-insert-state-map (kbd "C-]") 'lsp-ui-peek-find-definitions)
-			 :bind (:map evil-normal-state-map
-						 ;;("C-]" . lsp-ui-peek-find-definitions)
-						 :map evil-insert-state-map
-						 ("C-n" . company-complete)
-						 ("C-p" . company-complete)))
+  :init 
+  :config (evil-mode)
+  (evil-set-initial-state 'ansi-term 'emacs)
+  (evil-set-initial-state 'term-mode 'emacs)
+  (evil-select-search-module 'evil-search-module 'evil-search)
+  (evil-ex-define-cmd "ls" 'ibuffer)
+  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes))
+  (evil-define-key 'insert 'evil-insert-state-map (kbd "C-]") 'lsp-ui-peek-find-definitions)
+  :bind (:map evil-normal-state-map
+			  :map evil-insert-state-map
+			  ("C-n" . company-complete)
+			  ("C-p" . company-complete)))
 (use-package toml-mode)
 
-(use-package flycheck-rust
-			 :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-
-
 (use-package cargo
-			 :hook (rust-mode . cargo-minor-mode))
+  :hook (rust-mode . cargo-minor-mode))
 
 (use-package evil-surround
-			 :config (global-evil-surround-mode))
+  :config (global-evil-surround-mode))
 
 (use-package magit
-			 :ensure t
-			 :bind (("M-g" . magit-status))
-			 :config
-			 (global-auto-revert-mode t) ;; Auto revert allows for easy branch checkout within emacs
-			 (setq auto-revert-check-vc-info t))
+  :ensure t
+  :bind (("M-g" . magit-status))
+  :config
+  (global-auto-revert-mode t)
+  (setq auto-revert-check-vc-info t))
 
 (use-package ruby-mode
-			 :mode "\\.rb\\'"
-			 :interpreter "ruby"
-			 :config
-			 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
-			 (setq ruby-indent-level 2))
+  :mode "\\.rb\\'"
+  :interpreter "ruby"
+  :config
+  (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+  (setq ruby-indent-level 2))
 
 (use-package company
-			 :ensure t
-			 :defer t
-			 :init
-			 (setq company-auto-complete t)
-			 :bind (:map company-active-map
-						 ("C-n" . company-complete-common-or-cycle)
-						 ("C-p" . company-select-previous-or-abort)
-						 ("<tab>" . company-complete-common))
-			 :config
-			 (add-to-list 'company-backends '(company-lsp company-irony-c-headers company-irony))
-			 (global-company-mode))
+  :ensure t
+  :defer t
+  :init
+  (setq company-auto-complete t)
+  :bind (:map company-active-map
+			  ("C-n" . company-complete-common-or-cycle)
+			  ("C-p" . company-select-previous-or-abort)
+			  ("<tab>" . company-complete-common))
+  :config
+  (add-to-list 'company-backends '(company-irony-c-headers company-irony))
+  (setq company-global-modes '(not org-mode))
+  (global-company-mode))
 
 (use-package ibuffer
-			 :init
-			 (add-hook 'ibuffer-hook (lambda ()
-									   (ibuffer-projectile-set-filter-groups)
-									   (unless (eq ibuffer-sorting-mode 'alphabetic)
-										 (ibuffer-do-sort-by-alphabetic)))))
+  :init
+  (add-hook 'ibuffer-hook (lambda ()
+							(ibuffer-projectile-set-filter-groups)
+							(unless (eq ibuffer-sorting-mode 'alphabetic)
+							  (ibuffer-do-sort-by-alphabetic)))))
 
 (use-package projectile
-			 :defer t
-			 :bind (:map projectile-mode-map
-						 ("C-c p" . projectile-command-map))
-			 :config
-			 (projectile-mode +1)
-			 (setq projectile-project-root-files-top-down-recurring
-				   (append '("compile_commands.json"
-							 ".ccls")
-						   projectile-project-root-files-top-down-recurring))
-			 ;;(setq projectile-indexing-method 'native)
-			 (setq projectile-globally-ignored-file-suffixes (list ".o")))
+  :defer t
+  :bind (:map projectile-mode-map
+			  ("C-c p" . projectile-command-map))
+  :config
+  (projectile-mode +1)
+  (setq projectile-project-root-files-top-down-recurring
+		(append '("compile_commands.json"
+				  ".ccls")
+				projectile-project-root-files-top-down-recurring))
+  ;;(setq projectile-indexing-method 'native)
+  (setq projectile-globally-ignored-file-suffixes (list ".o")))
 
 
 (use-package yasnippet
-			 :config
-			 (yas-global-mode 1))
+  :config
+  (yas-global-mode 1))
 
 
-(use-package lsp-mode :commands lsp)
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode 1)
+  )
+
+(use-package lsp-mode
+  :init
+  (setq lsp-diagnostic-package :none)
+  (setq lsp-enable-indentation t)
+  (setq lsp-diagnostics-provider :flycheck)
+  :defer
+  )
+
+
+
+
+(use-package plantuml-mode
+  :config
+  (setq plantuml-default-exec-mode 'jar)
+  (setq plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
+  (setq org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
+	(setq org-plantuml-jar-path
+		(expand-file-name "/usr/share/java/plantuml/plantuml.jar"))
+  )
+
 (use-package lsp-ui :commands lsp-ui-mode
-			 :config
-			 (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-			 (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
+  :config
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
 
 (use-package rust-mode
-			 :config (setq lsp-rust-server 'rust-analyzer)
-			 :hook (rust-mode . pretty-lambda)
-			 :hook (rust-mode . lsp))
+  :config (setq lsp-rust-server 'rust-analyzer)
+  ;; :config (setq lsp-rust-server 'rls)
+  :hook (rust-mode . pretty-lambda)
+  :hook (rust-mode . lsp)
+  :config   (add-hook 'lsp-after-initialize-hook (lambda
+												   ()
+												   (flycheck-add-next-checker 'lsp 'rust-clippy)
+												   (setq lsp-ui-sideline-show-code-actions nil)
+												   (flycheck-disable-checker 'lsp)
+												   ))
+
+  )
+
+(use-package kotlin-mode
+  :hook (kotlin-mode . lsp))
 
 (use-package python-mode
-			 :hook (python-mode . lsp)
-			 :hook (python-mode . pretty-lambda)
-			 ;;:hook (python-mode . flycheck-mode))
-			 )
+  :hook (python-mode . lsp)
+  :hook (python-mode . pretty-lambda)
+  ;; :hook (lsp-after-initialize-hook . (lambda () (flycheck-add-next-checker 'lsp 'python-pylint)))
+  :config
+  (add-hook 'lsp-after-initialize-hook (lambda
+										 ()
+										 (flycheck-add-next-checker 'lsp 'python-pylint)
+										 (flycheck-disable-checker 'lsp)
+										 )))
 
 (use-package js2-mode
-			 :hook (js2-mode . npm-mode))
+  :hook (js2-mode . npm-mode))
 
-(use-package company-lsp :commands company-lsp
-			 :config
-			 (setq company-lsp-async 1)
-			 ;;(setq company-lsp-enable-snippet 1)
-			 (setq company-lsp-enable-recompletion 1))
+;; (use-package company-lsp
+;;   :commands company-lsp
+;;   :config
+;;   (push 'company-lsp company-backends)
+;;   (setq company-lsp-async 1)
+;;   ;;(setq company-lsp-enable-snippet 1)
+;;   (setq company-lsp-enable-recompletion 1))
 
 (use-package ccls
-			 :config
-			 (ccls-use-default-rainbow-sem-highlight)
-			 (setq ccls-executable "/usr/bin/ccls")
-			 :hook ((c-mode c++-mode objc-mode) . (lambda () (require
-													'ccls) (lsp)
-													(hs-minor-mode)
-													(irony-mode)
-													(flycheck-mode)))
-			 )
+  :config
+  ;; (ccls-use-default-rainbow-sem-highlight)
+  (setq ccls-executable "/usr/bin/ccls"))
 
+(use-package c-mode
+  :hook (c-mode . lsp)
+  :hook (c-mode . hs-minor-mode)
+  :hook (c-mode . irony-mode))
 
 (use-package evil-snipe
-			 :config
-			 (setq evil-snipe-scope 'buffer)
-			 (evil-snipe-mode +1))
+  :config
+  (setq evil-snipe-scope 'buffer)
+  (evil-snipe-mode +1))
 
 (setq tags-add-tables nil)
 (define-prefix-command 'tag-map)
 (define-prefix-command 'other-window-tag-map)
 
-
-
-
 (use-package evil-exchange
-			 :config
-			 (evil-exchange-install))
+  :config
+  (evil-exchange-install))
 
 (use-package anzu
   :config
@@ -184,16 +241,16 @@
 						  (registers . 5)))
   (dashboard-setup-startup-hook))
 
-(use-package evil-org
-  :ensure t
-  :after org
-  :hook (org-mode . (lambda () evil-org-mode))
-  :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+;; (use-package evil-org
+;;   :ensure t
+;;   :after org
+;;   :hook (org-mode . (evil-org-mode 1))
+;;   :config
+;;   (require 'evil-org-agenda)
+;;   (evil-org-agenda-set-keys))
 
 
-;*******************************************************************************;
+										;*******************************************************************************;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -224,8 +281,10 @@
  '(lsp-ui-sideline-show-hover nil)
  '(lsp-ui-sideline-update-mode 'line)
  '(menu-bar-mode nil)
+ '(org-agenda-files
+   '("~/org/CityTaps/citytaps.org" "~/org/projects/projects.org"))
  '(package-selected-packages
-   '(evil-org org-gcal dashboard page-break-lines doom-themes zenburn-theme pretty-symbols evil-anzu org-pomodoro auto-compile spaceline-all-the-icons spaceline ergoemacs-status 0xc pylint helm-rg py-autopep8 eslint-fix npm-mode ripgrep flycheck-rust toml-mode company-lsp focus default-text-scale evil-exchange rjsx-mode load-theme-buffer-local company-irony nordless-theme clang-format js-format projectile-direnv auto-complete-clang ac-rtags auto-dim-other-buffers company-irony-c-headers atom-dark-theme vagrant ggtags racer babel ac-helm auto-complete seoul256-theme async-await subatomic-theme subatomic256-theme green-phosphor-theme))
+   '(ox-slack plantuml-mode flyspell-correct-popup flyspell-correct-helm lua-mode flyspell-correct kotlin-mode flycheck-pycheckers lsp-mode evil-org org-gcal dashboard page-break-lines doom-themes zenburn-theme pretty-symbols evil-anzu org-pomodoro auto-compile spaceline-all-the-icons spaceline ergoemacs-status 0xc pylint helm-rg py-autopep8 eslint-fix npm-mode ripgrep flycheck-rust toml-mode company-lsp focus default-text-scale evil-exchange rjsx-mode load-theme-buffer-local company-irony nordless-theme clang-format js-format projectile-direnv auto-complete-clang ac-rtags auto-dim-other-buffers company-irony-c-headers atom-dark-theme vagrant ggtags racer babel ac-helm auto-complete seoul256-theme async-await subatomic-theme subatomic256-theme green-phosphor-theme))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces

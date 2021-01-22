@@ -21,9 +21,6 @@ set $blackgrey	#1c1c1c
 set $darkgrey	#262626
 set $lightblue	#11DDDD
 
-
-
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # The size is to 0 so that no bars are shown
@@ -47,6 +44,7 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec terminator -b -p ade-sede
 bindsym $mod+Return exec kitty
+bindsym Print exec scrot -e 'feh $f -x' -d 2 $HOME/Images/`date +%Y-%m-%d_%H:%M:%S`.png &
 
 # kill focused window
 bindsym $mod+Shift+q kill
